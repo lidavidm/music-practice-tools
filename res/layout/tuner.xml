@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	  android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/tuner">
+    
+  <com.proch.practicetools.TunerCentsView
+    	android:id="@+id/tuner_cents_view"
+   		android:layout_width="fill_parent"
+   		android:layout_height="fill_parent" 
+   		android:layout_weight="1"/>
+  <TextView android:id="@+id/note_label"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:text="[note]"
+      android:textColor="@color/white"
+      android:textSize="65sp"
+      android:gravity="center"
+      android:layout_weight="1"/>
+	<TextView android:id="@+id/cents_label"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:text="[cents]"
+    	android:textColor="@color/white"
+    	android:textSize="45sp"
+    	android:gravity="center"
+    	android:layout_marginBottom="40sp"
+    	android:layout_weight="1"/>
+</LinearLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center">
+
+    <TableRow>
+        <Button
+        	android:id="@+id/c_button"
+            android:layout_width="wrap_content"
+            android:text="C"
+            android:layout_weight="1"
+            android:padding="3dip" />
+        <Button
+            android:id="@+id/f_sharp_button"
+            android:text="F#/Gb"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:id="@+id/c_sharp_button"
+            android:text="C#/Db"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+        <Button
+        	android:id="@+id/g_button"
+            android:layout_width="wrap_content"
+            android:text="G"
+            android:layout_weight="1"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <Button
+            android:id="@+id/d_button"
+            android:text="E"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+		<Button
+            android:id="@+id/a_flat_button"
+            android:text="G#/Ab"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+    </TableRow>
+
+	 <TableRow>
+        <Button
+        	android:id="@+id/e_flat_button"
+            android:layout_width="wrap_content"
+            android:text="D#/Eb"
+            android:layout_weight="1"
+            android:padding="3dip" />
+        <Button
+            android:id="@+id/a_button"
+            android:text="A"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+		    <Button
+            android:id="@+id/e_button"
+            android:text="E"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+        <Button
+        	android:id="@+id/b_flat_button"
+            android:text="Bb"
+            android:layout_column="1"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <Button
+            android:id="@+id/f_button"
+            android:text="F"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+		    <Button
+            android:id="@+id/b_button"
+            android:text="B"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip" />
+    </TableRow>
+
+     
+</TableLayout>
