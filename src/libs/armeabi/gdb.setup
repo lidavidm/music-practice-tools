@@ -1,2 +1,0 @@
-set solib-search-path /home/proch/android/Metronome/obj/local/armeabi
-directory /home/proch/android/android-ndk-r6/platforms/android-8/arch-arm/usr/include /home/proch/android/Metronome/jni /home/proch/android/android-ndk-r6/sources/cxx-stl/system
