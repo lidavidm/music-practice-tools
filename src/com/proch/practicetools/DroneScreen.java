@@ -75,17 +75,17 @@ public class DroneScreen extends Activity {
 
 		for (int i = 0; i < buttonIDs.length; i++) {
 			mNoteButtons[i] = (Button) findViewById(buttonIDs[i]);
+			updateButtonColor(mNoteButtons[i]);
 			mNoteButtons[i].setOnClickListener(new View.OnClickListener() {
 				public void onClick(View view) {
-					boolean newState = toggleDrone(Note.fromId(view.getId()));
-					int color = newState ? getResources().getColor(R.color.button_pressed) : getResources()
-							.getColor(R.color.button_normal);
-					view.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
+					toggleDrone(Note.fromId(view.getId()));
+					updateButtonColor(view);
 				}
 			});
 		}
 	}
 
+	// Returns true if drone is now turned on, or false if it is now off
 	public boolean toggleDrone(Note note) {
 		if (note.getDrone().isRunning()) {
 			note.getDrone().stop();
@@ -98,6 +98,13 @@ public class DroneScreen extends Activity {
 			note.getDrone().playPitch(note.getFrequency() * 2);
 			return true;
 		}
+	}
+	
+	public void updateButtonColor(View button) {
+		boolean state = Note.fromId(button.getId()).getDrone().isRunning();
+		int color = state ? getResources().getColor(R.color.button_pressed) : getResources()
+				.getColor(R.color.button_normal);
+		button.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
 	}
 
 	@Override
