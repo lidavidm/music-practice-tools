@@ -51,11 +51,11 @@ public class TunerScreen extends Activity {
 		double linearFreq = Math.log(frequency / 440.0) / Math.log(2) + 4;
 		double octave = Math.floor(linearFreq);
 		double cents = 1200 * (linearFreq - octave);
-		int noteNum = (int) Math.round(cents / 100);// % 12;
+		int noteNum = (int) Math.round(cents / 100);
 		cents = Math.round(cents - noteNum * 100);
 
 		mNoteLabel.setText(NOTE_NAMES[noteNum % 12]);
-		String centsStr = (int) cents + " cents";//new Integer((int)cents).toString();
+		String centsStr = (int) cents + " cents";
 		if (cents > 0) {
 			mCentsLabel.setText("+" + centsStr);
 		} else {

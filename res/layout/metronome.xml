@@ -9,6 +9,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
       android:layout_weight="1"
+      android:textColor="@color/white"
       android:text="Tempo"/>
 	<com.proch.practicetools.NumberPicker
 			android:id="@+id/tempo_picker"
@@ -39,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
         android:text="Beats On"/>
       <com.proch.practicetools.NumberPicker
       android:id="@+id/beats_on_picker"
@@ -56,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
         android:text="Beats Off"/>
       <com.proch.practicetools.NumberPicker
       android:id="@+id/beats_off_picker"
@@ -74,7 +77,5 @@
 	<Button
 		android:id="@+id/start"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="Unknown"
-		android:layout_weight="1"/>
+		android:text="Unknown" android:layout_height="70dp"/>
 </LinearLayout>

@@ -40,42 +40,4 @@ public class MainScreen extends TabActivity {
 		tv.setText(text);
 		return view;
 	}
-
-	// @Override
-	// public void onCreate(Bundle savedInstanceState) {
-	// super.onCreate(savedInstanceState);
-	// setContentView(R.layout.main);
-	//
-	// TabHost tabHost = getTabHost(); // The activity TabHost
-	// TabHost.TabSpec spec; // Reusable TabSpec for each tab
-	// Intent intent; // Reusable Intent for each tab
-	//
-	// // Create an Intent to launch an Activity for the tab (to be reused)
-	// intent = new Intent().setClass(this, MetronomeScreen.class);
-	//
-	// // Initialize a TabSpec for each tab and add it to the TabHost
-	// spec =
-	// tabHost.newTabSpec("metronome").setIndicator(getTabText("Metronome")).setContent(intent);
-	// tabHost.addTab(spec);
-	//
-	// intent = new Intent().setClass(this, TunerScreen.class);
-	// spec =
-	// tabHost.newTabSpec("tuner").setIndicator(getTabText("Tuner")).setContent(intent);
-	// tabHost.addTab(spec);
-	//
-	// intent = new Intent().setClass(this, DroneScreen.class);
-	// spec =
-	// tabHost.newTabSpec("drone").setIndicator(getTabText("Drone")).setContent(intent);
-	// tabHost.addTab(spec);
-	//
-	// tabHost.setCurrentTab(0);
-	// }
-	//	
-	// private TextView getTabText(String title) {
-	// TextView textView = new TextView(this);
-	// textView.setText(title);
-	// textView.setGravity(android.view.Gravity.CENTER);
-	// textView.setTextSize(18.0f);
-	// return textView;
-	// }
 }
