@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.util.Log;
 
 public class Metronome {
 
@@ -21,8 +20,8 @@ public class Metronome {
 
 	public Metronome(Context context) {
 		soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-		tickId = soundPool.load(context.getResources().openRawResourceFd(R.raw.tick4), 1);
-		tockId = soundPool.load(context.getResources().openRawResourceFd(R.raw.tock4), 1);
+		tickId = soundPool.load(context.getResources().openRawResourceFd(R.raw.tick), 1);
+		tockId = soundPool.load(context.getResources().openRawResourceFd(R.raw.tock), 1);
 		clicker = new Clicker(soundPool, tickId, tockId);
 		
 		executor = new ScheduledThreadPoolExecutor(SIZE_THREAD_POOL);
@@ -34,7 +33,6 @@ public class Metronome {
 	}
 
 	public void start(int tempo, int beatsOn, int beatsOff) {
-		Log.e("", "starting metro");
 		pattern = generatePattern(beatsOn, beatsOff);
 		currentBeat = 0;
 		running = true;
@@ -47,13 +45,11 @@ public class Metronome {
 	}
 
 	public void stop() {
-		Log.e("", "stopping metro");
 		running = false;
 		executor.shutdown();
 	}
 
 	public void restart(int tempo, int beatsOn, int beatsOff) {
-		Log.e("", "restarting metro");
 		stop();
 		start(tempo, beatsOn, beatsOff);
 	}

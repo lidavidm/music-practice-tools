@@ -75,14 +75,15 @@ public class MetronomeService extends Service {
 	}
 
 	private void startNotification() {
-		Notification notification = new Notification(R.drawable.ic_tab_artists_grey, "", 
-				System.currentTimeMillis());
+		Notification notification = new Notification(R.drawable.ic_stat_metronome, "", System
+				.currentTimeMillis());
 		Intent notificationIntent = new Intent(this, MainScreen.class);
 		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
 		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
-		notification.setLatestEventInfo(this, "PracticeTools", "Metronome running...", pendingIntent);
+		notification.setLatestEventInfo(this, getString(R.string.app_name), "Metronome running...",
+				pendingIntent);
 		notification.flags |= Notification.FLAG_NO_CLEAR;
 		notification.flags = Notification.FLAG_ONGOING_EVENT;
 		startForeground(ONGOING_NOTIFICATION, notification);
