@@ -37,6 +37,9 @@ public class Tuner extends Thread {
 	}
 
 	public void run() {
+		if (audioRecorder.getState() != AudioRecord.STATE_INITIALIZED) {
+			return; // Do nothing if not initialized
+		}
 		// resetAverages();
 		audioRecorder.startRecording();
 		byte[] readBuffer = new byte[READ_BUFFER_SIZE];
@@ -66,7 +69,9 @@ public class Tuner extends Thread {
 	}
 
 	public void close() {
-		audioRecorder.stop();
-		audioRecorder.release();
+		if (audioRecorder.getState() == AudioRecord.STATE_INITIALIZED) {
+			audioRecorder.stop();
+			audioRecorder.release();
+		}
 	}
 }

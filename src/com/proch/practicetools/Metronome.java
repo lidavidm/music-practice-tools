@@ -39,7 +39,7 @@ public class Metronome {
 		currentBeat = 0;
 		running = true;
 		executor = new ScheduledThreadPoolExecutor(SIZE_THREAD_POOL); // TODO: figure out this hack
-		executor.scheduleWithFixedDelay(clicker, 0, 60000 / tempo, TimeUnit.MILLISECONDS);
+		executor.scheduleAtFixedRate(clicker, 0, 60000 / tempo, TimeUnit.MILLISECONDS);
 	}
 
 	public void start(int tempo) {

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.graphics.PorterDuff;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -65,6 +66,9 @@ public class DroneScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.drone);
 
+	  // Make volume button always control just the media volume
+		setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		
 		final int[] buttonIDs = { R.id.a_button, R.id.b_flat_button, R.id.b_button, R.id.c_button,
 				R.id.c_sharp_button, R.id.d_button, R.id.e_flat_button, R.id.e_button, R.id.f_button,
 				R.id.f_sharp_button, R.id.g_button, R.id.a_flat_button };

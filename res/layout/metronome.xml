@@ -20,7 +20,7 @@
 	<SeekBar
 	  android:id="@+id/tempo_seek"
 		android:layout_width="fill_parent"
-		android:paddingTop="10sp" 
+		android:paddingTop="10sp"
 		android:paddingBottom="20sp"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"/>
@@ -77,5 +77,5 @@
 	<Button
 		android:id="@+id/start"
 		android:layout_width="fill_parent"
-		android:text="Unknown" android:layout_height="70dp"/>
+		android:text="Unknown" android:layout_height="fill_parent"/>
 </LinearLayout>

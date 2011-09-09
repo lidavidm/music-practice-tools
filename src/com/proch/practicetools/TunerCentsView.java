@@ -11,8 +11,8 @@ import android.view.View;
 
 public class TunerCentsView extends View {
 
-	private static final int BG_X = 10;
-	private static final int BG_Y = 10;
+	private static final int BG_X = 0;
+	private static final int BG_Y = 0;
 	private static final int BG_WIDTH = 280;
 	private static final int BG_HEIGHT = 200;
 	private static final int MARKER_Y = BG_Y;

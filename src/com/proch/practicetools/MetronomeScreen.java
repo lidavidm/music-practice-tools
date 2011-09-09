@@ -65,7 +65,7 @@ public class MetronomeScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.metronome);
 
-		// Make volume button control just media volume
+		// Make volume button always control just the media volume
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
 		// Load stored persistent data
