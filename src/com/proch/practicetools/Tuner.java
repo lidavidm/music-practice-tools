@@ -5,8 +5,6 @@ import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Handler;
 
-import com.google.common.primitives.Bytes;
-
 public class Tuner extends Thread {
 	static {
 		System.loadLibrary("FFT");
@@ -19,11 +17,6 @@ public class Tuner extends Thread {
 	public native void resetAverages();
 
 	public native double[] processTest(byte[] sample, int sampleRate);
-	// private static final int[] OPT_SAMPLE_RATES = { 11025, 8000, 22050, 44100
-	// };
-	// private static final int[] BUFFERSIZE_PER_SAMPLE_RATE = { 8 * 1024, 4 *
-	// 1024, 16 * 1024,
-	// 32 * 1024 };
 
 	public double currentFrequency = 0.0;
 
@@ -43,21 +36,24 @@ public class Tuner extends Thread {
 				ENCODING, SAMPLE_RATE * 6);
 	}
 
-	public void run() { // fft
-		//resetAverages();
+	public void run() {
+		// resetAverages();
 		audioRecorder.startRecording();
 		byte[] readBuffer = new byte[READ_BUFFER_SIZE];
-		byte[][] processBuffer = new byte[PROCESS_BUFFER_SIZE][READ_BUFFER_SIZE];
+		byte[] processBuffer = new byte[PROCESS_BUFFER_SIZE * READ_BUFFER_SIZE];
 		int nextToFillIndex = 0;
-		
+
 		while (audioRecorder.read(readBuffer, 0, readBuffer.length) > 0) {
 			long startTime = System.currentTimeMillis();
-			processBuffer[nextToFillIndex++] = readBuffer;
+
+			System.arraycopy(readBuffer, 0, processBuffer, nextToFillIndex * READ_BUFFER_SIZE,
+					READ_BUFFER_SIZE);
+			nextToFillIndex++;
 			nextToFillIndex %= PROCESS_BUFFER_SIZE;
 
-			currentFrequency = processSampleData(Bytes.concat(processBuffer), SAMPLE_RATE);
+			currentFrequency = processSampleData(processBuffer, SAMPLE_RATE);
 			System.out.println("process time  = " + (System.currentTimeMillis() - startTime));
-			
+
 			if (currentFrequency > 0) {
 				mHandler.post(callback);
 			}
@@ -66,9 +62,9 @@ public class Tuner extends Thread {
 
 	public void stopRunning() {
 		super.stop();
-		
+
 	}
-	
+
 	public void close() {
 		audioRecorder.stop();
 		audioRecorder.release();

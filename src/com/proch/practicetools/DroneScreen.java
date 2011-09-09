@@ -13,23 +13,19 @@ public class DroneScreen extends Activity {
 
 	private Button[] mNoteButtons = new Button[12];
 
-	// private static final double[] FREQUENCIES = { 110.00, 116.54, 123.47,
-	// 130.81, 138.59, 146.83,
-	// 155.56, 164.81, 174.61, 77.78, 82.41, 87.31, 92.50, 98.00, 103.83 };
-
 	private enum Note {
-		A(440.000, R.id.a_button),
-		Bb(466.164, R.id.b_flat_button),
-		B(493.883, R.id.b_button),
-		C(523.251, R.id.c_button),
-		Db(554.365, R.id.c_sharp_button),
-		D(587.330, R.id.d_button),
-		Eb(622.254, R.id.e_flat_button),
-		E(659.255, R.id.e_button),
-		F(698.456, R.id.f_button),
-		Gb(739.989, R.id.f_sharp_button),
-		G(783.991, R.id.g_button),
-		Ab(830.69, R.id.a_flat_button);
+		A(0, R.id.a_button),
+		Bb(1, R.id.b_flat_button),
+		B(2, R.id.b_button),
+		C(3, R.id.c_button),
+		Db(4, R.id.c_sharp_button),
+		D(5, R.id.d_button),
+		Eb(6, R.id.e_flat_button),
+		E(7, R.id.e_button),
+		F(8, R.id.f_button),
+		Gb(-3, R.id.f_sharp_button),
+		G(-2, R.id.g_button),
+		Ab(-1, R.id.a_flat_button);
 
 		private static final Map<Integer, Note> idToNote = new HashMap<Integer, Note>();
 		static {
@@ -41,12 +37,12 @@ public class DroneScreen extends Activity {
 		private final int buttonId;
 		private final Drone drone;
 
-		private Note(double frequency, int buttonId) {
-			this.frequency = frequency;
+		private Note(int halfStepsFromA440, int buttonId) {
+			this.frequency = 440.0 * Math.pow(2.0, halfStepsFromA440 / 12.0);
 			this.buttonId = buttonId;
 			this.drone = new Drone();
 		}
-
+		
 		public double getFrequency() {
 			return frequency;
 		}
@@ -92,7 +88,10 @@ public class DroneScreen extends Activity {
 			return false;
 		} else {
 			note.getDrone().playPitch(note.getFrequency());
+			// Play fifth above
 			note.getDrone().playPitch(note.getFrequency() * 1.5);
+			// Play octave above
+			note.getDrone().playPitch(note.getFrequency() * 2);
 			return true;
 		}
 	}

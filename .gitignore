@@ -1,1 +1,6 @@
-bin/
+bin
+gen
+.project
+.classpath
+.settings
+

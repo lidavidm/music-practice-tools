@@ -4,6 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
+  <TextView 
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_weight="1"
+      android:text="Tempo"/>
 	<com.proch.practicetools.NumberPicker
 			android:id="@+id/tempo_picker"
 			android:layout_width="fill_parent"

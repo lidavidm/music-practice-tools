@@ -14,13 +14,19 @@ public class Drone {
 	private static final int CHANNEL_CONFIG = AudioFormat.CHANNEL_CONFIGURATION_MONO;
 	private static final int BUFFER_SIZE = AudioTrack.getMinBufferSize(SAMPLE_RATE, CHANNEL_CONFIG,
 			ENCODING);
+	private static final double DEFAULT_VOLUME = 0.5;
 	private boolean running = false;
 
-	public void playPitch(double frequency) {
+	public void playPitch(double frequency, double volume) {
 		ExecutorService executor = Executors.newSingleThreadExecutor();
-		executor.execute(new PitchGenerator(frequency));
+		executor.execute(new PitchGenerator(frequency, volume));
 		executor.shutdown();
 		running = true;
+	}
+	
+	// With no volume specified, play at default volume
+	public void playPitch(double frequency) {
+		playPitch(frequency, DEFAULT_VOLUME);
 	}
 
 	public void stop() {
@@ -34,10 +40,12 @@ public class Drone {
 	private class PitchGenerator implements Runnable {
 
 		private double increment; // Angular increment for each sample
+		private double volume; // Ranging from 0 (silent) to 1 (full volume)
 		private AudioTrack track;
 
-		public PitchGenerator(double frequency) {
+		public PitchGenerator(double frequency, double volume) {
 			increment = (2 * Math.PI) * frequency / SAMPLE_RATE;
+			this.volume = volume;
 			track = new AudioTrack(AudioManager.STREAM_MUSIC, SAMPLE_RATE, CHANNEL_CONFIG, ENCODING,
 					BUFFER_SIZE * 2, AudioTrack.MODE_STREAM);
 			track.play();
@@ -49,7 +57,7 @@ public class Drone {
 
 			while (running) {
 				for (int i = 0; i < samples.length; i++) {
-					samples[i] = (short) (Math.sin(angle) * Short.MAX_VALUE);
+					samples[i] = (short) (Math.sin(angle) * Short.MAX_VALUE * volume);
 					angle += increment;
 				}
 				track.write(samples, 0, samples.length);
