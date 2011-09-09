@@ -12,19 +12,12 @@ public class Tuner extends Thread {
 
 	public native double processSampleData(byte[] sample, int sampleRate);
 
-	public native double processSampleDataAvg(byte[] sample, int sampleRate);
-
-	public native void resetAverages();
-
-	public native double[] processTest(byte[] sample, int sampleRate);
-
 	public double currentFrequency = 0.0;
-
 	private static final int SAMPLE_RATE = 44100;
 	private static final int ENCODING = AudioFormat.ENCODING_PCM_16BIT;
 	private static final int CHANNEL_CONFIG = AudioFormat.CHANNEL_CONFIGURATION_MONO;
-	private static final int READ_BUFFER_SIZE = 32 * 1024 * 2;
-	private static final int PROCESS_BUFFER_SIZE = 2;
+	private static final int READ_BUFFER_SIZE = 16 * 1024;
+	private static final int PROCESS_BUFFER_SIZE = 4;
 	private AudioRecord audioRecorder;
 	private final Handler mHandler;
 	private Runnable callback;
@@ -40,7 +33,6 @@ public class Tuner extends Thread {
 		if (audioRecorder.getState() != AudioRecord.STATE_INITIALIZED) {
 			return; // Do nothing if not initialized
 		}
-		// resetAverages();
 		audioRecorder.startRecording();
 		byte[] readBuffer = new byte[READ_BUFFER_SIZE];
 		byte[] processBuffer = new byte[PROCESS_BUFFER_SIZE * READ_BUFFER_SIZE];
