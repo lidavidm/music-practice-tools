@@ -79,7 +79,7 @@ public class TunerCentsView extends View {
 	// takes as input number of cents (should be in range -50 to 50) and sets
 	// marker to correct position
 	public void setCentsMarker(double newCents) {
-		if(!mMiddleMarkerInitialized) {
+		if(!mMiddleMarkerInitialized) { // TODO: possibly figure out a more elegant way to do this
 			setMarker(mMiddleMarker, 0);
 			mMiddleMarkerInitialized = true;
 		}

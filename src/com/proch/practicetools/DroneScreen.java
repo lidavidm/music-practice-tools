@@ -4,15 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.PorterDuff;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.View;
 import android.widget.Button;
 
 public class DroneScreen extends Activity {
 
 	private Button[] mNoteButtons = new Button[12];
+	private PowerManager.WakeLock mWakeLock;
 
 	private enum Note {
 		A(0, R.id.a_button),
@@ -83,12 +86,19 @@ public class DroneScreen extends Activity {
 				}
 			});
 		}
+		// TODO: Use single wakelock between this and the metronome
+		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DroneLock");
 	}
 
 	// Returns true if drone is now turned on, or false if it is now off
 	public boolean toggleDrone(Note note) {
 		if (note.getDrone().isRunning()) {
 			note.getDrone().stop();
+			
+			if (mWakeLock.isHeld()) {
+				mWakeLock.release();
+			}
 			return false;
 		} else {
 			note.getDrone().playPitch(note.getFrequency());
@@ -96,6 +106,8 @@ public class DroneScreen extends Activity {
 			note.getDrone().playPitch(note.getFrequency() * 1.5);
 			// Play octave above
 			note.getDrone().playPitch(note.getFrequency() * 2);
+			
+			mWakeLock.acquire();
 			return true;
 		}
 	}
@@ -110,6 +122,7 @@ public class DroneScreen extends Activity {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+		
 	}
 
 }

@@ -2,14 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	  android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
-    
-  <com.proch.practicetools.TunerCentsView
-    	android:id="@+id/tuner_cents_view"
-   		android:layout_width="fill_parent"
-   		android:layout_height="fill_parent" 
-   		android:layout_weight="1"
-   		android:layout_margin="20dp"/>
+    android:orientation="vertical"
+    android:keepScreenOn="true">
+
+  <RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:layout_margin="20dp">
+    <com.proch.practicetools.TunerCentsView
+      android:id="@+id/tuner_cents_view"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"/>
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentBottom="true"
+      android:textColor="@color/black"
+      android:text="-50 cents"/>
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentBottom="true"
+      android:textColor="@color/black"
+      android:text="+50 cents"/>
+  </RelativeLayout>
+  
   <TextView android:id="@+id/note_label"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
