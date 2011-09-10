@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.util.Log;
 
 public class MetronomeService extends Service {
 
@@ -20,7 +19,6 @@ public class MetronomeService extends Service {
 
 	@Override
 	public void onCreate() {
-		Log.i("", "Creating service");
 		instance = this;
 		mMetronome = new Metronome(getApplicationContext());
 
@@ -42,7 +40,6 @@ public class MetronomeService extends Service {
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		Log.i("", "Calling onBind");
 		return mBinder;
 	}
 

@@ -11,14 +11,12 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int black=0x7f050006;
-        public static final int button_normal=0x7f050004;
-        public static final int button_pressed=0x7f050003;
-        public static final int lesson=0x7f050002;
-        public static final int main=0x7f050000;
-        public static final int transparent=0x7f050007;
-        public static final int tuner=0x7f050001;
-        public static final int white=0x7f050005;
+        public static final int black=0x7f050003;
+        public static final int button_normal=0x7f050001;
+        public static final int button_pressed=0x7f050000;
+        public static final int cents_marker=0x7f050005;
+        public static final int transparent=0x7f050004;
+        public static final int white=0x7f050002;
     }
     public static final class drawable {
         public static final int gauge=0x7f020000;
@@ -26,31 +24,29 @@ public final class R {
         public static final int gradient_bg=0x7f020002;
         public static final int ic_launcher=0x7f020003;
         public static final int ic_stat_metronome=0x7f020004;
-        public static final int ic_tab_artists_grey=0x7f020005;
-        public static final int ic_tab_artists_white=0x7f020006;
-        public static final int icon=0x7f020007;
-        public static final int tab_bg_selected=0x7f020008;
-        public static final int tab_bg_selector=0x7f020009;
-        public static final int tab_bg_unselected=0x7f02000a;
-        public static final int tab_divider=0x7f02000b;
-        public static final int tab_text_selector=0x7f02000c;
-        public static final int timepicker_down_btn=0x7f02000d;
-        public static final int timepicker_down_disabled=0x7f02000e;
-        public static final int timepicker_down_disabled_focused=0x7f02000f;
-        public static final int timepicker_down_normal=0x7f020010;
-        public static final int timepicker_down_pressed=0x7f020011;
-        public static final int timepicker_down_selected=0x7f020012;
-        public static final int timepicker_input=0x7f020013;
-        public static final int timepicker_input_disabled=0x7f020014;
-        public static final int timepicker_input_normal=0x7f020015;
-        public static final int timepicker_input_pressed=0x7f020016;
-        public static final int timepicker_input_selected=0x7f020017;
-        public static final int timepicker_up_btn=0x7f020018;
-        public static final int timepicker_up_disabled=0x7f020019;
-        public static final int timepicker_up_disabled_focused=0x7f02001a;
-        public static final int timepicker_up_normal=0x7f02001b;
-        public static final int timepicker_up_pressed=0x7f02001c;
-        public static final int timepicker_up_selected=0x7f02001d;
+        public static final int icon=0x7f020005;
+        public static final int tab_bg_selected=0x7f020006;
+        public static final int tab_bg_selector=0x7f020007;
+        public static final int tab_bg_unselected=0x7f020008;
+        public static final int tab_divider=0x7f020009;
+        public static final int tab_text_selector=0x7f02000a;
+        public static final int timepicker_down_btn=0x7f02000b;
+        public static final int timepicker_down_disabled=0x7f02000c;
+        public static final int timepicker_down_disabled_focused=0x7f02000d;
+        public static final int timepicker_down_normal=0x7f02000e;
+        public static final int timepicker_down_pressed=0x7f02000f;
+        public static final int timepicker_down_selected=0x7f020010;
+        public static final int timepicker_input=0x7f020011;
+        public static final int timepicker_input_disabled=0x7f020012;
+        public static final int timepicker_input_normal=0x7f020013;
+        public static final int timepicker_input_pressed=0x7f020014;
+        public static final int timepicker_input_selected=0x7f020015;
+        public static final int timepicker_up_btn=0x7f020016;
+        public static final int timepicker_up_disabled=0x7f020017;
+        public static final int timepicker_up_disabled_focused=0x7f020018;
+        public static final int timepicker_up_normal=0x7f020019;
+        public static final int timepicker_up_pressed=0x7f02001a;
+        public static final int timepicker_up_selected=0x7f02001b;
     }
     public static final class id {
         public static final int a_button=0x7f070007;
@@ -83,13 +79,12 @@ public final class R {
     }
     public static final class layout {
         public static final int drone=0x7f030000;
-        public static final int ic_tab_artists=0x7f030001;
-        public static final int main=0x7f030002;
-        public static final int metronome=0x7f030003;
-        public static final int number_picker=0x7f030004;
-        public static final int number_picker_pref=0x7f030005;
-        public static final int tabs_bg=0x7f030006;
-        public static final int tuner=0x7f030007;
+        public static final int main=0x7f030001;
+        public static final int metronome=0x7f030002;
+        public static final int number_picker=0x7f030003;
+        public static final int number_picker_pref=0x7f030004;
+        public static final int tabs_bg=0x7f030005;
+        public static final int tuner=0x7f030006;
     }
     public static final class raw {
         public static final int tick=0x7f040000;

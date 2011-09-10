@@ -11,20 +11,14 @@ import android.view.View;
 
 public class TunerCentsView extends View {
 
-	private static final int BG_X = 0;
-	private static final int BG_Y = 0;
-	private static final int BG_WIDTH = 280;
-	private static final int BG_HEIGHT = 200;
-	private static final int MARKER_Y = BG_Y;
 	private static final int MARKER_WIDTH = 5;
 	private static final int MARKER_OFFSET = MARKER_WIDTH / 2;
-	private static final int MARKER_HEIGHT = BG_HEIGHT;
-	private static final int NUM_STEPS_BETWEEN_UPDATES = 10;
-	private static final int TRANSITION_TIME_IN_MILLIS = 400;
-	private static final long UPDATE_DELAY = TRANSITION_TIME_IN_MILLIS / NUM_STEPS_BETWEEN_UPDATES;
-	private ShapeDrawable mBackground;
+	private static final int REFRESH_RATE = 50; // In milliseconds
+	private static final int TRANSITION_TIME = 1000; // Also in milliseconds
+	private static final int NUM_STEPS_BETWEEN_UPDATES = TRANSITION_TIME / REFRESH_RATE;
 	private ShapeDrawable mCentsMarker;
 	private ShapeDrawable mMiddleMarker;
+	private boolean mMiddleMarkerInitialized;
 	private double mCurrentCents; // Currently displayed cents
 	private double mCents; // Cents that we are moving to
 	private long mLastMove;
@@ -57,17 +51,13 @@ public class TunerCentsView extends View {
 	public TunerCentsView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-		mBackground = new ShapeDrawable(new RectShape());
-		mBackground.getPaint().setColor(0xffffffff);
-		mBackground.setBounds(BG_X, BG_Y, BG_X + BG_WIDTH, BG_Y + BG_HEIGHT);
+		setBackgroundColor(getResources().getColor(R.color.white));
 
 		mMiddleMarker = new ShapeDrawable(new RectShape());
-		mMiddleMarker.getPaint().setColor(0xff000000);
-		setMarker(mMiddleMarker, 0);
+		mMiddleMarker.getPaint().setColor(getResources().getColor(R.color.black));
 
 		mCentsMarker = new ShapeDrawable(new RectShape());
-		mCentsMarker.getPaint().setColor(0xffff0000);
-		setMarker(mCentsMarker, 0);
+		mCentsMarker.getPaint().setColor(getResources().getColor(R.color.cents_marker));
 		
 		update();
 	}
@@ -75,11 +65,11 @@ public class TunerCentsView extends View {
 	public void update() {
 		long now = System.currentTimeMillis();
 
-		if (now - mLastMove > UPDATE_DELAY && !doneMovingLine()) {
+		if (now - mLastMove > REFRESH_RATE && !doneMovingLine()) {
 			setMarker(mCentsMarker, mCurrentCents + mCentsStep);
 			mLastMove = now;
 		}
-		mRedrawHandler.sleep(UPDATE_DELAY);
+		mRedrawHandler.sleep(REFRESH_RATE);
 	}
 
 	private boolean doneMovingLine() {
@@ -89,6 +79,10 @@ public class TunerCentsView extends View {
 	// takes as input number of cents (should be in range -50 to 50) and sets
 	// marker to correct position
 	public void setCentsMarker(double newCents) {
+		if(!mMiddleMarkerInitialized) {
+			setMarker(mMiddleMarker, 0);
+			mMiddleMarkerInitialized = true;
+		}
 		mCents = newCents;
 		mCentsStep = (newCents - mCurrentCents) / NUM_STEPS_BETWEEN_UPDATES;
 	}
@@ -96,14 +90,13 @@ public class TunerCentsView extends View {
 	// takes as input number of cents (should be in range -50 to 50) and sets
 	// marker to correct position
 	private void setMarker(ShapeDrawable marker, double cents) {
-		int newX = (int) (BG_WIDTH / 100.0 * (cents + 50.0) + BG_X - MARKER_OFFSET);
-		marker.setBounds(newX, MARKER_Y, newX + MARKER_WIDTH, MARKER_Y + MARKER_HEIGHT);
+		int newX = (int) (getWidth() / 100.0 * (cents + 50.0) - MARKER_OFFSET);
+		marker.setBounds(newX, 0, newX + MARKER_WIDTH, getHeight());
 		mCurrentCents = cents;
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		mBackground.draw(canvas);
 		mCentsMarker.draw(canvas);
 		mMiddleMarker.draw(canvas);
 	}

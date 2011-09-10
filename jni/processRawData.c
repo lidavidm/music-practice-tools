@@ -341,34 +341,14 @@ double newFFT(double *padSample, int sampleLength, jint sampleRate) {
 	int maxIndex = 0;
 	double maxValue = -1;
 
-	//String s = "a";
 	for (i = 0; i < iLen; i++) {
 		if (padSample[i] > maxValue) {
 			maxIndex = i;
 			maxValue = padSample[i];
 		}
-		//LOG("%d,%f", i, padSample[i]);
 	}
 	double miu = (double) sampleRate / (double) sampleLength;
-	//LOG("max index = %d and max value = %f, miu = %f", maxIndex, maxValue, miu);
 	return maxIndex * miu;
-}
-
-// TODO: remove temp function
-jdoubleArray newFFTarray(JNIEnv* env, double *padSample, int sampleLength, jint sampleRate) {
-	int ipSize = sqrt(sampleLength / 2) + 3;
-	int ip[ipSize];
-	ip[0] = 0;
-	double w[sampleLength / 2];
-	rdft(sampleLength, 1, padSample, ip, w);
-	int iLen = sampleLength / 2;
-	int i;
-	int maxIndex = 0;
-	double maxValue = -1;
-
-	jdoubleArray array = (*env)->NewDoubleArray(env, iLen);
-	(*env)->SetDoubleArrayRegion(env, array, 0, iLen, padSample);
-	return array;
 }
 
 ///// end faster algorithm ///////////////////
@@ -376,25 +356,6 @@ jdoubleArray newFFTarray(JNIEnv* env, double *padSample, int sampleLength, jint 
 // Hanning Window
 double singleHanning(double value, int i, int windowLength) {
 	return value * (0.5 - (0.5 * cos((2.0 * PI * i) / (windowLength - 1))));
-}
-
-// TODO: remove temp function
-jdoubleArray Java_com_proch_practicetools_Tuner_processTest(JNIEnv* env,
-		jobject thiz, jbyteArray sample, jint sampleRate) {
-	jsize sampleLength = (*env)->GetArrayLength(env, sample);
-	jbyte* localSample = (*env)->GetByteArrayElements(env, sample, 0);
-	double padSample[sampleLength / 2];
-	int i;
-	// big to little endian and hanning
-	for (i = 0; i < sampleLength; i += 2) {
-		padSample[i >> 1] = (short) ((localSample[i] & 0xFF) | ((localSample[i
-				+ 1] & 0xFF) << 8));
-		padSample[i >> 1] = singleHanning(padSample[i >> 1], i >> 1,
-				sampleLength / 2);
-	}
-	jdoubleArray result = newFFTarray(env, padSample, sampleLength / 2, sampleRate);
-	(*env)->ReleaseByteArrayElements(env, sample, localSample, 0);
-	return result;
 }
 
 // get hz into a standard range to make things easier to deal with
@@ -424,47 +385,5 @@ jdouble Java_com_proch_practicetools_Tuner_processSampleData(JNIEnv* env,
 	jdouble result = newFFT(padSample, sampleLength / 2, sampleRate);
 	result = normalizeFreq(result);
 	(*env)->ReleaseByteArrayElements(env, sample, localSample, 0);
-	LOG("about to return %f", result);
 	return result;
 }
-
-#define AVG_SIZE 3
-jdouble results[AVG_SIZE];
-int lru = -AVG_SIZE;
-
-void Java_com_proch_practicetools_Tuner_resetAverages(JNIEnv* env, jobject thiz) {
-	lru = -AVG_SIZE;
-	return;
-}
-
-jdouble Java_com_proch_practicetools_Tuner_processSampleDataAvg(JNIEnv* env,
-		jobject thiz, jbyteArray sample, jint sampleRate) {
-	jdouble result = Java_com_proch_practicetools_Tuner_processSampleData(env,
-			thiz, sample, sampleRate);
-	result = normalizeFreq(result);
-	//LOG("normalized freq = %f", result);
-	//LOG("lru = %d", lru);
-
-	//if hasn't run AVG_SIZE times yet, just return single (non-averaged) value and store for later
-	if (lru < 0) {
-		//LOG("first time(s)!!!!!!!");
-
-		if (lru != -AVG_SIZE) //skip first result since it is usually not very accurate
-			results[lru + AVG_SIZE] = result;
-		lru++;
-		return result;
-	} else
-		results[lru] = result;
-
-	lru++;
-	lru %= AVG_SIZE;
-
-	//calculate average
-	int i;
-	jdouble sum = 0;
-	for (i = 0; i < AVG_SIZE; i++)
-		sum += results[i];
-
-	return sum / AVG_SIZE;
-}
-
