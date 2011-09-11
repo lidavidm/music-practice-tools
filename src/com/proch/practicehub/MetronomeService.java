@@ -1,4 +1,6 @@
-package com.proch.practicetools;
+package com.proch.practicehub;
+
+import com.proch.practicehub.R;
 
 import android.app.Notification;
 import android.app.PendingIntent;

@@ -1,4 +1,6 @@
-package com.proch.practicetools;
+package com.proch.practicehub;
+
+import com.proch.practicehub.R;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,4 +1,4 @@
-package com.proch.practicetools;
+package com.proch.practicehub;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -39,15 +39,12 @@ public class Tuner extends Thread {
 		int nextToFillIndex = 0;
 
 		while (audioRecorder.read(readBuffer, 0, readBuffer.length) > 0) {
-			long startTime = System.currentTimeMillis();
-
 			System.arraycopy(readBuffer, 0, processBuffer, nextToFillIndex * READ_BUFFER_SIZE,
 					READ_BUFFER_SIZE);
 			nextToFillIndex++;
 			nextToFillIndex %= PROCESS_BUFFER_SIZE;
 
 			currentFrequency = processSampleData(processBuffer, SAMPLE_RATE);
-			System.out.println("process time  = " + (System.currentTimeMillis() - startTime));
 
 			if (currentFrequency > 0) {
 				mHandler.post(callback);

@@ -1,2 +1,0 @@
-set solib-search-path /home/proch/code/music-practice-tools/obj/local/armeabi
-directory /home/proch/android/android-ndk-r6/platforms/android-5/arch-arm/usr/include /home/proch/code/music-practice-tools/jni /home/proch/android/android-ndk-r6/sources/cxx-stl/system

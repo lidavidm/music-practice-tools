@@ -1,4 +1,4 @@
-package com.proch.practicetools;
+package com.proch.practicehub;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -14,8 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 
-import com.proch.practicetools.MetronomeService.MetronomeBinder;
-import com.proch.practicetools.NumberPicker.OnChangedListener;
+import com.proch.practicehub.MetronomeService.MetronomeBinder;
+import com.proch.practicehub.NumberPicker.OnChangedListener;
+import com.proch.practicehub.R;
 
 public class MetronomeScreen extends Activity {
 	private Button mStartStopButton;
@@ -183,8 +184,9 @@ public class MetronomeScreen extends Activity {
 			public void onClick(View v) {
 				double diffInSeconds = (System.currentTimeMillis() - mTempoTapLastTappedTime) / 1000.0;
 				if (diffInSeconds < 3) {
-					mTempo = (int) (60 / diffInSeconds);
-					mTempoPicker.setCurrent(mTempo);
+					updateTempo((int) (60 / diffInSeconds));
+//					mTempo = (int) (60 / diffInSeconds);
+//					mTempoPicker.setCurrent(mTempo);
 				}
 				mTempoTapLastTappedTime = System.currentTimeMillis();
 			}
@@ -213,8 +215,8 @@ public class MetronomeScreen extends Activity {
 	}
 
 	private void updateTempo(int tempo) {
-		mTempo = tempo > MAX_TEMPO ? MAX_TEMPO : tempo; 
-		mTempo = tempo < MIN_TEMPO ? MIN_TEMPO : tempo;
+		mTempo = tempo > MAX_TEMPO ? MAX_TEMPO : tempo;
+		mTempo = mTempo < MIN_TEMPO ? MIN_TEMPO : mTempo;
 		updateService();
 		mTempoSeekBar.setProgress(mTempo);
 		mTempoPicker.setCurrent(mTempo);

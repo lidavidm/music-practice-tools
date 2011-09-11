@@ -1,7 +1,9 @@
-package com.proch.practicetools;
+package com.proch.practicehub;
 
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import com.proch.practicehub.R;
 
 import android.content.Context;
 import android.media.AudioManager;

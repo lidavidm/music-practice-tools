@@ -369,7 +369,7 @@ jdouble normalizeFreq(jdouble hz) {
 	return hz;
 }
 
-jdouble Java_com_proch_practicetools_Tuner_processSampleData(JNIEnv* env,
+jdouble Java_com_proch_practicehub_Tuner_processSampleData(JNIEnv* env,
 		jobject thiz, jbyteArray sample, jint sampleRate) {
 	jsize sampleLength = (*env)->GetArrayLength(env, sample);
 	jbyte* localSample = (*env)->GetByteArrayElements(env, sample, 0);

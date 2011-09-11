@@ -1,7 +1,9 @@
-package com.proch.practicetools;
+package com.proch.practicehub;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.proch.practicehub.R;
 
 import android.app.Activity;
 import android.content.Context;
