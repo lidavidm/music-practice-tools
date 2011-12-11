@@ -75,9 +75,7 @@ public class MetronomeScreen extends Activity {
 		mBeatsOn = mPreferences.getInt("beatsOn", DEFAULT_BEATS_ON);
 		mBeatsOff = mPreferences.getInt("beatsOff", DEFAULT_BEATS_OFF);
 
-		mRunning = MetronomeService.isRunning();
 		setUpStartStopButton();
-
 		setUpBeatsControls();
 		setUpTempoControls();
 		setUpTempoTapButton();
@@ -91,6 +89,12 @@ public class MetronomeScreen extends Activity {
 		startService(new Intent(this, MetronomeService.class));
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		updateRunningState();
+	}
+	
 	@Override
 	public void onStop() {
 		super.onStop();
@@ -111,7 +115,7 @@ public class MetronomeScreen extends Activity {
 
 	private void setUpStartStopButton() {
 		mStartStopButton = (Button) findViewById(R.id.start);
-		mStartStopButton.setText(mRunning ? "Stop" : "Start");
+		updateRunningState();
 		mStartStopButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				mRunning = !mRunning;
@@ -126,6 +130,9 @@ public class MetronomeScreen extends Activity {
 		});
 	}
 
+	/*
+	 * Sets up the tempo controls with the given tempo
+	 */
 	private void setUpTempoControls() {
 		mTempoPicker = (NumberPicker) findViewById(R.id.tempo_picker);
 		mTempoPicker.setSpeed(50);
@@ -214,6 +221,14 @@ public class MetronomeScreen extends Activity {
 		}
 	}
 
+	/*
+	 * Updates the running state of the metronome service by updating the variable and button.
+	 */
+	private void updateRunningState() {
+		mRunning = MetronomeService.isRunning();
+		mStartStopButton.setText(mRunning ? "Stop" : "Start");
+	}
+	
 	private void updateTempo(int tempo) {
 		mTempo = tempo > MAX_TEMPO ? MAX_TEMPO : tempo;
 		mTempo = mTempo < MIN_TEMPO ? MIN_TEMPO : mTempo;
