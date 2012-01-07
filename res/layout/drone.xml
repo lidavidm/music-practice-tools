@@ -4,10 +4,17 @@
   android:layout_height="fill_parent"
   android:gravity="center">
 
+  <Button
+    android:id="@+id/allOffButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Turn all drones off"/>
+    
   <ToggleButton
     android:id="@+id/togglebutton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dip"
     android:layout_marginBottom="20dip"
     android:textOff="5th Above OFF"
     android:textOn="5th Above ON" />

@@ -17,6 +17,7 @@ import android.widget.ToggleButton;
 public class DroneScreen extends Activity {
 
 	private Button[] mNoteButtons = new Button[12];
+	private Note[] mNotes = new Note[12];
 	private SharedPreferences mPreferences;
 	private PowerManager.WakeLock mWakeLock;
 	private boolean mAddFifth;
@@ -83,6 +84,7 @@ public class DroneScreen extends Activity {
 		for (int i = 0; i < buttonIDs.length; i++) {
 			mNoteButtons[i] = (Button) findViewById(buttonIDs[i]);
 			updateButtonColor(mNoteButtons[i]);
+			mNotes[i] = Note.fromId(buttonIDs[i]);
 			mNoteButtons[i].setOnClickListener(new View.OnClickListener() {
 				public void onClick(View view) {
 					toggleDrone(Note.fromId(view.getId()));
@@ -96,6 +98,7 @@ public class DroneScreen extends Activity {
 		
 		setUpWakeLock();
 		setUpFifthButton();
+		setUpAllOffButton();
 	}
 
 	@Override
@@ -140,6 +143,7 @@ public class DroneScreen extends Activity {
 		final ToggleButton fifthButton = (ToggleButton) findViewById(R.id.togglebutton);
 		fifthButton.setChecked(mAddFifth);
 		fifthButton.setOnClickListener(new View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				if (fifthButton.isChecked()) {
 					mAddFifth = true;
@@ -154,5 +158,26 @@ public class DroneScreen extends Activity {
 		SharedPreferences.Editor editor = mPreferences.edit();
 		editor.putBoolean("addFifth", mAddFifth);
 		editor.commit();
+	}
+	
+	private void setUpAllOffButton() {
+		final Button allOffButton = (Button) findViewById(R.id.allOffButton);
+		allOffButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				turnOffAllDrones();
+			}
+		});
+	}
+
+	public void turnOffAllDrones() {
+		for (Note note : mNotes) {
+			if (note.getDrone().isRunning()) {
+				note.getDrone().stop();
+			}
+		}
+		for (Button noteButton : mNoteButtons) {
+			updateButtonColor(noteButton);
+		}
 	}
 }
