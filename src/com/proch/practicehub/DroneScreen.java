@@ -3,21 +3,23 @@ package com.proch.practicehub;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.proch.practicehub.R;
-
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ToggleButton;
 
 public class DroneScreen extends Activity {
 
 	private Button[] mNoteButtons = new Button[12];
+	private SharedPreferences mPreferences;
 	private PowerManager.WakeLock mWakeLock;
+	private boolean mAddFifth;
 
 	private enum Note {
 		A(0, R.id.a_button),
@@ -48,7 +50,7 @@ public class DroneScreen extends Activity {
 			this.buttonId = buttonId;
 			this.drone = new Drone();
 		}
-		
+
 		public double getFrequency() {
 			return frequency;
 		}
@@ -71,9 +73,9 @@ public class DroneScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.drone);
 
-	  // Make volume button always control just the media volume
+		// Make volume button always control just the media volume
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
-		
+
 		final int[] buttonIDs = { R.id.a_button, R.id.b_flat_button, R.id.b_button, R.id.c_button,
 				R.id.c_sharp_button, R.id.d_button, R.id.e_flat_button, R.id.e_button, R.id.f_button,
 				R.id.f_sharp_button, R.id.g_button, R.id.a_flat_button };
@@ -88,40 +90,69 @@ public class DroneScreen extends Activity {
 				}
 			});
 		}
-		// TODO: Use single wakelock between this and the metronome
-		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DroneLock");
+		
+		mPreferences = getSharedPreferences("Drone", MODE_PRIVATE);
+		mAddFifth = mPreferences.getBoolean("addFifth", true);
+		
+		setUpWakeLock();
+		setUpFifthButton();
 	}
 
+	@Override
+	public void onStop() {
+		super.onStop();
+		saveState();
+	}
+	
 	// Returns true if drone is now turned on, or false if it is now off
 	public boolean toggleDrone(Note note) {
 		if (note.getDrone().isRunning()) {
 			note.getDrone().stop();
-			
+
 			if (mWakeLock.isHeld()) {
 				mWakeLock.release();
 			}
 			return false;
 		} else {
 			note.getDrone().playPitch(note.getFrequency());
-			note.getDrone().playPitch(note.getFrequency() * 1.5); // Play fifth above
-			
+			if (mAddFifth) {
+				note.getDrone().playPitch(note.getFrequency() * 1.5); // Plays fifth above fundamental
+			}
 			mWakeLock.acquire();
 			return true;
 		}
 	}
-	
+
 	public void updateButtonColor(View button) {
 		boolean state = Note.fromId(button.getId()).getDrone().isRunning();
-		int color = state ? getResources().getColor(R.color.button_pressed) : getResources()
-				.getColor(R.color.button_normal);
+		int color = state ? getResources().getColor(R.color.button_pressed) : getResources().getColor(
+				R.color.button_normal);
 		button.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
 	}
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-		
+	private void setUpWakeLock() {
+		// TODO: Use single wakelock between this and the metronome
+		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DroneLock");
 	}
 
+	private void setUpFifthButton() {
+		final ToggleButton fifthButton = (ToggleButton) findViewById(R.id.togglebutton);
+		fifthButton.setChecked(mAddFifth);
+		fifthButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				if (fifthButton.isChecked()) {
+					mAddFifth = true;
+				} else {
+					mAddFifth = false;
+				}
+			}
+		});
+	}
+	
+	private void saveState() {
+		SharedPreferences.Editor editor = mPreferences.edit();
+		editor.putBoolean("addFifth", mAddFifth);
+		editor.commit();
+	}
 }
