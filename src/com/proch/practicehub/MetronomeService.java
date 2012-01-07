@@ -10,7 +10,6 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 
 public class MetronomeService extends Service {
 
@@ -39,7 +38,6 @@ public class MetronomeService extends Service {
 			@Override
 			public void onCallStateChanged(int state, String incomingNumber) {
 				if (state == TelephonyManager.CALL_STATE_RINGING) {
-					Log.i("", "call coming in");
 					stopMetronome();
 				}
 				super.onCallStateChanged(state, incomingNumber);

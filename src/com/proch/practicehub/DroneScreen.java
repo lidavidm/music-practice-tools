@@ -104,10 +104,7 @@ public class DroneScreen extends Activity {
 			return false;
 		} else {
 			note.getDrone().playPitch(note.getFrequency());
-			// Play fifth above
-			note.getDrone().playPitch(note.getFrequency() * 1.5);
-			// Play octave above
-			note.getDrone().playPitch(note.getFrequency() * 2);
+			note.getDrone().playPitch(note.getFrequency() * 1.5); // Play fifth above
 			
 			mWakeLock.acquire();
 			return true;
