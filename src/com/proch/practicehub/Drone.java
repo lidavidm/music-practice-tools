@@ -23,7 +23,7 @@ public class Drone {
 		executor.shutdown();
 		running = true;
 	}
-	
+
 	// With no volume specified, play at default volume
 	public void playPitch(double frequency) {
 		playPitch(frequency, DEFAULT_VOLUME);

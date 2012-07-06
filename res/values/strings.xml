@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Practice Hub</string>
     <string name="no_tempo">0</string>
     <string name="tuner_on">Tuner On</string>
     <string name="tuner_off">Tuner Off</string>
+    <string name="turn_all_drones_off">Turn All Drones Off</string>
 
 </resources>

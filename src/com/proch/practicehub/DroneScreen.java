@@ -52,16 +52,25 @@ public class DroneScreen extends Activity {
 			this.drone = new Drone();
 		}
 
-		public double getFrequency() {
-			return frequency;
-		}
-
 		public int getButtonId() {
 			return buttonId;
 		}
 
-		public Drone getDrone() {
-			return drone;
+		public void playDrone() {
+			drone.playPitch(frequency);
+		}
+
+		public void playDroneWithFifth() {
+			playDrone();
+			drone.playPitch(frequency * 1.5); // Plays fifth above fundamental
+		}
+
+		public void stopDrone() {
+			drone.stop();
+		}
+
+		public boolean isDronePlaying() {
+			return drone.isRunning();
 		}
 
 		public static Note fromId(int id) {
@@ -92,10 +101,10 @@ public class DroneScreen extends Activity {
 				}
 			});
 		}
-		
+
 		mPreferences = getSharedPreferences("Drone", MODE_PRIVATE);
 		mAddFifth = mPreferences.getBoolean("addFifth", true);
-		
+
 		setUpWakeLock();
 		setUpFifthButton();
 		setUpAllOffButton();
@@ -109,17 +118,17 @@ public class DroneScreen extends Activity {
 
 	// Returns true if drone is now turned on, or false if it is now off
 	public boolean toggleDrone(Note note) {
-		if (note.getDrone().isRunning()) {
-			note.getDrone().stop();
+		if (note.isDronePlaying()) {
+			note.stopDrone();
 
 			if (mWakeLock.isHeld()) {
 				mWakeLock.release();
 			}
 			return false;
 		} else {
-			note.getDrone().playPitch(note.getFrequency());
+			note.playDrone();
 			if (mAddFifth) {
-				note.getDrone().playPitch(note.getFrequency() * 1.5); // Plays fifth above fundamental
+				note.playDroneWithFifth();
 			}
 			mWakeLock.acquire();
 			return true;
@@ -127,7 +136,7 @@ public class DroneScreen extends Activity {
 	}
 
 	public void updateButtonColor(View button) {
-		boolean state = Note.fromId(button.getId()).getDrone().isRunning();
+		boolean state = Note.fromId(button.getId()).isDronePlaying();
 		int color = state ? getResources().getColor(R.color.button_pressed) : getResources().getColor(
 				R.color.button_normal);
 		button.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
@@ -141,29 +150,25 @@ public class DroneScreen extends Activity {
 
 	private void setUpFifthButton() {
 		final ToggleButton fifthButton = (ToggleButton) findViewById(R.id.togglebutton);
+
 		fifthButton.setChecked(mAddFifth);
 		fifthButton.setOnClickListener(new View.OnClickListener() {
-			@Override
 			public void onClick(View v) {
-				if (fifthButton.isChecked()) {
-					mAddFifth = true;
-				} else {
-					mAddFifth = false;
-				}
+				mAddFifth = fifthButton.isChecked();
+				resetRunningDrones();
 			}
 		});
 	}
-	
+
 	private void saveState() {
 		SharedPreferences.Editor editor = mPreferences.edit();
 		editor.putBoolean("addFifth", mAddFifth);
 		editor.commit();
 	}
-	
+
 	private void setUpAllOffButton() {
 		final Button allOffButton = (Button) findViewById(R.id.allOffButton);
 		allOffButton.setOnClickListener(new View.OnClickListener() {
-			@Override
 			public void onClick(View v) {
 				turnOffAllDrones();
 			}
@@ -172,12 +177,37 @@ public class DroneScreen extends Activity {
 
 	public void turnOffAllDrones() {
 		for (Note note : mNotes) {
-			if (note.getDrone().isRunning()) {
-				note.getDrone().stop();
+			if (note.isDronePlaying()) {
+				note.stopDrone();
 			}
 		}
 		for (Button noteButton : mNoteButtons) {
 			updateButtonColor(noteButton);
+		}
+	}
+
+	/*
+	 * Restarts all drones that currently running, effectively resetting them.
+	 */
+	public boolean resetRunningDrones() {
+		for (Note note : mNotes) {
+			if (note.isDronePlaying()) {
+				resetDrone(note);
+			}
+		}
+		return false;
+	}
+
+	/*
+	 * Reset a drone by stopping and starting it if it was running.
+	 */
+	private void resetDrone(Note note) {
+		if (note.isDronePlaying()) {
+			note.stopDrone();
+			note.playDrone();
+			if (mAddFifth) {
+				note.playDroneWithFifth();
+			}
 		}
 	}
 }
