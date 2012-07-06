@@ -106,7 +106,7 @@ public class DroneScreen extends Activity {
 		super.onStop();
 		saveState();
 	}
-	
+
 	// Returns true if drone is now turned on, or false if it is now off
 	public boolean toggleDrone(Note note) {
 		if (note.getDrone().isRunning()) {

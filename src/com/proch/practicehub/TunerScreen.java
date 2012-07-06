@@ -3,6 +3,7 @@ package com.proch.practicehub;
 import com.proch.practicehub.R;
 
 import android.app.Activity;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
@@ -30,6 +31,9 @@ public class TunerScreen extends Activity {
 		mTunerCentsView = (TunerCentsView) findViewById(R.id.tuner_cents_view);
 		mNoteLabel = (TextView) findViewById(R.id.note_label);
 		mCentsLabel = (TextView) findViewById(R.id.cents_label);
+
+		// Make volume button always control just the media volume
+		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 	}
 
 	@Override
@@ -43,7 +47,7 @@ public class TunerScreen extends Activity {
 		super.onPause();
 		mTuner.close();
 	}
-	
+
 	public void startTuner() {
 		mTuner = new Tuner(mHandler, callback);
 		mTuner.start();

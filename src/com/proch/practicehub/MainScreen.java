@@ -20,7 +20,7 @@ public class MainScreen extends TabActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
+
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.getTabWidget().setDividerDrawable(R.drawable.tab_divider);
 
@@ -31,8 +31,8 @@ public class MainScreen extends TabActivity {
 
 	private void setupTab(final View view, final String tag, Class<?> cls) {
 		View tabview = createTabView(mTabHost.getContext(), tag);
-		TabSpec setContent = mTabHost.newTabSpec(tag).setIndicator(tabview).setContent(
-				new Intent().setClass(this, cls));
+		TabSpec setContent = mTabHost.newTabSpec(tag).setIndicator(tabview)
+				.setContent(new Intent().setClass(this, cls));
 		mTabHost.addTab(setContent);
 	}
 
