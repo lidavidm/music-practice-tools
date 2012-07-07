@@ -20,6 +20,11 @@ public class Metronome {
 	private boolean[] pattern = { true };
 	private int currentBeat;
 
+	/**
+	 * Creates and initializes a metronome by allocating and loading its resources.
+	 * 
+	 * @param context
+	 */
 	public Metronome(Context context) {
 		soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 		tickId = soundPool.load(context.getResources().openRawResourceFd(R.raw.tick), 1);
@@ -29,11 +34,21 @@ public class Metronome {
 		executor = new ScheduledThreadPoolExecutor(SIZE_THREAD_POOL);
 	}
 
-	public void close() {
+	/**
+	 * Releases resources used by the metronome. Should be called when metronome is no longer in use.
+	 */
+	public void destroy() {
 		soundPool.release();
 		soundPool = null;
 	}
 
+	/**
+	 * Starts the metronome at the given tempo and beats.
+	 * 
+	 * @param tempo Tempo in beats per minute of the metronome
+	 * @param beatsOn Number of consecutive beats it will click for in one cycle
+	 * @param beatsOff Number of consecutive beats of rest at the end of each cycle
+	 */
 	public void start(int tempo, int beatsOn, int beatsOff) {
 		pattern = generatePattern(beatsOn, beatsOff);
 		currentBeat = 0;
@@ -42,25 +57,48 @@ public class Metronome {
 		executor.scheduleAtFixedRate(clicker, 0, 60000 / tempo, TimeUnit.MILLISECONDS);
 	}
 
+	/**
+	 * Starts the metronome with the default settings for tempo and beats on/off
+	 */
 	public void start(int tempo) {
 		start(tempo, 1, 0);
 	}
 
+	/**
+	 * Stops the metronome if it was running.
+	 */
 	public void stop() {
 		running = false;
 		executor.shutdown();
 	}
 
+	/**
+	 * Stops and starts the metronome with the given tempo and beats pattern.
+	 * 
+	 * @param tempo Beats per minute that the metronome will click
+	 * @param beatsOn Number of consecutive beats it will click for in one cycle
+	 * @param beatsOff Number of consecutive beats of rest at the end of each cycle
+	 */
 	public void restart(int tempo, int beatsOn, int beatsOff) {
 		stop();
 		start(tempo, beatsOn, beatsOff);
 	}
 
+	/**
+	 * Returns true if the metronome is currently running.
+	 */
 	public boolean isRunning() {
 		return running;
 	}
 
-	// returns pattern array with mBeatsOn trues and mBeatsOff falses
+	/**
+	 * Generates a pattern of beatsOn number of trues, and beatsOff number of falses.
+	 * 
+	 * @param beatsOn Number of consecutive beats it will click for in one cycle
+	 * @param beatsOff Number of consecutive beats of rest at the end of each cycle
+	 * 
+	 * @return Array of booleans of a single cycle for the metronome with true representing clicks
+	 */
 	private boolean[] generatePattern(int beatsOn, int beatsOff) {
 		boolean[] result = new boolean[beatsOn + beatsOff];
 		// Pattern is all falses by default, so just set beatsOn indices to true
@@ -70,17 +108,30 @@ public class Metronome {
 		return result;
 	}
 
+	/**
+	 * Runnable class that keeps looping through the cycle clicking as specified by the pattern array. 
+	 */
 	private class Clicker implements Runnable {
 
 		private SoundPool soundPool;
 		private int tickId, tockId;
 
+		/**
+		 * Assigns instance variables from arguments.
+		 * 
+		 * @param soundPool Initilized and loaded SoundPool used to play tickId and tockId
+		 * @param tickId ID of the loaded tick sound file
+		 * @param tockId ID of the loaded tock sound file
+		 */
 		public Clicker(SoundPool soundPool, int tickId, int tockId) {
 			this.soundPool = soundPool;
 			this.tickId = tickId;
 			this.tockId = tockId;
 		}
 
+		/**
+		 * Starts clicking based on the specified pattern, looping indefinitely.
+		 */
 		public void run() {
 			if (pattern[currentBeat]) {
 				if (currentBeat == 0) {
