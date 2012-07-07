@@ -12,8 +12,21 @@
     <string name="neg_50_cents">-50 cents</string>
     <string name="pos_50_cents">+50 cents</string>
     <string name="calculating">calculating&#8230;</string>
+    <string name="turn_off_everything">Turn Off Metronome and Tuner</string>
     
     <!-- Drone -->
-    <string name="turn_all_drones_off">Turn All Drones Off</string>
+    <string name="note_A">A</string>
+    <string name="note_Bb">A#/Bb</string>
+    <string name="note_B">B</string>
+    <string name="note_C">C</string>
+    <string name="note_Db">C#/Db</string>
+    <string name="note_D">D</string>
+    <string name="note_Eb">D#/Eb</string>
+    <string name="note_E">E</string>
+    <string name="note_F">F</string>
+    <string name="note_Gb">F#/Gb</string>
+    <string name="note_G">G</string>
+    <string name="note_Ab">G#/Ab</string>
+    <string name="turn_off_all_drones">Turn All Drones Off</string>
 
 </resources>
