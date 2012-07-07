@@ -2,9 +2,18 @@
 <resources>
 
     <string name="app_name">Practice Hub</string>
+
+    <!-- Metronome -->
     <string name="no_tempo">0</string>
+
+    <!-- Tuner -->
     <string name="tuner_on">Tuner On</string>
     <string name="tuner_off">Tuner Off</string>
+    <string name="neg_50_cents">-50 cents</string>
+    <string name="pos_50_cents">+50 cents</string>
+    <string name="calculating">calculating&#8230;</string>
+    
+    <!-- Drone -->
     <string name="turn_all_drones_off">Turn All Drones Off</string>
 
 </resources>

@@ -1,49 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	  android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:keepScreenOn="true">
-
-  <RelativeLayout 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_weight="1"
-    android:layout_margin="20dp">
-    <com.proch.practicehub.TunerCentsView
-      android:id="@+id/tuner_cents_view"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"/>
+    android:keepScreenOn="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="20dp"
+        android:layout_weight="1" >
+
+        <com.proch.practicehub.TunerCentsView
+            android:id="@+id/tuner_cents_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="@string/neg_50_cents"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/pos_50_cents"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
     <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentLeft="true"
-      android:layout_alignParentBottom="true"
-      android:textColor="@color/black"
-      android:text="-50 cents"/>
+        android:id="@+id/note_label"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="65sp" />
+
     <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentRight="true"
-      android:layout_alignParentBottom="true"
-      android:textColor="@color/black"
-      android:text="+50 cents"/>
-  </RelativeLayout>
-  
-  <TextView android:id="@+id/note_label"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:textColor="@color/white"
-      android:textSize="65sp"
-      android:gravity="center"
-      android:layout_weight="1"/>
-	<TextView android:id="@+id/cents_label"
-    	android:layout_width="fill_parent"
-    	android:layout_height="fill_parent"
-    	android:text="calculating..."
-    	android:textColor="@color/white"
-    	android:textSize="45sp"
-    	android:gravity="center"
-    	android:layout_marginBottom="40sp"
-    	android:layout_weight="1"/>
+        android:id="@+id/cents_label"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="40sp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/calculating"
+        android:textColor="@color/white"
+        android:textSize="45sp" />
+
 </LinearLayout>
