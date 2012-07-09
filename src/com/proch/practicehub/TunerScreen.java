@@ -1,11 +1,11 @@
 package com.proch.practicehub;
 
-import com.proch.practicehub.R;
-
 import android.app.Activity;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class TunerScreen extends Activity {
@@ -34,6 +34,8 @@ public class TunerScreen extends Activity {
 
 		// Make volume button always control just the media volume
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		
+		setUpTurnAllOffButton();
 	}
 
 	@Override
@@ -69,5 +71,17 @@ public class TunerScreen extends Activity {
 		}
 
 		mTunerCentsView.setCentsMarker(cents);
+	}
+	
+	/*
+	 * Set up 'turn all off' button to stop metronome or drones if running.
+	 */
+	public void setUpTurnAllOffButton() {
+		final Button allOffButton = (Button) findViewById(R.id.turn_off_everything);
+		allOffButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				MetronomeService.isRunning();
+			}
+		});
 	}
 }

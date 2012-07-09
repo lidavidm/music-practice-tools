@@ -17,7 +17,7 @@ import android.widget.ToggleButton;
 public class DroneScreen extends Activity {
 
 	private Button[] mNoteButtons = new Button[12];
-	private Note[] mNotes = new Note[12];
+	public Note[] mNotes = new Note[12];
 	private SharedPreferences mPreferences;
 	private PowerManager.WakeLock mWakeLock;
 	private boolean mAddFifth;
@@ -107,7 +107,7 @@ public class DroneScreen extends Activity {
 
 		setUpWakeLock();
 		setUpFifthButton();
-		setUpAllOffButton();
+		setUpAllDronesOffButton();
 	}
 
 	@Override
@@ -166,9 +166,9 @@ public class DroneScreen extends Activity {
 		editor.commit();
 	}
 
-	private void setUpAllOffButton() {
-		final Button allOffButton = (Button) findViewById(R.id.allOffButton);
-		allOffButton.setOnClickListener(new View.OnClickListener() {
+	private void setUpAllDronesOffButton() {
+		final Button allDronesOffButton = (Button) findViewById(R.id.turn_off_all_drones);
+		allDronesOffButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				turnOffAllDrones();
 			}

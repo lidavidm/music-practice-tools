@@ -43,7 +43,7 @@ public class MetronomeService extends Service {
 				super.onCallStateChanged(state, incomingNumber);
 			}
 		};
-		
+
 		TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 		if (mgr != null) {
 			mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
@@ -53,7 +53,7 @@ public class MetronomeService extends Service {
 	@Override
 	public void onDestroy() {
 		stopMetronome();
-		mMetronome.close();
+		mMetronome.destroy();
 		instance = null;
 	}
 

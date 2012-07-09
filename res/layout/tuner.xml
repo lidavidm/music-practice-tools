@@ -53,4 +53,13 @@
         android:textColor="@color/white"
         android:textSize="45sp" />
 
+    <Button
+        android:id="@+id/turn_off_everything"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/turn_off_everything" >
+
+    </Button>
+
 </LinearLayout>
