@@ -27,6 +27,8 @@ public class MainScreen extends TabActivity {
 		setupTab(new TextView(this), "Metronome", MetronomeScreen.class);
 		setupTab(new TextView(this), "Tuner", TunerScreen.class);
 		setupTab(new TextView(this), "Drone", DroneScreen.class);
+		
+		Metronome2 m = new Metronome2(getApplicationContext());
 	}
 
 	private void setupTab(final View view, final String tag, Class<?> cls) {
