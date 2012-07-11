@@ -2,7 +2,7 @@
 <resources>
 
     <!-- PCM data for a wav file of a tock sound. 16-bit, mono, 22050 Hz. 2872 samples -->
-    <integer-array name="tock22050">
+    <integer-array name="tock_pcm">
         <item>0</item>
         <item>0</item>
         <item>0</item>

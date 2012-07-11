@@ -15,14 +15,14 @@ public class MetronomeService extends Service {
 
 	private final IBinder mBinder = new MetronomeBinder();
 	private PowerManager.WakeLock mWakeLock;
-	private Metronome2 mMetronome;
+	private Metronome mMetronome;
 	private static final int ONGOING_NOTIFICATION = 1337;
 	private static MetronomeService instance = null;
 
 	@Override
 	public void onCreate() {
 		instance = this;
-		mMetronome = new Metronome2(getApplicationContext());
+		mMetronome = new Metronome(getApplicationContext());
 
 		final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MetronomeLock");
