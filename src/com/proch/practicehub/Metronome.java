@@ -73,13 +73,13 @@ public class Metronome {
 	}
 
 	/**
-	 * Stops and starts the metronome with the given tempo and beats pattern.
+	 * Updates the metronome with the given tempo and beats pattern.
 	 * 
 	 * @param tempo Beats per minute that the metronome will click
 	 * @param beatsOn Number of consecutive beats it will click for in one cycle
 	 * @param beatsOff Number of consecutive beats of rest at the end of each cycle
 	 */
-	public void restart(int tempo, int beatsOn, int beatsOff) {
+	public void update(int tempo, int beatsOn, int beatsOff) {
 		stop();
 		start(tempo, beatsOn, beatsOff);
 	}

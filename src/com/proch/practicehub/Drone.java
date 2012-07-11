@@ -15,13 +15,13 @@ public class Drone {
 	private static final int BUFFER_SIZE = AudioTrack.getMinBufferSize(SAMPLE_RATE, CHANNEL_CONFIG,
 			ENCODING);
 	private static final double DEFAULT_VOLUME = 0.5;
-	private boolean running = false;
+	private boolean mRunning = false;
 
 	public void playPitch(double frequency, double volume) {
 		ExecutorService executor = Executors.newSingleThreadExecutor();
 		executor.execute(new PitchGenerator(frequency, volume));
 		executor.shutdown();
-		running = true;
+		mRunning = true;
 	}
 
 	// With no volume specified, play at default volume
@@ -30,11 +30,11 @@ public class Drone {
 	}
 
 	public void stop() {
-		running = false;
+		mRunning = false;
 	}
 
 	public boolean isRunning() {
-		return running;
+		return mRunning;
 	}
 
 	private class PitchGenerator implements Runnable {
@@ -55,7 +55,7 @@ public class Drone {
 			double angle = 0;
 			short samples[] = new short[BUFFER_SIZE];
 
-			while (running) {
+			while (mRunning) {
 				for (int i = 0; i < samples.length; i++) {
 					samples[i] = (short) (Math.sin(angle) * Short.MAX_VALUE * volume);
 					angle += increment;

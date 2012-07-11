@@ -217,7 +217,7 @@ public class MetronomeScreen extends Activity {
 			return;
 		}
 		if (mRunning) {
-			mMetronomeService.restartMetronome(mTempo, mBeatsOn, mBeatsOff);
+			mMetronomeService.updateMetronome(mTempo, mBeatsOn, mBeatsOff);
 		}
 	}
 

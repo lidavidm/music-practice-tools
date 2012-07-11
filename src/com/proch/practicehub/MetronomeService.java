@@ -85,8 +85,8 @@ public class MetronomeService extends Service {
 		stopNotification();
 	}
 
-	public void restartMetronome(int tempo, int beatsOn, int beatsOff) {
-		mMetronome.restart(tempo, beatsOn, beatsOff);
+	public void updateMetronome(int tempo, int beatsOn, int beatsOff) {
+		mMetronome.update(tempo, beatsOn, beatsOff);
 	}
 
 	public class MetronomeBinder extends Binder {
