@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.v4.app.NotificationCompat;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
@@ -96,17 +97,18 @@ public class MetronomeService extends Service {
 	}
 
 	private void startNotification() {
-		Notification notification = new Notification(R.drawable.ic_stat_metronome, "",
-				System.currentTimeMillis());
-		Intent notificationIntent = new Intent(this, MainScreen.class);
-		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+	  Intent notificationIntent = new Intent(this, MainScreen.class);
+	  notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+	  PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+	  
+	  Notification notification = new NotificationCompat.Builder(getApplicationContext())
+	      .setSmallIcon(R.drawable.ic_stat_metronome)
+	      .setContentTitle(getString(R.string.app_name))
+	      .setContentText("Metronome running..")
+	      .setOngoing(true)
+	      .setContentIntent(pendingIntent)
+	      .getNotification();
 
-		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-
-		notification.setLatestEventInfo(this, getString(R.string.app_name), "Metronome running...",
-				pendingIntent);
-		notification.flags |= Notification.FLAG_NO_CLEAR;
-		notification.flags = Notification.FLAG_ONGOING_EVENT;
 		startForeground(ONGOING_NOTIFICATION, notification);
 	}
 
