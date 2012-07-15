@@ -81,6 +81,13 @@ public class Metronome {
   }
 
   /**
+   * Returns the tempo in beats per minute that the metronome is set to.
+   */
+  public int getTempo() {
+    return mTempo;
+  }
+  
+  /**
    * Generates a pattern of beatsOn number of trues, and beatsOff number of falses.
    * 
    * @param beatsOn Number of consecutive beats it will click for in one cycle

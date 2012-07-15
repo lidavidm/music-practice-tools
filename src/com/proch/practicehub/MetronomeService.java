@@ -18,6 +18,7 @@ public class MetronomeService extends Service {
   private final IBinder mBinder = new MetronomeBinder();
   private PowerManager.WakeLock mWakeLock;
   private Metronome mMetronome;
+  private boolean hasNotificationUp;
   private static final int ONGOING_NOTIFICATION = 1337;
   private static MetronomeService instance = null;
 
@@ -61,6 +62,11 @@ public class MetronomeService extends Service {
 
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
+    startNotification();
+    if (intent.hasExtra("Stop")) {
+      stopMetronome();
+      stopNotification();
+    }
     return START_STICKY;
   }
 
@@ -73,8 +79,11 @@ public class MetronomeService extends Service {
     return (instance != null && instance.mMetronome.isRunning());
   }
 
+  public boolean hasNotificationUp() {
+    return hasNotificationUp;
+  }
+  
   public void startMetronome(int tempo, int beatsOn, int beatsOff) {
-    //startNotification();
     mWakeLock.acquire();
     mMetronome.start(tempo, beatsOn, beatsOff);
   }
@@ -84,7 +93,6 @@ public class MetronomeService extends Service {
     if (mWakeLock.isHeld()) {
       mWakeLock.release();
     }
-    //stopNotification();
   }
 
   public void updateMetronome(int tempo, int beatsOn, int beatsOff) {
@@ -107,26 +115,30 @@ public class MetronomeService extends Service {
     PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
     RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.metronome_notification);
-    //contentView.setImageViewResource(R.id.metronome_icon, R.drawable.ic_stat_metronome);
-    contentView.setTextViewText(R.id.metronome_notification_title, getString(R.string.app_name));
-    contentView.setTextViewText(R.id.metronome_notification_text, "Metronome running...");
+    String notificationText = "Metronome running at " + mMetronome.getTempo() + " bpm";
+    contentView.setTextViewText(R.id.metronome_notification_text, notificationText);
 
-//    final Button stopButton = (Button) findViewById(R.id.metronome_notification_stop);
-    
-    
+    Intent stopMetronomeIntent = new Intent(this, MetronomeService.class);
+    stopMetronomeIntent.putExtra("Stop", true);
+    PendingIntent stopMetronomePendingIntent = PendingIntent.getService(this, 0,
+        stopMetronomeIntent, 0);
+    contentView.setOnClickPendingIntent(R.id.metronome_notification_stop,
+        stopMetronomePendingIntent);
+
     Notification notification = new NotificationCompat.Builder(getApplicationContext())
         .setSmallIcon(R.drawable.ic_stat_metronome)
-//        .setContentTitle(getString(R.string.app_name))
-//        .setContentText("Metronome running..")
         .setContent(contentView)
         .setOngoing(true)
         .setContentIntent(pendingIntent)
         .getNotification();
 
     startForeground(ONGOING_NOTIFICATION, notification);
+    hasNotificationUp = true;
   }
 
   public void stopNotification() {
     stopForeground(true);
+    hasNotificationUp = false;
+    stopSelf();
   }
 }

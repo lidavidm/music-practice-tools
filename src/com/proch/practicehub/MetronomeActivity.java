@@ -89,14 +89,13 @@ public class MetronomeActivity extends Activity {
     super.onStart();
     getApplicationContext().bindService(new Intent(this, MetronomeService.class), mConnection,
         Context.BIND_AUTO_CREATE);
-    startService(new Intent(this, MetronomeService.class));
   }
 
   @Override
   public void onResume() {
     super.onResume();
     updateRunningState();
-    if (mBound && mRunning) {
+    if (mBound && mMetronomeService.hasNotificationUp()) {
       mMetronomeService.stopNotification();
     }
   }
@@ -106,7 +105,8 @@ public class MetronomeActivity extends Activity {
     super.onStop();
     saveState();
     if (mBound && mRunning) {
-      mMetronomeService.startNotification();
+      // Starts the notification for the already-running service
+      startService(new Intent(this, MetronomeService.class));
     }
   }
 
@@ -117,14 +117,13 @@ public class MetronomeActivity extends Activity {
       getApplicationContext().unbindService(mConnection);
       mBound = false;
     }
-    if (!mRunning) {
-      stopService(new Intent(this, MetronomeService.class));
-    }
+//    if (!mRunning) {
+//      stopService(new Intent(this, MetronomeService.class));
+//    }
   }
 
   private void setUpStartStopButton() {
     mStartStopButton = (Button) findViewById(R.id.metronome_start_button);
-    updateRunningState();
     mStartStopButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         mRunning = !mRunning;

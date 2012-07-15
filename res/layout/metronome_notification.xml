@@ -12,14 +12,15 @@
         android:layout_alignParentLeft="true"
         android:layout_marginRight="10dp"
         android:contentDescription="@string/metronome_icon"
-        android:src="@drawable/ic_stat_metronome" />
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/metronome_notification_title"
         style="@style/NotificationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/metronome_icon" />
+        android:layout_toRightOf="@id/metronome_icon"
+        android:text="@string/app_name" />
 
     <TextView
         android:id="@+id/metronome_notification_text"
