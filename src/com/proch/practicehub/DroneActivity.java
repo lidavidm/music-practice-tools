@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ToggleButton;
 
-public class DroneScreen extends Activity {
+public class DroneActivity extends Activity {
 
 	private Button[] mNoteButtons = new Button[12];
 	public Note[] mNotes = new Note[12];

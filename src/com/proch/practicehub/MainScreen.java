@@ -24,9 +24,9 @@ public class MainScreen extends TabActivity {
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.getTabWidget().setDividerDrawable(R.drawable.tab_divider);
 
-		setupTab(new TextView(this), "Metronome", MetronomeScreen.class);
-		setupTab(new TextView(this), "Tuner", TunerScreen.class);
-		setupTab(new TextView(this), "Drone", DroneScreen.class);
+		setupTab(new TextView(this), "Metronome", MetronomeActivity.class);
+		setupTab(new TextView(this), "Tuner", TunerActivity.class);
+		setupTab(new TextView(this), "Drone", DroneActivity.class);
 	}
 
 	private void setupTab(final View view, final String tag, Class<?> cls) {

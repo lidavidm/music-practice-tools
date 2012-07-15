@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MetronomeScreen"
+            android:name=".MetronomeActivity"
             android:label="Metronome" >
         </activity>
 
@@ -36,11 +36,11 @@
         </service>
 
         <activity
-            android:name=".TunerScreen"
+            android:name=".TunerActivity"
             android:label="Tuner" >
         </activity>
         <activity
-            android:name="com.proch.practicehub.DroneScreen"
+            android:name=".DroneActivity"
             android:label="Drone" >
         </activity>
     </application>

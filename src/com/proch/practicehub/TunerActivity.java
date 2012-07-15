@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-public class TunerScreen extends Activity {
+public class TunerActivity extends Activity {
 
 	private static final String[] NOTE_NAMES = { "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F",
 			"F#", "G", "Ab" };
@@ -77,11 +75,12 @@ public class TunerScreen extends Activity {
 	 * Set up 'turn all off' button to stop metronome or drones if running.
 	 */
 	public void setUpTurnAllOffButton() {
-		final Button allOffButton = (Button) findViewById(R.id.turn_off_everything);
-		allOffButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				MetronomeService.isRunning();
-			}
-		});
+	  // TODO: Implement
+//		final Button allOffButton = (Button) findViewById(R.id.turn_off_everything);
+//		allOffButton.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				MetronomeService.isRunning();
+//			}
+//		});
 	}
 }

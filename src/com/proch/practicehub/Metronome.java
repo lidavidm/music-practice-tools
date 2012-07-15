@@ -43,7 +43,7 @@ public class Metronome {
     update(tempo, beatsOn, beatsOff);
     mRunning = true;
 
-    mExecutor.execute(new Clicker());
+    mExecutor.execute(new Clicker(mTickData, mTockData));
   }
 
   /**
@@ -104,11 +104,14 @@ public class Metronome {
 
     private static final int WRITE_CHUNK_IN_FRAMES = 8820; // 200 ms
     private static final int SAMPLE_RATE = 22050;
-    private static final int BUFFER_SIZE = 22100; // AudioTrack.getMinBufferSize(SAMPLE_RATE,
-                                                  // CHANNEL_CONFIG, ENCODING);
-    private AudioTrack mTrack;
+    private static final int BUFFER_SIZE = 22050;
+    private final short[] mTickData;
+    private final short[] mTockData;
+    private final AudioTrack mTrack;
 
-    public Clicker() {
+    public Clicker(short[] tickData, short[] tockData) {
+      mTickData = tickData;
+      mTockData = tockData;
       mTrack = new AudioTrack(AudioManager.STREAM_MUSIC, SAMPLE_RATE, AudioFormat.CHANNEL_OUT_MONO,
           AudioFormat.ENCODING_PCM_16BIT, BUFFER_SIZE, AudioTrack.MODE_STREAM);
     }

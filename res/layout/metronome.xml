@@ -1,81 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
-
-  <TextView 
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_horizontal"
-      android:layout_weight="1"
-      android:textColor="@color/white"
-      android:text="Tempo"/>
-	<com.proch.practicehub.NumberPicker
-			android:id="@+id/tempo_picker"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:layout_weight="1"/>	
-  
-	<SeekBar
-	  android:id="@+id/tempo_seek"
-		android:layout_width="fill_parent"
-		android:paddingTop="10sp"
-		android:paddingBottom="20sp"
-		android:layout_height="wrap_content"
-		android:layout_weight="1"/>
-
-	<LinearLayout
-		android:orientation="horizontal"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="1">
-		
-		<LinearLayout
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="1">
-      <TextView 
+    android:orientation="vertical" >
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:text="Beats On"/>
-      <com.proch.practicehub.NumberPicker
-      android:id="@+id/beats_on_picker"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:layout_weight="1" />
-    </LinearLayout>
-		
-    <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1">
-      <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:text="Beats Off"/>
-      <com.proch.practicehub.NumberPicker
-      android:id="@+id/beats_off_picker"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:layout_weight="1" />
-    </LinearLayout>
-    
-		<Button
-        android:id="@+id/tempo_tap"
+        android:layout_weight="1"
+        android:text="@string/metronome_tempo"
+        android:textColor="@color/white" />
+
+    <com.proch.practicehub.NumberPicker
+        android:id="@+id/tempo_picker"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_weight="1" />
+
+    <SeekBar
+        android:id="@+id/tempo_seek"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Tap Tempo"/>
-	</LinearLayout>
-	<Button
-		android:id="@+id/start"
-		android:layout_width="fill_parent"
-		android:text="Unknown" android:layout_height="fill_parent"/>
+        android:paddingBottom="20sp"
+        android:paddingTop="10sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/metronome_beats_on"
+                android:textColor="@color/white" />
+
+            <com.proch.practicehub.NumberPicker
+                android:id="@+id/beats_on_picker"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/metronome_beats_off"
+                android:textColor="@color/white" />
+
+            <com.proch.practicehub.NumberPicker
+                android:id="@+id/beats_off_picker"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/tempo_tap"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/metronome_tap_tempo" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/metronome_start_button"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
 </LinearLayout>
