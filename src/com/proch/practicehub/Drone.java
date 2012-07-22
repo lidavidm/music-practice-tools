@@ -11,7 +11,18 @@ public class Drone {
 
   private static final double DEFAULT_VOLUME = 0.5;
   private boolean mRunning = false;
+  private Note lastNotePlayed;
 
+  public Note getLastNotePlayed() {
+    return lastNotePlayed;
+  }
+
+  /**
+   * Starts playing the given frequency and the given volume indefinitely.
+   * 
+   * @param frequency Frequency in Hz to be played
+   * @param volume Number between 0 and 1, describing the volume of the pitch
+   */
   public void playPitch(double frequency, double volume) {
     ExecutorService executor = Executors.newSingleThreadExecutor();
     executor.execute(new PitchGenerator(frequency, volume));
@@ -19,9 +30,34 @@ public class Drone {
     mRunning = true;
   }
 
-  // With no volume specified, play at default volume
+  /**
+   * Plays the given frequency at the default volume until stopped.
+   * 
+   * @param frequency Frequency in Hz of the note to be played
+   */
   public void playPitch(double frequency) {
     playPitch(frequency, DEFAULT_VOLUME);
+  }
+
+  /**
+   * Plays the given note's frequency until stopped.
+   * 
+   * @param note Note that is played
+   */
+  public void playNote(Note note) {
+    playPitch(note.getFrequency());
+    lastNotePlayed = note;
+  }
+
+  /**
+   * Plays the specified note and the note a fifth above it until stopped.
+   * 
+   * @param note Fundamental Note that is played
+   */
+  public void playNoteWithFifth(Note note) {
+    playPitch(note.getFrequency());
+    playPitch(note.getFrequencyFifthAbove());
+    lastNotePlayed = note;
   }
 
   public void stop() {

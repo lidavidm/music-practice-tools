@@ -14,7 +14,8 @@ import com.proch.practicehub.R;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 
 @RunWith(RobolectricTestRunner.class)
-public class MetronomeScreenTest {
+public class MetronomeActivityTest {
+
   private MetronomeActivity activity;
   private Button startButton;
 
@@ -26,7 +27,7 @@ public class MetronomeScreenTest {
   }
 
   @Test
-  public void pressingStartButtonShouldToggleStartAndStopTextOnButton() {
+  public void pressingStartButtonShouldToggleStartAndStopTextOnButton() throws Exception {
     assertThat((String) startButton.getText(), equalTo(activity.getText(R.string.metronome_start)));
 
     startButton.performClick();

@@ -117,9 +117,6 @@ public class MetronomeActivity extends Activity {
       getApplicationContext().unbindService(mConnection);
       mBound = false;
     }
-//    if (!mRunning) {
-//      stopService(new Intent(this, MetronomeService.class));
-//    }
   }
 
   private void setUpStartStopButton() {
