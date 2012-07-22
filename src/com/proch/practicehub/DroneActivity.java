@@ -90,9 +90,11 @@ public class DroneActivity extends Activity {
       }
       return false;
     } else {
-      drone.playNote(note);
       if (mAddFifth) {
         drone.playNoteWithFifth(note);
+      }
+      else {
+        drone.playNote(note);
       }
       mWakeLock.acquire();
       return true;
@@ -109,7 +111,6 @@ public class DroneActivity extends Activity {
 
   private void setUpWakeLock() {
     // TODO: Use single wakelock between this and the metronome
-    // TODO: Should only have lock while drone is actually playing
     final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
     mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DroneLock");
   }
@@ -119,9 +120,9 @@ public class DroneActivity extends Activity {
 
     fifthButton.setChecked(mAddFifth);
     fifthButton.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View v) {
+      public void onClick(View view) {
         mAddFifth = fifthButton.isChecked();
-        resetRunningDrones();
+        updateDrones();
       }
     });
   }
@@ -154,32 +155,11 @@ public class DroneActivity extends Activity {
   }
 
   /**
-   * Restarts all drones that currently running, effectively resetting them.
+   * Updates drones by setting the addFifth variables to the most updated values for each drone.
    */
-  public void resetRunningDrones() {
+  public void updateDrones() {
     for (Drone drone : mDrones) {
-      if (drone.isRunning()) {
-        resetDrone(drone);
-      }
-    }
-  }
-
-  /**
-   * Reset a drone by stopping and starting it if it was running
-   * 
-   * @param drone Drone to reset
-   */
-  private void resetDrone(Drone drone) {
-    if (drone.isRunning()) {
-      drone.stop();
-      Note noteToPlay = drone.getLastNotePlayed();
-
-      if (mAddFifth) {
-        drone.playNoteWithFifth(noteToPlay);
-      }
-      else {
-        drone.playNote(noteToPlay);
-      }
+      drone.setAddFifth(mAddFifth);
     }
   }
 }

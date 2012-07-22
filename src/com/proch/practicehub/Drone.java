@@ -11,12 +11,30 @@ public class Drone {
 
   private static final double DEFAULT_VOLUME = 0.5;
   private boolean mRunning = false;
-  private Note lastNotePlayed;
-
-  public Note getLastNotePlayed() {
-    return lastNotePlayed;
+  private boolean mAddFifth = false;
+  private Note mLastNotePlayed;
+  private ExecutorService executor;
+  
+  public Drone() {
+    executor = Executors.newSingleThreadExecutor();
   }
 
+  public Note getLastNotePlayed() {
+    return mLastNotePlayed;
+  }
+
+  public boolean isRunning() {
+    return mRunning;
+  }
+
+  public boolean addFifth() {
+    return mAddFifth;
+  }
+  
+  public void setAddFifth(boolean newValue) {
+    mAddFifth = newValue;
+  }
+  
   /**
    * Starts playing the given frequency and the given volume indefinitely.
    * 
@@ -24,10 +42,8 @@ public class Drone {
    * @param volume Number between 0 and 1, describing the volume of the pitch
    */
   public void playPitch(double frequency, double volume) {
-    ExecutorService executor = Executors.newSingleThreadExecutor();
-    executor.execute(new PitchGenerator(frequency, volume));
-    executor.shutdown();
     mRunning = true;
+    executor.execute(new PitchGenerator(frequency, volume));
   }
 
   /**
@@ -45,8 +61,9 @@ public class Drone {
    * @param note Note that is played
    */
   public void playNote(Note note) {
+    mAddFifth = false;
     playPitch(note.getFrequency());
-    lastNotePlayed = note;
+    mLastNotePlayed = note;
   }
 
   /**
@@ -55,17 +72,13 @@ public class Drone {
    * @param note Fundamental Note that is played
    */
   public void playNoteWithFifth(Note note) {
+    mAddFifth = true;
     playPitch(note.getFrequency());
-    playPitch(note.getFrequencyFifthAbove());
-    lastNotePlayed = note;
+    mLastNotePlayed = note;
   }
 
   public void stop() {
     mRunning = false;
-  }
-
-  public boolean isRunning() {
-    return mRunning;
   }
 
   private class PitchGenerator implements Runnable {
@@ -94,7 +107,10 @@ public class Drone {
 
       while (mRunning) {
         for (int i = 0; i < samples.length; i++) {
-          samples[i] = (short) (Math.sin(angle) * Short.MAX_VALUE * mVolume);
+          double sinValue = mAddFifth ?
+              (Math.sin(angle) + Math.sin(1.5 * angle)) / 2 : Math.sin(angle);
+
+          samples[i] = (short) (sinValue * Short.MAX_VALUE * mVolume);
           angle += mIncrement;
         }
         mTrack.write(samples, 0, samples.length);
