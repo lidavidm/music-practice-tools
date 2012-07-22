@@ -17,17 +17,18 @@ import com.xtremelabs.robolectric.RobolectricTestRunner;
 public class DroneActivityTest {
 
   private DroneActivity activity;
+  private Button cButton, dButton;
 
   @Before
   public void setUp() throws Exception {
     activity = new DroneActivity();
     activity.onCreate(null);
+    cButton = (Button) activity.findViewById(R.id.c_button);
+    dButton = (Button) activity.findViewById(R.id.d_button);
   }
 
   @Test
   public void pressingNoteButtonShouldToggleSelectedState() throws Exception {
-    final Button cButton = (Button) activity.findViewById(R.id.c_button);
-
     assertFalse("Should be unselected to start", cButton.isSelected());
 
     clickOn(cButton);
@@ -37,4 +38,22 @@ public class DroneActivityTest {
     assertFalse("Should go back to unselected after clicking again", cButton.isSelected());
   }
 
+  @Test
+  public void leavingAndReturningShouldNotChangeButtonSelectedStates() throws Exception {
+    clickOn(cButton);
+    assertTrue("Should be selected after clicking", cButton.isSelected());
+    assertFalse("Should not be selected with no interaction", dButton.isSelected());
+    
+    // Set up again, to recreate activity and check selected state of buttons
+    setUp();
+    assertTrue("Should still be selected after recreating activity", cButton.isSelected());
+    assertFalse("Should still not be selected after recreating activity", dButton.isSelected());
+    
+    clickOn(cButton);
+    clickOn(dButton);
+    setUp();
+    
+    assertFalse("Should be unselected after recreating activity", cButton.isSelected());
+    assertTrue("Should still be selected after recreating activity", dButton.isSelected());
+  }
 }
