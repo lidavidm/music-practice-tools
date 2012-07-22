@@ -13,35 +13,39 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.widget.RemoteViews;
 
-public class MetronomeService extends Service {
+public class DroneService extends Service {
 
-  private final IBinder mBinder = new MetronomeBinder();
+  private final IBinder mBinder = new DroneBinder();
   private PowerManager.WakeLock mWakeLock;
-  private Metronome mMetronome;
   private boolean hasNotificationUp;
-  private static final int METRONOME_NOTIFICATION_ID = 1;
-  private static MetronomeService instance = null;
+  private static final int DRONE_NOTIFICATION_ID = 2;
+  private static DroneService instance = null;
+
+  public class DroneBinder extends Binder {
+    DroneService getService() {
+      return DroneService.this;
+    }
+  }
 
   @Override
   public void onCreate() {
     instance = this;
-    mMetronome = new Metronome(getApplicationContext());
-
-    final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-    mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MetronomeLock");
-
+    // TODO: Set 12 drones
+    final PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+    mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DroneLock");
+    
     setUpPhoneListener();
   }
-
-  /*
-   * Make incoming phone calls stop the metronome.
+  
+  /**
+   * Set up phone listener to make incoming phone calls stop all running drones.
    */
   private void setUpPhoneListener() {
     PhoneStateListener phoneStateListener = new PhoneStateListener() {
       @Override
       public void onCallStateChanged(int state, String incomingNumber) {
         if (state == TelephonyManager.CALL_STATE_RINGING) {
-          stopMetronome();
+          // TODO: Stop running drones
         }
         super.onCallStateChanged(state, incomingNumber);
       }
@@ -55,54 +59,31 @@ public class MetronomeService extends Service {
 
   @Override
   public void onDestroy() {
-    stopMetronome();
-    mMetronome.destroy();
+    // TODO: Stop drones
     instance = null;
   }
-
+  
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
     startNotification();
     if (intent.hasExtra("Stop")) {
-      stopMetronome();
+      // TODO: Stop drones
       stopNotification();
     }
     return START_STICKY;
   }
-
-  @Override
-  public IBinder onBind(Intent intent) {
-    return mBinder;
-  }
-
-  public static boolean isRunning() {
-    return (instance != null && instance.mMetronome.isRunning());
+  
+  public static boolean isRunning() { // TODO: Finish
+    return (instance != null);// && instance.mMetronome.isRunning());
   }
 
   public boolean hasNotificationUp() {
     return hasNotificationUp;
   }
   
-  public void startMetronome(int tempo, int beatsOn, int beatsOff) {
-    mWakeLock.acquire();
-    mMetronome.start(tempo, beatsOn, beatsOff);
-  }
-
-  public void stopMetronome() {
-    mMetronome.stop();
-    if (mWakeLock.isHeld()) {
-      mWakeLock.release();
-    }
-  }
-
-  public void updateMetronome(int tempo, int beatsOn, int beatsOff) {
-    mMetronome.update(tempo, beatsOn, beatsOff);
-  }
-
-  public class MetronomeBinder extends Binder {
-    MetronomeService getService() {
-      return MetronomeService.this;
-    }
+  @Override
+  public IBinder onBind(Intent arg0) {
+    return mBinder;
   }
 
   /**
@@ -115,24 +96,23 @@ public class MetronomeService extends Service {
     PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
     RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.custom_notification);
-    String notificationText = "Metronome playing: " + mMetronome.getTempo() + " bpm";
+    String notificationText = "Drone playing";
     contentView.setTextViewText(R.id.custom_notification_text, notificationText);
 
-    Intent stopMetronomeIntent = new Intent(this, MetronomeService.class);
-    stopMetronomeIntent.putExtra("Stop", true);
-    PendingIntent stopMetronomePendingIntent = PendingIntent.getService(this, 0,
-        stopMetronomeIntent, 0);
+    Intent stopDroneIntent = new Intent(this, DroneService.class).putExtra("Stop", true);
+    PendingIntent stopDronePendingIntent = PendingIntent.getService(this, 0,
+        stopDroneIntent, 0);
     contentView.setOnClickPendingIntent(R.id.custom_notification_stop,
-        stopMetronomePendingIntent);
+        stopDronePendingIntent);
 
     Notification notification = new NotificationCompat.Builder(getApplicationContext())
-        .setSmallIcon(R.drawable.ic_stat_metronome)
+        .setSmallIcon(R.drawable.drone_icon)
         .setContent(contentView)
         .setOngoing(true)
         .setContentIntent(pendingIntent)
         .getNotification();
 
-    startForeground(METRONOME_NOTIFICATION_ID, notification);
+    startForeground(DRONE_NOTIFICATION_ID, notification);
     hasNotificationUp = true;
   }
 
@@ -141,4 +121,5 @@ public class MetronomeService extends Service {
     hasNotificationUp = false;
     stopSelf();
   }
+  
 }

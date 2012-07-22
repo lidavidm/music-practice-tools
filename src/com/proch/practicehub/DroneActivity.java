@@ -1,16 +1,22 @@
 package com.proch.practicehub;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ToggleButton;
+
+import com.proch.practicehub.DroneService.DroneBinder;
 
 public class DroneActivity extends Activity {
 
@@ -20,6 +26,26 @@ public class DroneActivity extends Activity {
   private SharedPreferences mPreferences;
   private PowerManager.WakeLock mWakeLock;
   private boolean mAddFifth;
+  private boolean mBound;
+  private DroneService mDroneService;
+
+  /**
+   * Class for interacting with the main interface of the service.
+   */
+  private ServiceConnection mConnection = new ServiceConnection() {
+    public void onServiceConnected(ComponentName className, IBinder service) {
+      DroneBinder binder = (DroneBinder) service;
+      mDroneService = binder.getService();
+      mBound = true;
+      if (isRunning()) {
+        mDroneService.stopNotification();
+      }
+    }
+
+    public void onServiceDisconnected(ComponentName className) {
+      mBound = false;
+    }
+  };
 
   private static final SparseArray<Note> ID_TO_NOTE = new SparseArray<Note>();
   private static final SparseArray<Drone> ID_TO_DRONE = new SparseArray<Drone>();
@@ -37,7 +63,7 @@ public class DroneActivity extends Activity {
     ID_TO_NOTE.put(R.id.g_button, Note.G);
     ID_TO_NOTE.put(R.id.a_flat_button, Note.Ab);
 
-    for (int i = 0; i < ID_TO_NOTE.size(); i++) {
+    for (int i = 0; i < NUM_NOTES; i++) {
       ID_TO_DRONE.put(ID_TO_NOTE.keyAt(i), new Drone());
     }
   }
@@ -75,9 +101,38 @@ public class DroneActivity extends Activity {
   }
 
   @Override
+  public void onStart() {
+    super.onStart();
+    getApplicationContext().bindService(new Intent(this, DroneService.class), mConnection,
+        Context.BIND_AUTO_CREATE);
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    // TODO: Update button state
+    if (mBound && mDroneService.hasNotificationUp()) {
+      mDroneService.stopNotification();
+    }
+  }
+
+  @Override
   public void onStop() {
     super.onStop();
     saveState();
+    if (mBound && isRunning()) {
+      // Starts the notification for the already-running service
+      startService(new Intent(this, DroneService.class));
+    }
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    if (mBound) {
+      getApplicationContext().unbindService(mConnection);
+      mBound = false;
+    }
   }
 
   // Returns true if drone is now turned on, or false if it is now off
@@ -161,5 +216,17 @@ public class DroneActivity extends Activity {
     for (Drone drone : mDrones) {
       drone.setAddFifth(mAddFifth);
     }
+  }
+
+  /**
+   * Returns true if any one or more of the drones are currently playing.
+   */
+  private boolean isRunning() {
+    for (Drone drone : mDrones) {
+      if (drone.isRunning()) {
+        return true;
+      }
+    }
+    return false;
   }
 }

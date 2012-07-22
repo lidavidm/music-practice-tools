@@ -63,7 +63,6 @@ public class MetronomeActivity extends Activity {
     }
   };
 
-  /** Called when the activity is first created. */
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -218,10 +217,7 @@ public class MetronomeActivity extends Activity {
   }
 
   private void updateService() {
-    if (!mBound) {
-      return;
-    }
-    if (mRunning) {
+    if (mBound && mRunning) {
       mMetronomeService.updateMetronome(mTempo, mBeatsOn, mBeatsOff);
     }
   }

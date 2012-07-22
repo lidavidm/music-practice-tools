@@ -6,7 +6,7 @@
     android:padding="10dp" >
 
     <ImageView
-        android:id="@+id/metronome_icon"
+        android:id="@+id/custom_notification_icon"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
@@ -15,23 +15,23 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
-        android:id="@+id/metronome_notification_title"
+        android:id="@+id/custom_notification_title"
         style="@style/NotificationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/metronome_icon"
+        android:layout_toRightOf="@id/custom_notification_icon"
         android:text="@string/app_name" />
 
     <TextView
-        android:id="@+id/metronome_notification_text"
+        android:id="@+id/custom_notification_text"
         style="@style/NotificationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/metronome_notification_title"
-        android:layout_toRightOf="@id/metronome_icon" />
+        android:layout_below="@id/custom_notification_title"
+        android:layout_toRightOf="@id/custom_notification_icon" />
 
     <Button
-        android:id="@+id/metronome_notification_stop"
+        android:id="@+id/custom_notification_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

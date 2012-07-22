@@ -43,6 +43,9 @@
             android:name=".DroneActivity"
             android:label="Drone" >
         </activity>
+
+        <service android:name="com.proch.practicehub.DroneService" >
+        </service>
     </application>
 
 </manifest>

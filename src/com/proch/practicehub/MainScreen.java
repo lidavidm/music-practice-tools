@@ -27,6 +27,8 @@ public class MainScreen extends TabActivity {
 		setupTab(new TextView(this), "Metronome", MetronomeActivity.class);
 		setupTab(new TextView(this), "Tuner", TunerActivity.class);
 		setupTab(new TextView(this), "Drone", DroneActivity.class);
+		
+		// TODO: Go to specific tab when passed extra arg with intent
 	}
 
 	private void setupTab(final View view, final String tag, Class<?> cls) {
