@@ -1,5 +1,8 @@
 package com.proch.practicehub;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -17,7 +20,10 @@ public class DroneService extends Service {
 
   private final IBinder mBinder = new DroneBinder();
   private PowerManager.WakeLock mWakeLock;
-  private boolean hasNotificationUp;
+  private boolean mHasNotificationUp;
+  private boolean mAddFifth;
+  private final ArrayList<Drone> mDrones;
+  private final HashMap<Note, Drone> mNotesToDrones;
   private static final int DRONE_NOTIFICATION_ID = 2;
   private static DroneService instance = null;
 
@@ -27,16 +33,26 @@ public class DroneService extends Service {
     }
   }
 
+  public DroneService() {
+    mDrones = new ArrayList<Drone>();
+    mNotesToDrones = new HashMap<Note, Drone>();
+
+    for (Note note : Note.values()) {
+      Drone newDrone = new Drone();
+      mDrones.add(newDrone);
+      mNotesToDrones.put(note, newDrone);
+    }
+  }
+
   @Override
   public void onCreate() {
     instance = this;
-    // TODO: Set 12 drones
     final PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
     mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DroneLock");
-    
+
     setUpPhoneListener();
   }
-  
+
   /**
    * Set up phone listener to make incoming phone calls stop all running drones.
    */
@@ -59,28 +75,40 @@ public class DroneService extends Service {
 
   @Override
   public void onDestroy() {
-    // TODO: Stop drones
+    stopPlayingAllNotes();
     instance = null;
   }
-  
+
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
     startNotification();
     if (intent.hasExtra("Stop")) {
-      // TODO: Stop drones
+      stopPlayingAllNotes();
       stopNotification();
     }
     return START_STICKY;
   }
-  
-  public static boolean isRunning() { // TODO: Finish
-    return (instance != null);// && instance.mMetronome.isRunning());
+
+  public static boolean isRunning() {
+    return (instance != null && instance.isPlayingSomething());
   }
 
   public boolean hasNotificationUp() {
-    return hasNotificationUp;
+    return mHasNotificationUp;
   }
-  
+
+  /**
+   * Update to the new value of mAddFifth and update all drones.
+   * 
+   * @param newValue true if we are now adding fifths above to all notes, or false if not
+   */
+  public void setAddFifth(boolean newValue) {
+    mAddFifth = newValue;
+    for (Drone drone : mDrones) {
+      drone.setAddFifth(mAddFifth);
+    }
+  }
+
   @Override
   public IBinder onBind(Intent arg0) {
     return mBinder;
@@ -113,13 +141,94 @@ public class DroneService extends Service {
         .getNotification();
 
     startForeground(DRONE_NOTIFICATION_ID, notification);
-    hasNotificationUp = true;
+    mHasNotificationUp = true;
   }
 
   public void stopNotification() {
     stopForeground(true);
-    hasNotificationUp = false;
+    mHasNotificationUp = false;
     stopSelf();
   }
-  
+
+  public boolean isPlayingNote(Note note) {
+    return getDrone(note).isRunning();
+  }
+
+  /**
+   * Starts a drone playing the given note, if it is not already.
+   * 
+   * @param note Note to play.
+   */
+  public void startPlayingNote(Note note) {
+    if (!isPlayingNote(note)) {
+      mWakeLock.acquire();
+
+      if (mAddFifth) {
+        getDrone(note).playNoteWithFifth(note);
+      }
+      else {
+        getDrone(note).playNote(note);
+      }
+    }
+  }
+
+  /**
+   * Stops the drone for the given note, if it is playing.
+   * 
+   * @param note Note to stop playing.
+   */
+  public void stopPlayingNote(Note note) {
+    if (isPlayingNote(note)) {
+      getDrone(note).stop();
+      if (mWakeLock.isHeld()) {
+        mWakeLock.release();
+      }
+    }
+  }
+
+  /**
+   * Starts playing note if it wasn't playing, or stops it if it was playing.
+   * 
+   * @param note Note to toggle playing
+   * @return true if the note was turned on and is now playing, or false if it was turned off
+   */
+  public boolean togglePlayingNote(Note note) {
+    if (isPlayingNote(note)) {
+      stopPlayingNote(note);
+      return false;
+    }
+    else {
+      startPlayingNote(note);
+      return true;
+    }
+  }
+
+  /**
+   * Returns true if at least one note is playing.
+   */
+  public boolean isPlayingSomething() {
+    for (Drone drone : mDrones) {
+      if (drone.isRunning()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Stops any running drones.
+   */
+  public void stopPlayingAllNotes() {
+    for (Drone drone : mDrones) {
+      drone.stop();
+    }
+  }
+
+  /**
+   * Returns the drone associated with the given note.
+   */
+  private Drone getDrone(Note note) {
+    return mNotesToDrones.get(note);
+  }
+
 }

@@ -10,7 +10,6 @@ import android.graphics.PorterDuff;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.PowerManager;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
@@ -22,9 +21,7 @@ public class DroneActivity extends Activity {
 
   private static final int NUM_NOTES = 12;
   private Button[] mNoteButtons = new Button[NUM_NOTES];
-  private Drone[] mDrones = new Drone[12];
   private SharedPreferences mPreferences;
-  private PowerManager.WakeLock mWakeLock;
   private boolean mAddFifth;
   private boolean mBound;
   private DroneService mDroneService;
@@ -37,7 +34,13 @@ public class DroneActivity extends Activity {
       DroneBinder binder = (DroneBinder) service;
       mDroneService = binder.getService();
       mBound = true;
-      if (isRunning()) {
+
+      for (Button noteButton : mNoteButtons) {
+        updateButtonColor(noteButton);
+      }
+      mDroneService.setAddFifth(mAddFifth);
+
+      if (mDroneService.isPlayingSomething()) {
         mDroneService.stopNotification();
       }
     }
@@ -48,7 +51,6 @@ public class DroneActivity extends Activity {
   };
 
   private static final SparseArray<Note> ID_TO_NOTE = new SparseArray<Note>();
-  private static final SparseArray<Drone> ID_TO_DRONE = new SparseArray<Drone>();
   static {
     ID_TO_NOTE.put(R.id.a_button, Note.A);
     ID_TO_NOTE.put(R.id.b_flat_button, Note.Bb);
@@ -62,10 +64,6 @@ public class DroneActivity extends Activity {
     ID_TO_NOTE.put(R.id.f_sharp_button, Note.Gb);
     ID_TO_NOTE.put(R.id.g_button, Note.G);
     ID_TO_NOTE.put(R.id.a_flat_button, Note.Ab);
-
-    for (int i = 0; i < NUM_NOTES; i++) {
-      ID_TO_DRONE.put(ID_TO_NOTE.keyAt(i), new Drone());
-    }
   }
 
   @Override
@@ -79,14 +77,12 @@ public class DroneActivity extends Activity {
     for (int i = 0; i < NUM_NOTES; i++) {
       final int id = ID_TO_NOTE.keyAt(i);
 
-      mDrones[i] = ID_TO_DRONE.valueAt(i);
       mNoteButtons[i] = (Button) findViewById(id);
-      updateButtonColor(mNoteButtons[i]);
 
       mNoteButtons[i].setOnClickListener(new View.OnClickListener() {
         public void onClick(View view) {
           final int id = view.getId();
-          toggleDrone(ID_TO_DRONE.get(id), ID_TO_NOTE.get(id));
+          toggleNote(ID_TO_NOTE.get(id));
           updateButtonColor(view);
         }
       });
@@ -95,7 +91,6 @@ public class DroneActivity extends Activity {
     mPreferences = getSharedPreferences("Drone", MODE_PRIVATE);
     mAddFifth = mPreferences.getBoolean("addFifth", true);
 
-    setUpWakeLock();
     setUpFifthButton();
     setUpAllDronesOffButton();
   }
@@ -110,7 +105,7 @@ public class DroneActivity extends Activity {
   @Override
   public void onResume() {
     super.onResume();
-    // TODO: Update button state
+
     if (mBound && mDroneService.hasNotificationUp()) {
       mDroneService.stopNotification();
     }
@@ -120,7 +115,7 @@ public class DroneActivity extends Activity {
   public void onStop() {
     super.onStop();
     saveState();
-    if (mBound && isRunning()) {
+    if (mBound && mDroneService.isPlayingSomething()) {
       // Starts the notification for the already-running service
       startService(new Intent(this, DroneService.class));
     }
@@ -135,39 +130,22 @@ public class DroneActivity extends Activity {
     }
   }
 
-  // Returns true if drone is now turned on, or false if it is now off
-  public boolean toggleDrone(Drone drone, Note note) {
-    if (drone.isRunning()) {
-      drone.stop();
-
-      if (mWakeLock.isHeld()) {
-        mWakeLock.release();
-      }
-      return false;
-    } else {
-      if (mAddFifth) {
-        drone.playNoteWithFifth(note);
-      }
-      else {
-        drone.playNote(note);
-      }
-      mWakeLock.acquire();
-      return true;
-    }
+  /**
+   * Starts playing the given note if it was stopped, or stops it if it was playing.
+   * 
+   * @param note Note to start or stop playing
+   * @return true if the note is now playing, or false if was stopped
+   */
+  private boolean toggleNote(Note note) {
+    return mDroneService.togglePlayingNote(note);
   }
 
-  public void updateButtonColor(View button) {
-    boolean state = ID_TO_DRONE.get(button.getId()).isRunning();
+  private void updateButtonColor(View button) {
+    boolean state = mDroneService.isPlayingNote(ID_TO_NOTE.get(button.getId()));
     int color = state ? getResources().getColor(R.color.button_pressed) : getResources().getColor(
         R.color.button_normal);
     button.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
     button.setSelected(state);
-  }
-
-  private void setUpWakeLock() {
-    // TODO: Use single wakelock between this and the metronome
-    final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-    mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DroneLock");
   }
 
   private void setUpFifthButton() {
@@ -177,7 +155,7 @@ public class DroneActivity extends Activity {
     fifthButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         mAddFifth = fifthButton.isChecked();
-        updateDrones();
+        mDroneService.setAddFifth(mAddFifth);
       }
     });
   }
@@ -200,33 +178,11 @@ public class DroneActivity extends Activity {
   /**
    * Turn off all drones that are turned on and update button colors accordingly.
    */
-  public void turnOffAllDrones() {
-    for (Drone drone : mDrones) {
-      drone.stop();
-    }
+  private void turnOffAllDrones() {
+    mDroneService.stopPlayingAllNotes();
     for (Button noteButton : mNoteButtons) {
       updateButtonColor(noteButton);
     }
   }
 
-  /**
-   * Updates drones by setting the addFifth variables to the most updated values for each drone.
-   */
-  public void updateDrones() {
-    for (Drone drone : mDrones) {
-      drone.setAddFifth(mAddFifth);
-    }
-  }
-
-  /**
-   * Returns true if any one or more of the drones are currently playing.
-   */
-  private boolean isRunning() {
-    for (Drone drone : mDrones) {
-      if (drone.isRunning()) {
-        return true;
-      }
-    }
-    return false;
-  }
 }
