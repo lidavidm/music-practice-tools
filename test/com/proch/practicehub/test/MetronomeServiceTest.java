@@ -1,31 +1,58 @@
 package com.proch.practicehub.test;
 
+import static com.xtremelabs.robolectric.Robolectric.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
+import com.proch.practicehub.MetronomeActivity;
 import com.proch.practicehub.MetronomeService;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.xtremelabs.robolectric.shadows.ShadowContextWrapper;
 
 @RunWith(RobolectricTestRunner.class)
 public class MetronomeServiceTest {
 
-  private MetronomeService service;
-  
+  private MetronomeActivity context;
+  private Intent serviceIntent;
+
   @Before
   public void setUp() throws Exception {
-    service = new MetronomeService();
-    //service.onCreate();
+    context = new MetronomeActivity();
+    serviceIntent = new Intent(context, MetronomeService.class);
+  }
+
+  @Test
+  public void shouldBeAbleToBindToService() throws Exception {
+    ServiceConnection connection = new ServiceConnection() {
+      @Override
+      public void onServiceDisconnected(ComponentName arg0) {
+      }
+      @Override
+      public void onServiceConnected(ComponentName comp, IBinder b) {
+      }
+    };
+    assertTrue(context.bindService(serviceIntent, connection, Context.BIND_AUTO_CREATE));
+
+    ShadowContextWrapper contextShadow = shadowOf(context);
+    Intent receivedIntent = contextShadow.getNextStartedService();
+    assertThat(receivedIntent, equalTo(serviceIntent));
   }
   
   @Test
-  public void shouldPass() throws Exception{
-//    Context context = service.getApplicationContext();
-//    context.startService(new Intent(context, MetronomeService.class));
-//    
-//    service.onStartCommand(new Intent(context, MetronomeService.class), 0, 0);
+  public void shouldBeAbleToStartService() throws Exception {
+    context.startService(serviceIntent);
+    ShadowContextWrapper contextShadow = shadowOf(context);
+    Intent receivedIntent = contextShadow.getNextStartedService();
+    assertThat(receivedIntent, equalTo(serviceIntent));
   }
 }
