@@ -180,9 +180,7 @@ public class DroneService extends Service {
   public void stopPlayingNote(Note note) {
     if (isPlayingNote(note)) {
       getDrone(note).stop();
-      if (mWakeLock.isHeld()) {
-        mWakeLock.release();
-      }
+      releaseLockIfNecessary();
     }
   }
 
@@ -222,6 +220,7 @@ public class DroneService extends Service {
     for (Drone drone : mDrones) {
       drone.stop();
     }
+    releaseLockIfNecessary();
   }
 
   /**
@@ -229,6 +228,15 @@ public class DroneService extends Service {
    */
   private Drone getDrone(Note note) {
     return mNotesToDrones.get(note);
+  }
+
+  /**
+   * If a wake lock is no longer needed, release it.
+   */
+  private void releaseLockIfNecessary() {
+    if (mWakeLock.isHeld() && !isPlayingSomething()) {
+      mWakeLock.release();
+    }
   }
 
 }

@@ -5,7 +5,7 @@
     android:gravity="center" >
 
     <ToggleButton
-        android:id="@+id/togglebutton"
+        android:id="@+id/drone_toggle_fifth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dip"

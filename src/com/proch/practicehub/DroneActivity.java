@@ -20,6 +20,7 @@ import com.proch.practicehub.DroneService.DroneBinder;
 public class DroneActivity extends Activity {
 
   private static final int NUM_NOTES = 12;
+  private static final boolean ADD_FIFTH_DEFAULT = true;
   private Button[] mNoteButtons = new Button[NUM_NOTES];
   private SharedPreferences mPreferences;
   private boolean mAddFifth;
@@ -89,7 +90,7 @@ public class DroneActivity extends Activity {
     }
 
     mPreferences = getSharedPreferences("Drone", MODE_PRIVATE);
-    mAddFifth = mPreferences.getBoolean("addFifth", true);
+    mAddFifth = mPreferences.getBoolean("addFifth", ADD_FIFTH_DEFAULT);
 
     setUpFifthButton();
     setUpAllDronesOffButton();
@@ -153,7 +154,7 @@ public class DroneActivity extends Activity {
   }
 
   private void setUpFifthButton() {
-    final ToggleButton fifthButton = (ToggleButton) findViewById(R.id.togglebutton);
+    final ToggleButton fifthButton = (ToggleButton) findViewById(R.id.drone_toggle_fifth);
 
     fifthButton.setChecked(mAddFifth);
     fifthButton.setOnClickListener(new View.OnClickListener() {
