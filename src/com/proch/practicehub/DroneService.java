@@ -61,7 +61,7 @@ public class DroneService extends Service {
       @Override
       public void onCallStateChanged(int state, String incomingNumber) {
         if (state == TelephonyManager.CALL_STATE_RINGING) {
-          // TODO: Stop running drones
+          stopPlayingAllNotes();
         }
         super.onCallStateChanged(state, incomingNumber);
       }

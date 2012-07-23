@@ -32,7 +32,7 @@ public class DroneActivity extends Activity {
   private ServiceConnection mConnection = new ServiceConnection() {
     public void onServiceConnected(ComponentName className, IBinder service) {
       DroneBinder binder = (DroneBinder) service;
-      mDroneService = binder.getService();
+      setDroneService(binder.getService());
       mBound = true;
 
       for (Button noteButton : mNoteButtons) {
@@ -130,6 +130,10 @@ public class DroneActivity extends Activity {
     }
   }
 
+  public void setDroneService(DroneService service) {
+    mDroneService = service;
+  }
+  
   /**
    * Starts playing the given note if it was stopped, or stops it if it was playing.
    * 
@@ -184,5 +188,4 @@ public class DroneActivity extends Activity {
       updateButtonColor(noteButton);
     }
   }
-
 }
