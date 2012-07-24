@@ -41,7 +41,7 @@ public class MetronomeService extends Service {
       @Override
       public void onCallStateChanged(int state, String incomingNumber) {
         if (state == TelephonyManager.CALL_STATE_RINGING) {
-          stopMetronome();
+          shutdownService();
         }
         super.onCallStateChanged(state, incomingNumber);
       }
@@ -64,8 +64,7 @@ public class MetronomeService extends Service {
   public int onStartCommand(Intent intent, int flags, int startId) {
     startNotification();
     if (intent.hasExtra("Stop")) {
-      stopMetronome();
-      stopNotification();
+      shutdownService();
     }
     return START_STICKY;
   }
@@ -139,6 +138,15 @@ public class MetronomeService extends Service {
   public void stopNotification() {
     stopForeground(true);
     hasNotificationUp = false;
+  }
+  
+  /**
+   * Shuts down the service by stopping the metronome if its running, stopping the notification,
+   * and will destroy the service as long it is still not bound to an activity.
+   */
+  private void shutdownService() {
+    stopMetronome();
+    stopNotification();
     stopSelf();
   }
 }

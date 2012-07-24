@@ -61,7 +61,7 @@ public class DroneService extends Service {
       @Override
       public void onCallStateChanged(int state, String incomingNumber) {
         if (state == TelephonyManager.CALL_STATE_RINGING) {
-          stopPlayingAllNotes();
+          shutdownService();
         }
         super.onCallStateChanged(state, incomingNumber);
       }
@@ -83,8 +83,7 @@ public class DroneService extends Service {
   public int onStartCommand(Intent intent, int flags, int startId) {
     startNotification();
     if (intent.hasExtra("Stop")) {
-      stopPlayingAllNotes();
-      stopNotification();
+      shutdownService();
     }
     return START_STICKY;
   }
@@ -144,10 +143,12 @@ public class DroneService extends Service {
     mHasNotificationUp = true;
   }
 
+  /**
+   * Removes the notification and updates bookkeeping.
+   */
   public void stopNotification() {
     stopForeground(true);
     mHasNotificationUp = false;
-    stopSelf();
   }
 
   public boolean isPlayingNote(Note note) {
@@ -238,5 +239,14 @@ public class DroneService extends Service {
       mWakeLock.release();
     }
   }
-
+  
+  /**
+   * Shuts down the service by stopping any playing notes, stopping the notification, and will
+   * destroy the service as long as no activity is still bound to it.
+   */
+  private void shutdownService() {
+    stopPlayingAllNotes();
+    stopNotification();
+    stopSelf();
+  }
 }

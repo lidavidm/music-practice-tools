@@ -116,25 +116,21 @@ public class DroneActivity extends Activity {
   public void onStop() {
     super.onStop();
     saveState();
-    if (mBound && mDroneService.isPlayingSomething()) {
-      // Starts the notification for the already-running service
-      startService(new Intent(this, DroneService.class));
-    }
-  }
-
-  @Override
-  public void onDestroy() {
-    super.onDestroy();
     if (mBound) {
+      if (mDroneService.isPlayingSomething()) {
+        // Starts the notification for the already-running service
+        startService(new Intent(this, DroneService.class));
+      }
+      
       getApplicationContext().unbindService(mConnection);
       mBound = false;
     }
   }
-
+  
   public void setDroneService(DroneService service) {
     mDroneService = service;
   }
-  
+
   /**
    * Starts playing the given note if it was stopped, or stops it if it was playing.
    * 

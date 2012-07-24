@@ -115,7 +115,7 @@ public class DroneActivityTest {
    * Simulates exiting and restarting the app, by destroying and creating the activity again.
    */
   private void restartActivity() {
-    activity.onDestroy();
+    activity.onStop();
     activity.onCreate(null);
   }
 }
