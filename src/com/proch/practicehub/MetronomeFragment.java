@@ -1,5 +1,6 @@
 package com.proch.practicehub;
 
+import net.simonvt.widget.NumberPicker;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -9,34 +10,45 @@ import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.proch.practicehub.MetronomeService.MetronomeBinder;
-import com.proch.practicehub.NumberPicker.OnChangedListener;
-import com.proch.practicehub.R;
 
-public class MetronomeActivity extends Activity {
+public class MetronomeFragment extends SherlockFragment {
   private Button mStartStopButton;
   private boolean mRunning;
-  private static final int DEFAULT_TEMPO = 120;
-  private static final int DEFAULT_BEATS_ON = 1;
-  private static final int DEFAULT_BEATS_OFF = 0;
-  private static final int MIN_TEMPO = 10;
+  private static final int MIN_TEMPO = 20;
   private static final int MAX_TEMPO = 400;
+  private static final int DEFAULT_TEMPO = 120;
+
+  private static final int MIN_BEAT_ON = 1;
+  private static final int MAX_BEAT_ON = 16;
+  private static final int DEFAULT_BEATS_ON = MIN_BEAT_ON;
+
+  private static final int MIN_BEAT_OFF = 0;
+  private static final int MAX_BEAT_OFF = 16;
+  private static final int DEFAULT_BEATS_OFF = MIN_BEAT_OFF;
+
   private int mTempo;
   private boolean mBound;
-  private NumberPicker mTempoPicker;
+  private NumberPicker mTempoNumberPicker;
   private NumberPicker mBeatsOnPicker;
   private NumberPicker mBeatsOffPicker;
   private int mBeatsOn;
   private int mBeatsOff;
-  private SeekBar mTempoSeekBar;
+  private VerticalSeekBar mTempoSeekBar;
+  private TextView mTempoDisplay;
   private SharedPreferences mPreferences;
   private MetronomeService mMetronomeService;
   private long mTempoTapLastTappedTime = 0;
+  private Activity mActivity;
+  private View mView;
 
   /**
    * Class for interacting with the main interface of the service.
@@ -64,15 +76,17 @@ public class MetronomeActivity extends Activity {
   };
 
   @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.metronome);
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle savedInstanceState) {
+
+    mView = inflater.inflate(R.layout.metronome2, container, false);
+    mActivity = getActivity();
 
     // Make volume button always control just the media volume
-    setVolumeControlStream(AudioManager.STREAM_MUSIC);
+    mActivity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
     // Load stored persistent data
-    mPreferences = getSharedPreferences("Metronome", MODE_PRIVATE);
+    mPreferences = mActivity.getSharedPreferences("Metronome", Activity.MODE_PRIVATE);
     mTempo = mPreferences.getInt("tempo", DEFAULT_TEMPO);
     mBeatsOn = mPreferences.getInt("beatsOn", DEFAULT_BEATS_ON);
     mBeatsOff = mPreferences.getInt("beatsOff", DEFAULT_BEATS_OFF);
@@ -81,12 +95,17 @@ public class MetronomeActivity extends Activity {
     setUpBeatsControls();
     setUpTempoControls();
     setUpTempoTapButton();
+    setUpTempoDisplay();
+
+    return mView;
   }
 
   @Override
   public void onStart() {
     super.onStart();
-    getApplicationContext().bindService(new Intent(this, MetronomeService.class), mConnection,
+    getActivity().getApplicationContext().bindService(
+        new Intent(getActivity(), MetronomeService.class),
+        mConnection,
         Context.BIND_AUTO_CREATE);
   }
 
@@ -103,23 +122,19 @@ public class MetronomeActivity extends Activity {
   public void onStop() {
     super.onStop();
     saveState();
-    if (mBound && mRunning) {
-      // Starts the notification for the already-running service
-      startService(new Intent(this, MetronomeService.class));
-    }
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
     if (mBound) {
-      getApplicationContext().unbindService(mConnection);
+      mActivity.getApplicationContext().unbindService(mConnection);
       mBound = false;
     }
   }
 
   private void setUpStartStopButton() {
-    mStartStopButton = (Button) findViewById(R.id.metronome_start_button);
+    mStartStopButton = (Button) mView.findViewById(R.id.metronome_start_button);
     mStartStopButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         mRunning = !mRunning;
@@ -133,26 +148,24 @@ public class MetronomeActivity extends Activity {
       }
     });
   }
-
+  
   /*
    * Sets up the tempo controls with the given tempo
    */
   private void setUpTempoControls() {
-    mTempoPicker = (NumberPicker) findViewById(R.id.tempo_picker);
-    mTempoPicker.setSpeed(50);
+    mTempoNumberPicker = (NumberPicker) mView.findViewById(R.id.tempo_number_picker);
+    mTempoNumberPicker.setMinValue(MIN_TEMPO);
+    mTempoNumberPicker.setMaxValue(MAX_TEMPO);
 
-    EditText tempoText = (EditText) findViewById(R.id.timepicker_input);
-    tempoText.setTextSize(50);
+    mTempoNumberPicker.setValue(mTempo);
+    mTempoNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
 
-    mTempoPicker.setRange(MIN_TEMPO, MAX_TEMPO);
-    mTempoPicker.setCurrent(mTempo);
-    mTempoPicker.setOnChangeListener(new OnChangedListener() {
-      public void onChanged(NumberPicker picker, int oldVal, int newVal) {
+      public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
         updateTempo(newVal);
       }
     });
 
-    mTempoSeekBar = (SeekBar) findViewById(R.id.tempo_seek);
+    mTempoSeekBar = (VerticalSeekBar) mView.findViewById(R.id.tempo_seekbar);
     mTempoSeekBar.setMax(MAX_TEMPO + 1);
     mTempoSeekBar.setProgress(mTempo);
     mTempoSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -170,40 +183,47 @@ public class MetronomeActivity extends Activity {
   }
 
   private void setUpBeatsControls() {
-    mBeatsOnPicker = (NumberPicker) findViewById(R.id.beats_on_picker);
-    mBeatsOnPicker.setRange(1, 16);
-    mBeatsOnPicker.setCurrent(mBeatsOn);
-    mBeatsOnPicker.setOnChangeListener(new OnChangedListener() {
-      public void onChanged(NumberPicker picker, int oldVal, int newVal) {
+    mBeatsOnPicker = (NumberPicker) mView.findViewById(R.id.beats_on_number_picker);
+    mBeatsOnPicker.setMinValue(MIN_BEAT_ON);
+    mBeatsOnPicker.setMaxValue(MAX_BEAT_ON);
+    mBeatsOnPicker.setValue(mBeatsOn);
+    mBeatsOnPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+      public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
         updateBeatsOn(newVal);
       }
     });
 
-    mBeatsOffPicker = (NumberPicker) findViewById(R.id.beats_off_picker);
-    mBeatsOffPicker.setRange(0, 16);
-    mBeatsOffPicker.setCurrent(mBeatsOff);
-    mBeatsOffPicker.setOnChangeListener(new OnChangedListener() {
-      public void onChanged(NumberPicker picker, int oldVal, int newVal) {
+    mBeatsOffPicker = (NumberPicker) mView.findViewById(R.id.beats_off_number_picker);
+    mBeatsOffPicker.setMinValue(MIN_BEAT_OFF);
+    mBeatsOffPicker.setMaxValue(MAX_BEAT_OFF);
+    mBeatsOffPicker.setValue(mBeatsOff);
+    mBeatsOffPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+      public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
         updateBeatsOff(newVal);
       }
     });
+
   }
 
   private void setUpTempoTapButton() {
-    ((Button) findViewById(R.id.tempo_tap)).setOnClickListener(new View.OnClickListener() {
+    ((Button) mView.findViewById(R.id.tempo_tap))
+        .setOnClickListener(new View.OnClickListener() {
 
-      public void onClick(View v) {
-        double diffInSeconds = (System.currentTimeMillis() - mTempoTapLastTappedTime) / 1000.0;
-        if (diffInSeconds < 3) {
-          updateTempo((int) (60 / diffInSeconds));
-          // mTempo = (int) (60 / diffInSeconds);
-          // mTempoPicker.setCurrent(mTempo);
-        }
-        mTempoTapLastTappedTime = System.currentTimeMillis();
-      }
-    });
+          public void onClick(View v) {
+            double diffInSeconds = (System.currentTimeMillis() - mTempoTapLastTappedTime) / 1000.0;
+            if (diffInSeconds < 3) {
+              updateTempo((int) (60 / diffInSeconds));
+            }
+            mTempoTapLastTappedTime = System.currentTimeMillis();
+          }
+        });
   }
 
+  private void setUpTempoDisplay() {
+    mTempoDisplay = (TextView) mView.findViewById(R.id.tempo_display);
+    mTempoDisplay.setText(Integer.toString(mTempo));
+  }
+  
   private void startMetronome() {
     if (mBound) {
       mMetronomeService.startMetronome(mTempo, mBeatsOn, mBeatsOff);
@@ -226,17 +246,19 @@ public class MetronomeActivity extends Activity {
    * Updates the running state of the metronome service by updating the variable and button.
    */
   private void updateRunningState() {
-    mRunning = MetronomeService.isRunning();
-    mStartStopButton.setText(mRunning ? getString(R.string.metronome_stop)
-        : getString(R.string.metronome_start));
+     mRunning = MetronomeService.isRunning();
+     mStartStopButton.setText(mRunning ? getString(R.string.metronome_stop)
+     : getString(R.string.metronome_start));
   }
 
   private void updateTempo(int tempo) {
     mTempo = tempo > MAX_TEMPO ? MAX_TEMPO : tempo;
     mTempo = mTempo < MIN_TEMPO ? MIN_TEMPO : mTempo;
     updateService();
+
     mTempoSeekBar.setProgress(mTempo);
-    mTempoPicker.setCurrent(mTempo);
+    mTempoNumberPicker.setValue(mTempo);
+    ((TextView) mView.findViewById(R.id.tempo_display)).setText(Integer.toString(mTempo));
   }
 
   private void updateBeatsOn(int beatsOn) {

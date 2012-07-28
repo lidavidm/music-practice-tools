@@ -109,7 +109,7 @@ public class MetronomeService extends Service {
    * text, and intent to open the app up upon clicking.
    */
   public void startNotification() {
-    Intent notificationIntent = new Intent(this, MainScreen.class);
+    Intent notificationIntent = new Intent(this, MainActivity.class);
     notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 

@@ -43,7 +43,7 @@ import android.widget.TextView;
  * 
  * @author Google
  */
-public class NumberPicker extends LinearLayout implements OnClickListener, OnFocusChangeListener,
+public class NumberPickerOld extends LinearLayout implements OnClickListener, OnFocusChangeListener,
 		OnLongClickListener {
 
 	// private static final String TAG = "NumberPicker";
@@ -51,7 +51,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener, OnFoc
 	private static final int DEFAULT_MIN = 0;
 
 	public interface OnChangedListener {
-		void onChanged(NumberPicker picker, int oldVal, int newVal);
+		void onChanged(NumberPickerOld picker, int oldVal, int newVal);
 	}
 
 	public interface Formatter {
@@ -64,7 +64,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener, OnFoc
 	 * way to do this; it avoids creating temporary objects on every call to
 	 * format().
 	 */
-	public static final NumberPicker.Formatter TWO_DIGIT_FORMATTER = new NumberPicker.Formatter() {
+	public static final NumberPickerOld.Formatter TWO_DIGIT_FORMATTER = new NumberPickerOld.Formatter() {
 		final StringBuilder mBuilder = new StringBuilder();
 		final java.util.Formatter mFmt = new java.util.Formatter(mBuilder);
 		final Object[] mArgs = new Object[1];
@@ -105,15 +105,15 @@ public class NumberPicker extends LinearLayout implements OnClickListener, OnFoc
 	private boolean mIncrement;
 	private boolean mDecrement;
 
-	public NumberPicker(Context context) {
+	public NumberPickerOld(Context context) {
 		this(context, null);
 	}
 
-	public NumberPicker(Context context, AttributeSet attrs) {
+	public NumberPickerOld(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
 	}
 
-	public NumberPicker(Context context, AttributeSet attrs, int defStyle) {
+	public NumberPickerOld(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs);
 		setOrientation(VERTICAL);
 		LayoutInflater inflater = (LayoutInflater) context
@@ -122,11 +122,11 @@ public class NumberPicker extends LinearLayout implements OnClickListener, OnFoc
 		mHandler = new Handler();
 		InputFilter inputFilter = new NumberPickerInputFilter();
 		mNumberInputFilter = new NumberRangeKeyListener();
-		mIncrementButton = (NumberPickerButton) findViewById(R.id.increment);
+		mIncrementButton = (NumberPickerButtonOld) findViewById(R.id.increment);
 		mIncrementButton.setOnClickListener(this);
 		mIncrementButton.setOnLongClickListener(this);
 		mIncrementButton.setNumberPicker(this);
-		mDecrementButton = (NumberPickerButton) findViewById(R.id.decrement);
+		mDecrementButton = (NumberPickerButtonOld) findViewById(R.id.decrement);
 		mDecrementButton.setOnClickListener(this);
 		mDecrementButton.setOnLongClickListener(this);
 		mDecrementButton.setNumberPicker(this);
@@ -298,7 +298,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener, OnFoc
 	}
 
 	/**
-	 * We start the long click here but rely on the {@link NumberPickerButton} to
+	 * We start the long click here but rely on the {@link NumberPickerButtonOld} to
 	 * inform us when the long click has ended.
 	 */
 	public boolean onLongClick(View v) {
@@ -330,8 +330,8 @@ public class NumberPicker extends LinearLayout implements OnClickListener, OnFoc
 	private static final char[] DIGIT_CHARACTERS = new char[] { '0', '1', '2', '3', '4', '5', '6',
 			'7', '8', '9' };
 
-	private NumberPickerButton mIncrementButton;
-	private NumberPickerButton mDecrementButton;
+	private NumberPickerButtonOld mIncrementButton;
+	private NumberPickerButtonOld mDecrementButton;
 
 	private class NumberPickerInputFilter implements InputFilter {
 		public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart,

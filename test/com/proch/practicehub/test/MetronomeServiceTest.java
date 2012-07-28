@@ -14,7 +14,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-import com.proch.practicehub.MetronomeActivity;
+import com.proch.practicehub.MainActivity;
 import com.proch.practicehub.MetronomeService;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.shadows.ShadowContextWrapper;
@@ -22,12 +22,12 @@ import com.xtremelabs.robolectric.shadows.ShadowContextWrapper;
 @RunWith(RobolectricTestRunner.class)
 public class MetronomeServiceTest {
 
-  private MetronomeActivity context;
+  private MainActivity context;
   private Intent serviceIntent;
 
   @Before
   public void setUp() throws Exception {
-    context = new MetronomeActivity();
+    context = new MainActivity();
     serviceIntent = new Intent(context, MetronomeService.class);
   }
 

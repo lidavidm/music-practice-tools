@@ -14,8 +14,8 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-import com.proch.practicehub.DroneActivity;
 import com.proch.practicehub.DroneService;
+import com.proch.practicehub.MainActivity;
 import com.proch.practicehub.Note;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.shadows.ShadowContextWrapper;
@@ -23,7 +23,7 @@ import com.xtremelabs.robolectric.shadows.ShadowContextWrapper;
 @RunWith(RobolectricTestRunner.class)
 public class DroneServiceTest {
 
-  private DroneActivity context;
+  private MainActivity context;
   private DroneService service;
   private Intent serviceIntent;
   private ServiceConnection serviceConnection = new ServiceConnection() {
@@ -38,7 +38,7 @@ public class DroneServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    context = new DroneActivity();
+    context = new MainActivity();
     service = new DroneService();
     service.onCreate();
     serviceIntent = new Intent(context, DroneService.class);

@@ -27,23 +27,23 @@ import android.widget.ImageButton;
 /**
  * This class exists purely to cancel long click events.
  */
-public class NumberPickerButton extends ImageButton {
+public class NumberPickerButtonOld extends ImageButton {
 
-	private NumberPicker mNumberPicker;
+	private NumberPickerOld mNumberPicker;
 
-	public NumberPickerButton(Context context, AttributeSet attrs, int defStyle) {
+	public NumberPickerButtonOld(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
 
-	public NumberPickerButton(Context context, AttributeSet attrs) {
+	public NumberPickerButtonOld(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	public NumberPickerButton(Context context) {
+	public NumberPickerButtonOld(Context context) {
 		super(context);
 	}
 
-	public void setNumberPicker(NumberPicker picker) {
+	public void setNumberPicker(NumberPickerOld picker) {
 		mNumberPicker = picker;
 	}
 

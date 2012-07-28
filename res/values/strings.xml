@@ -9,7 +9,7 @@
     <string name="metronome_start">Start</string>
     <string name="metronome_stop">Stop</string>
     <string name="metronome_tempo">Tempo</string>
-    <string name="metronome_tap_tempo">Tap Tempo</string>
+    <string name="metronome_tap_tempo">Tap\nTempo</string>
     <string name="metronome_beats_on">Beats On</string>
     <string name="metronome_beats_off">Beats Off</string>
 
