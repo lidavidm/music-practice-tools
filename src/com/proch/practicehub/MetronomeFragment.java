@@ -79,7 +79,7 @@ public class MetronomeFragment extends SherlockFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    mView = inflater.inflate(R.layout.metronome2, container, false);
+    mView = inflater.inflate(R.layout.metronome, container, false);
     mActivity = getActivity();
 
     // Make volume button always control just the media volume
