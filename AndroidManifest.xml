@@ -12,7 +12,6 @@
         android:minSdkVersion="5"
         android:targetSdkVersion="16" />
 
-    <!-- android:theme="@style/Theme.Sherlock" -->
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -20,6 +19,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/CompositeTheme" >
             <intent-filter>
@@ -28,33 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-        <activity
-            android:name=".MainScreen"
-            android:label="@string/app_name"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
-        -->
-        <activity
-            android:name=".MetronomeActivity"
-            android:label="Metronome" >
-        </activity>
 
-        <service android:name="com.proch.practicehub.MetronomeService" >
-        </service>
-
-        <activity
-            android:name=".TunerActivity"
-            android:label="Tuner" >
-        </activity>
-        <activity
-            android:name=".DroneActivity"
-            android:label="Drone" >
-        </activity>
-
-        <service android:name="com.proch.practicehub.DroneService" >
-        </service>
+        <service android:name="com.proch.practicehub.MetronomeService" />
+        <service android:name="com.proch.practicehub.DroneService" />
     </application>
 
 </manifest>
