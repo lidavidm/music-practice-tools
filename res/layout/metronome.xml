@@ -94,7 +94,7 @@
         android:layout_marginBottom="20sp"
         android:layout_toRightOf="@id/tempo_seekbar"
         android:gravity="center"
-        android:textSize="70sp" />
+        android:textSize="75sp" />
 
     <Button
         android:id="@+id/tempo_tap"

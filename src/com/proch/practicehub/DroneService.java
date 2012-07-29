@@ -81,14 +81,20 @@ public class DroneService extends Service {
 
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
-    startNotification();
     if (intent.hasExtra("Stop")) {
       shutdownService();
     }
     return START_STICKY;
   }
 
-  public static boolean isRunning() {
+  public static DroneService getInstance() {
+    return instance;
+  }
+  
+  /**
+   * Returns true if there exists an instance of the service and it has at least one drone running.
+   */
+  public static boolean hasInstanceRunning() {
     return (instance != null && instance.isPlayingSomething());
   }
 

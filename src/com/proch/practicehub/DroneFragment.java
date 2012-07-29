@@ -96,8 +96,8 @@ public class DroneFragment extends SherlockFragment {
   public void onStart() {
     super.onStart();
 
-    // TODO: See if can get rid of extra getAppCxt call
-    mActivity.getApplicationContext().bindService(new Intent(mActivity, DroneService.class),
+    mActivity.getApplicationContext().bindService(
+        new Intent(mActivity, DroneService.class),
         mConnection,
         Context.BIND_AUTO_CREATE);
   }
@@ -105,31 +105,26 @@ public class DroneFragment extends SherlockFragment {
   @Override
   public void onResume() {
     super.onResume();
-
-    if (mBound && mDroneService.hasNotificationUp()) {
-      mDroneService.stopNotification();
-    }
+    // TODO: probably need to update button color state
   }
 
   @Override
   public void onStop() {
     super.onStop();
     saveState();
-    if (mBound) {
-//      if (mDroneService.isPlayingSomething()) {
-//        // Starts the notification for the already-running service
-//        mActivity.startService(new Intent(mActivity, DroneService.class));
-//      }
-
-//      mActivity.getApplicationContext().unbindService(mConnection);
-//      mBound = false;
-    }
   }
   
   @Override
   public void onDestroy() {
     super.onDestroy();
     if (mBound) {
+      if (mDroneService.isPlayingSomething()) {
+        mActivity.startService(new Intent(mActivity, DroneService.class));
+      }
+      else {
+        mActivity.stopService(new Intent(mActivity, DroneService.class));
+      }
+      
       mActivity.getApplicationContext().unbindService(mConnection);
       mBound = false;
     }

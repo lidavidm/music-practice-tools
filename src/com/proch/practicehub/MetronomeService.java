@@ -62,7 +62,6 @@ public class MetronomeService extends Service {
 
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
-    startNotification();
     if (intent.hasExtra("Stop")) {
       shutdownService();
     }
@@ -73,11 +72,22 @@ public class MetronomeService extends Service {
   public IBinder onBind(Intent intent) {
     return mBinder;
   }
-
-  public static boolean isRunning() {
+  
+  public static MetronomeService getInstance() {
+    return instance;
+  }
+  
+  /**
+   * Returns true if there exists an instance of the service and it's metronome is running.
+   */
+  public static boolean hasInstanceRunning() {
     return (instance != null && instance.mMetronome.isRunning());
   }
-
+  
+  public boolean isRunning() {
+    return mMetronome.isRunning();
+  }
+  
   public boolean hasNotificationUp() {
     return hasNotificationUp;
   }

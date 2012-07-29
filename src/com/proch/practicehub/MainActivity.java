@@ -3,7 +3,6 @@ package com.proch.practicehub;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -49,16 +48,29 @@ public class MainActivity extends SherlockFragmentActivity {
   }
 
   @Override
+  public void onStart() {
+    super.onStart();
+    
+    MetronomeService metronomeService = MetronomeService.getInstance();
+    if (metronomeService != null && metronomeService.hasNotificationUp()) {
+      metronomeService.stopNotification();
+    }
+    
+    DroneService droneService = DroneService.getInstance();
+    if (droneService != null && droneService.hasNotificationUp()) {
+      droneService.stopNotification();
+    }
+  }
+  
+  @Override
   public void onStop() {
     super.onStop();
 
-    if (MetronomeService.isRunning()) {
-      // Starts the notification for the already-running service
-      startService(new Intent(this, MetronomeService.class));
+    if (MetronomeService.hasInstanceRunning()) {
+      MetronomeService.getInstance().startNotification();
     }
-    if (DroneService.isRunning()) {
-      // Starts the notification for the already-running service
-      startService(new Intent(this, DroneService.class));
+    if (DroneService.hasInstanceRunning()) {
+      DroneService.getInstance().startNotification();
     }
   }
 

@@ -63,9 +63,9 @@ public class MetronomeFragment extends SherlockFragment {
       MetronomeBinder binder = (MetronomeBinder) service;
       mMetronomeService = binder.getService();
       mBound = true;
-      if (mRunning) {
-        mMetronomeService.stopNotification();
-      }
+//      if (mRunning) {
+//        mMetronomeService.stopNotification();
+//      }
     }
 
     public void onServiceDisconnected(ComponentName className) {
@@ -78,7 +78,7 @@ public class MetronomeFragment extends SherlockFragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-
+    
     mView = inflater.inflate(R.layout.metronome, container, false);
     mActivity = getActivity();
 
@@ -113,9 +113,6 @@ public class MetronomeFragment extends SherlockFragment {
   public void onResume() {
     super.onResume();
     updateRunningState();
-    if (mBound && mMetronomeService.hasNotificationUp()) {
-      mMetronomeService.stopNotification();
-    }
   }
 
   @Override
@@ -128,6 +125,13 @@ public class MetronomeFragment extends SherlockFragment {
   public void onDestroy() {
     super.onDestroy();
     if (mBound) {
+      if (mMetronomeService.isRunning()) {
+        mActivity.startService(new Intent(mActivity, MetronomeService.class));
+      }
+      else {
+        mActivity.stopService(new Intent(mActivity, MetronomeService.class));
+      }
+      
       mActivity.getApplicationContext().unbindService(mConnection);
       mBound = false;
     }
@@ -246,7 +250,7 @@ public class MetronomeFragment extends SherlockFragment {
    * Updates the running state of the metronome service by updating the variable and button.
    */
   private void updateRunningState() {
-     mRunning = MetronomeService.isRunning();
+     mRunning = MetronomeService.hasInstanceRunning();
      mStartStopButton.setText(mRunning ? getString(R.string.metronome_stop)
      : getString(R.string.metronome_start));
   }
