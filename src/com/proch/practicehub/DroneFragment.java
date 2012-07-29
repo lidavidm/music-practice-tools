@@ -45,10 +45,6 @@ public class DroneFragment extends SherlockFragment {
         updateButtonColor(noteButton);
       }
       mDroneService.setAddFifth(mAddFifth);
-
-      if (mDroneService.isPlayingSomething()) {
-        mDroneService.stopNotification();
-      }
     }
 
     public void onServiceDisconnected(ComponentName className) {
@@ -82,12 +78,12 @@ public class DroneFragment extends SherlockFragment {
     // Make volume button always control just the media volume
     mActivity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
+    mPreferences = mActivity.getSharedPreferences("Drone", Activity.MODE_PRIVATE);
+    mAddFifth = mPreferences.getBoolean("addFifth", ADD_FIFTH_DEFAULT);
+
     setUpNoteButtons();
     setUpFifthButton();
     setUpAllDronesOffButton();
-
-    mPreferences = mActivity.getSharedPreferences("Drone", Activity.MODE_PRIVATE);
-    mAddFifth = mPreferences.getBoolean("addFifth", ADD_FIFTH_DEFAULT);
 
     return mView;
   }
@@ -105,7 +101,12 @@ public class DroneFragment extends SherlockFragment {
   @Override
   public void onResume() {
     super.onResume();
-    // TODO: probably need to update button color state
+
+    if (mBound) {
+      for (Button noteButton : mNoteButtons) {
+        updateButtonColor(noteButton);
+      }
+    }
   }
 
   @Override
@@ -113,7 +114,7 @@ public class DroneFragment extends SherlockFragment {
     super.onStop();
     saveState();
   }
-  
+
   @Override
   public void onDestroy() {
     super.onDestroy();
@@ -124,7 +125,7 @@ public class DroneFragment extends SherlockFragment {
       else {
         mActivity.stopService(new Intent(mActivity, DroneService.class));
       }
-      
+
       mActivity.getApplicationContext().unbindService(mConnection);
       mBound = false;
     }

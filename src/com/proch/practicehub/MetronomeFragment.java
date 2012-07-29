@@ -63,9 +63,6 @@ public class MetronomeFragment extends SherlockFragment {
       MetronomeBinder binder = (MetronomeBinder) service;
       mMetronomeService = binder.getService();
       mBound = true;
-//      if (mRunning) {
-//        mMetronomeService.stopNotification();
-//      }
     }
 
     public void onServiceDisconnected(ComponentName className) {
