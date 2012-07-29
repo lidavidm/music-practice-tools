@@ -3,6 +3,7 @@ package com.proch.practicehub;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -20,6 +21,7 @@ public class MainActivity extends SherlockFragmentActivity {
   TabsAdapter mTabsAdapter;
   TextView tabCenter;
   TextView tabText;
+  Tab mMetronomeTab, mTunerTab, mDroneTab;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -36,32 +38,33 @@ public class MainActivity extends SherlockFragmentActivity {
 
     mTabsAdapter = new TabsAdapter(this, mViewPager);
 
-    mTabsAdapter.addTab(
-        bar.newTab().setText("Metronome"),
-        MetronomeFragment.class, null);
-    mTabsAdapter.addTab(
-        bar.newTab().setText("Tuner"),
-        TunerFragment.class, null);
-    mTabsAdapter.addTab(
-        bar.newTab().setText("Drone"),
-        DroneFragment.class, null);
+    mMetronomeTab = bar.newTab().setText("Metronome");
+    mTunerTab = bar.newTab().setText("Tuner");
+    mDroneTab = bar.newTab().setText("Drone");
+
+    mTabsAdapter.addTab(mMetronomeTab, MetronomeFragment.class, null);
+    mTabsAdapter.addTab(mTunerTab, TunerFragment.class, null);
+    mTabsAdapter.addTab(mDroneTab, DroneFragment.class, null);
+
+    goToTabIfSpecifiedInIntent(getIntent());
   }
 
   @Override
   public void onStart() {
     super.onStart();
-    
+
     MetronomeService metronomeService = MetronomeService.getInstance();
     if (metronomeService != null && metronomeService.hasNotificationUp()) {
       metronomeService.stopNotification();
     }
-    
+
     DroneService droneService = DroneService.getInstance();
     if (droneService != null && droneService.hasNotificationUp()) {
       droneService.stopNotification();
     }
   }
-  
+
+
   @Override
   public void onStop() {
     super.onStop();
@@ -74,6 +77,37 @@ public class MainActivity extends SherlockFragmentActivity {
     }
   }
 
+  @Override
+  public void onNewIntent(Intent intent) {
+    goToTabIfSpecifiedInIntent(intent);
+  }
+
+  /**
+   * Checks the intent to see if there was an extra variable passed indicating to open up the app
+   * to a specific tab, and if so, opens that tab.
+   * @param intent Intent that possibly carrys the extra string variable
+   */
+  private void goToTabIfSpecifiedInIntent(Intent intent) {
+    Bundle extras = intent.getExtras();
+    if (extras != null && extras.containsKey("GOTO")) {
+      
+      String gotoActivityName = (String) extras.get("GOTO");
+      if (gotoActivityName.equals("Metronome")) {
+        mTabsAdapter.onTabSelected(mMetronomeTab, null);
+      }
+      else if (gotoActivityName.equals("Drone")) {
+        mTabsAdapter.onTabSelected(mDroneTab, null);
+      }
+    }
+    
+    // if (getIntent().hasExtra("Metronome")) {
+    // mTabsAdapter.onTabSelected(mMetronomeTab, null);
+    // }
+    // else if (getIntent().hasExtra("Drone")) {
+    // mTabsAdapter.onTabSelected(mDroneTab, null);
+    // }
+  }
+  
   public static class TabsAdapter extends FragmentPagerAdapter implements
       ActionBar.TabListener, ViewPager.OnPageChangeListener
   {

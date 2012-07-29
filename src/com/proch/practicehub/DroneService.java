@@ -2,6 +2,7 @@ package com.proch.practicehub;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -90,7 +91,7 @@ public class DroneService extends Service {
   public static DroneService getInstance() {
     return instance;
   }
-  
+
   /**
    * Returns true if there exists an instance of the service and it has at least one drone running.
    */
@@ -124,19 +125,17 @@ public class DroneService extends Service {
    * text, and intent to open the app up upon clicking.
    */
   public void startNotification() {
-    Intent notificationIntent = new Intent(this, MainActivity.class);
-    notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-    PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+    Intent notificationIntent = new Intent(this, MainActivity.class).putExtra("GOTO", "Drone");
+    PendingIntent pendingIntent = PendingIntent.getActivity(this, (new Random()).nextInt(),
+        notificationIntent, 0);
 
     RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.custom_notification);
     String notificationText = "Drone playing";
     contentView.setTextViewText(R.id.custom_notification_text, notificationText);
 
     Intent stopDroneIntent = new Intent(this, DroneService.class).putExtra("Stop", true);
-    PendingIntent stopDronePendingIntent = PendingIntent.getService(this, 0,
-        stopDroneIntent, 0);
-    contentView.setOnClickPendingIntent(R.id.custom_notification_stop,
-        stopDronePendingIntent);
+    PendingIntent stopDronePendingIntent = PendingIntent.getService(this, 0, stopDroneIntent, 0);
+    contentView.setOnClickPendingIntent(R.id.custom_notification_stop, stopDronePendingIntent);
 
     Notification notification = new NotificationCompat.Builder(getApplicationContext())
         .setSmallIcon(R.drawable.drone_icon)
@@ -245,7 +244,7 @@ public class DroneService extends Service {
       mWakeLock.release();
     }
   }
-  
+
   /**
    * Shuts down the service by stopping any playing notes, stopping the notification, and will
    * destroy the service as long as no activity is still bound to it.

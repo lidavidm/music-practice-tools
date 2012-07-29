@@ -1,5 +1,7 @@
 package com.proch.practicehub;
 
+import java.util.Random;
+
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -72,26 +74,26 @@ public class MetronomeService extends Service {
   public IBinder onBind(Intent intent) {
     return mBinder;
   }
-  
+
   public static MetronomeService getInstance() {
     return instance;
   }
-  
+
   /**
    * Returns true if there exists an instance of the service and it's metronome is running.
    */
   public static boolean hasInstanceRunning() {
     return (instance != null && instance.mMetronome.isRunning());
   }
-  
+
   public boolean isRunning() {
     return mMetronome.isRunning();
   }
-  
+
   public boolean hasNotificationUp() {
     return hasNotificationUp;
   }
-  
+
   public void startMetronome(int tempo, int beatsOn, int beatsOff) {
     mWakeLock.acquire();
     mMetronome.start(tempo, beatsOn, beatsOff);
@@ -119,9 +121,9 @@ public class MetronomeService extends Service {
    * text, and intent to open the app up upon clicking.
    */
   public void startNotification() {
-    Intent notificationIntent = new Intent(this, MainActivity.class);
-    notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-    PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+    Intent notificationIntent = new Intent(this, MainActivity.class).putExtra("GOTO", "Metronome");
+    PendingIntent pendingIntent = PendingIntent.getActivity(this, (new Random()).nextInt(),
+        notificationIntent, 0);
 
     RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.custom_notification);
     String notificationText = "Metronome playing: " + mMetronome.getTempo() + " bpm";
@@ -131,8 +133,7 @@ public class MetronomeService extends Service {
     stopMetronomeIntent.putExtra("Stop", true);
     PendingIntent stopMetronomePendingIntent = PendingIntent.getService(this, 0,
         stopMetronomeIntent, 0);
-    contentView.setOnClickPendingIntent(R.id.custom_notification_stop,
-        stopMetronomePendingIntent);
+    contentView.setOnClickPendingIntent(R.id.custom_notification_stop, stopMetronomePendingIntent);
 
     Notification notification = new NotificationCompat.Builder(getApplicationContext())
         .setSmallIcon(R.drawable.ic_stat_metronome)
@@ -149,10 +150,10 @@ public class MetronomeService extends Service {
     stopForeground(true);
     hasNotificationUp = false;
   }
-  
+
   /**
-   * Shuts down the service by stopping the metronome if its running, stopping the notification,
-   * and will destroy the service as long it is still not bound to an activity.
+   * Shuts down the service by stopping the metronome if its running, stopping the notification, and
+   * will destroy the service as long it is still not bound to an activity.
    */
   private void shutdownService() {
     stopMetronome();
