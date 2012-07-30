@@ -147,9 +147,10 @@ public class DroneFragment extends SherlockFragment {
 
   private void updateButtonColor(View button) {
     boolean state = mDroneService.isPlayingNote(ID_TO_NOTE.get(button.getId()));
-    int color = state ? getResources().getColor(R.color.button_pressed) : getResources().getColor(
-        R.color.button_normal);
-    button.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
+    int color = state ? getResources().getColor(R.color.button_pressed) : 
+      getResources().getColor(R.color.button_normal);
+    button.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
+    
     button.setSelected(state);
   }
 
