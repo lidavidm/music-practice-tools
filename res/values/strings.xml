@@ -6,10 +6,10 @@
     <!-- Metronome -->
     <string name="no_tempo">0</string>
     <string name="metronome_icon">Metronome Icon</string>
-    <string name="metronome_start">Start</string>
-    <string name="metronome_stop">Stop</string>
+    <string name="metronome_start">&#x25B6;</string>
+    <string name="metronome_stop">&#x25FC;</string>
     <string name="metronome_tempo">Tempo</string>
-    <string name="metronome_tap_tempo">Tap\nTempo</string>
+    <string name="metronome_tap_tempo">Tap Tempo</string>
     <string name="metronome_beats_on">Beats On</string>
     <string name="metronome_beats_off">Beats Off</string>
 

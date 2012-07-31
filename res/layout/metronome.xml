@@ -7,103 +7,116 @@
         android:id="@+id/tempo_seekbar"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_above="@+id/metronome_start_button"
+        android:layout_above="@+id/tempo_tap"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_margin="10sp" />
 
-    <LinearLayout
-        android:id="@+id/tempo_number_picker_and_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tempo_seekbar"
-        android:layout_marginRight="20sp"
-        android:layout_toRightOf="@+id/tempo_seekbar"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/metronome_tempo" />
-
-        <net.simonvt.widget.NumberPicker
-            android:id="@+id/tempo_number_picker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </net.simonvt.widget.NumberPicker>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/beats_on_number_picker_and_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tempo_seekbar"
-        android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
-        android:layout_toRightOf="@+id/tempo_number_picker_and_label"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/metronome_beats_on" />
-
-        <net.simonvt.widget.NumberPicker
-            android:id="@+id/beats_on_number_picker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </net.simonvt.widget.NumberPicker>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/beats_off_number_picker_and_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tempo_seekbar"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/metronome_beats_off" />
-
-        <net.simonvt.widget.NumberPicker
-            android:id="@+id/beats_off_number_picker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </net.simonvt.widget.NumberPicker>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/metronome_start_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/metronome_start" />
-
-    <TextView
-        android:id="@+id/tempo_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/tempo_number_picker_and_label"
-        android:layout_marginBottom="20sp"
-        android:layout_toRightOf="@id/tempo_seekbar"
-        android:gravity="center"
-        android:textSize="75sp" />
-
     <Button
         android:id="@+id/tempo_tap"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/beats_off_number_picker_and_label"
-        android:layout_alignTop="@+id/tempo_display"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_margin="10sp"
-        android:padding="20sp"
         android:text="@string/metronome_tap_tempo" />
+
+    <LinearLayout
+        android:id="@+id/metronome_number_pickers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tempo_tap"
+        android:layout_toRightOf="@id/tempo_seekbar"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/metronome_tempo" />
+
+            <net.simonvt.widget.NumberPicker
+                android:id="@+id/tempo_number_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </net.simonvt.widget.NumberPicker>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/metronome_beats_on" />
+
+            <net.simonvt.widget.NumberPicker
+                android:id="@+id/beats_on_number_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </net.simonvt.widget.NumberPicker>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/metronome_beats_off" />
+
+            <net.simonvt.widget.NumberPicker
+                android:id="@+id/beats_off_number_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </net.simonvt.widget.NumberPicker>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/metronome_number_pickers"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/tempo_seekbar"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tempo_display"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="75sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ToggleButton
+                android:id="@+id/metronome_start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/metronome_start"
+                android:textSize="75dp" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
