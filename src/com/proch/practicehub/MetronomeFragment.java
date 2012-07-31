@@ -157,6 +157,8 @@ public class MetronomeFragment extends SherlockFragment {
     mTempoNumberPicker = (NumberPicker) mView.findViewById(R.id.tempo_number_picker);
     mTempoNumberPicker.setMinValue(MIN_TEMPO);
     mTempoNumberPicker.setMaxValue(MAX_TEMPO);
+    mTempoNumberPicker.setWrapSelectorWheel(false);
+    mTempoNumberPicker.setOnLongPressUpdateInterval(50);
 
     mTempoNumberPicker.setValue(mTempo);
     mTempoNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -165,6 +167,7 @@ public class MetronomeFragment extends SherlockFragment {
         updateTempo(newVal);
       }
     });
+    
 
     mTempoSeekBar = (VerticalSeekBar) mView.findViewById(R.id.tempo_seekbar);
     mTempoSeekBar.setMax(MAX_TEMPO + 1);
@@ -187,7 +190,9 @@ public class MetronomeFragment extends SherlockFragment {
     mBeatsOnPicker = (NumberPicker) mView.findViewById(R.id.beats_on_number_picker);
     mBeatsOnPicker.setMinValue(MIN_BEAT_ON);
     mBeatsOnPicker.setMaxValue(MAX_BEAT_ON);
+    mBeatsOnPicker.setWrapSelectorWheel(false);
     mBeatsOnPicker.setValue(mBeatsOn);
+    
     mBeatsOnPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
       public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
         updateBeatsOn(newVal);
@@ -197,7 +202,9 @@ public class MetronomeFragment extends SherlockFragment {
     mBeatsOffPicker = (NumberPicker) mView.findViewById(R.id.beats_off_number_picker);
     mBeatsOffPicker.setMinValue(MIN_BEAT_OFF);
     mBeatsOffPicker.setMaxValue(MAX_BEAT_OFF);
+    mBeatsOffPicker.setWrapSelectorWheel(false);
     mBeatsOffPicker.setValue(mBeatsOff);
+    
     mBeatsOffPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
       public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
         updateBeatsOff(newVal);
