@@ -114,7 +114,8 @@
                 android:id="@+id/metronome_start_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/metronome_start"
+                android:textOff="@string/metronome_start"
+                android:textOn="@string/metronome_stop"
                 android:textSize="75dp" />
         </LinearLayout>
     </LinearLayout>

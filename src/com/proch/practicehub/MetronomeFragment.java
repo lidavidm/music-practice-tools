@@ -262,13 +262,11 @@ public class MetronomeFragment extends SherlockFragment {
    * checked state based on whether or not the metronome is actually running.
    */
   private void updateStartStopButton() {
-     mStartStopButton.setChecked(mRunning);
+    mStartStopButton.setChecked(mRunning);
 
     if (mRunning) {
-      mStartStopButton.setText(getText(R.string.metronome_stop));
       mStartStopButton.setTextColor(getResources().getColor(R.color.stop_red));
     } else {
-      mStartStopButton.setText(getText(R.string.metronome_start));
       mStartStopButton.setTextColor(getResources().getColor(R.color.start_green));
     }
   }
