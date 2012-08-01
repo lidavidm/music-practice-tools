@@ -16,13 +16,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.proch.practicehub.MetronomeService.MetronomeBinder;
 
 public class MetronomeFragment extends SherlockFragment {
-  private Button mStartStopButton;
-  private boolean mRunning;
   private static final int MIN_TEMPO = 20;
   private static final int MAX_TEMPO = 400;
   private static final int DEFAULT_TEMPO = 120;
@@ -35,6 +34,8 @@ public class MetronomeFragment extends SherlockFragment {
   private static final int MAX_BEAT_OFF = 32;
   private static final int DEFAULT_BEATS_OFF = MIN_BEAT_OFF;
 
+  private ToggleButton mStartStopButton;
+  private boolean mRunning;
   private int mTempo;
   private boolean mBound;
   private NumberPicker mTempoNumberPicker;
@@ -135,7 +136,7 @@ public class MetronomeFragment extends SherlockFragment {
   }
 
   private void setUpStartStopButton() {
-    mStartStopButton = (Button) mView.findViewById(R.id.metronome_start_button);
+    mStartStopButton = (ToggleButton) mView.findViewById(R.id.metronome_start_button);
     mStartStopButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         mRunning = !mRunning;
@@ -144,7 +145,7 @@ public class MetronomeFragment extends SherlockFragment {
         } else {
           stopMetronome();
         }
-        updateStartStopText();
+        updateStartStopButton();
       }
     });
   }
@@ -253,10 +254,16 @@ public class MetronomeFragment extends SherlockFragment {
    */
   private void updateRunningState() {
     mRunning = MetronomeService.hasInstanceRunning();
-    updateStartStopText();
+    updateStartStopButton();
   }
 
-  private void updateStartStopText() {
+  /**
+   * Updates the start/stop button to have the right text and text color as well as the correct
+   * checked state based on whether or not the metronome is actually running.
+   */
+  private void updateStartStopButton() {
+     mStartStopButton.setChecked(mRunning);
+
     if (mRunning) {
       mStartStopButton.setText(getText(R.string.metronome_stop));
       mStartStopButton.setTextColor(getResources().getColor(R.color.stop_red));

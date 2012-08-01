@@ -4,7 +4,6 @@
     <string name="app_name">Practice Hub</string>
 
     <!-- Metronome -->
-    <string name="no_tempo">0</string>
     <string name="metronome_icon">Metronome Icon</string>
     <string name="metronome_start">&#x25B6;</string>
     <string name="metronome_stop">&#x25FC;</string>
@@ -34,6 +33,6 @@
     <string name="note_Gb">F#/Gb</string>
     <string name="note_G">G</string>
     <string name="note_Ab">G#/Ab</string>
-    <string name="turn_off_all_drones">Turn All Drones Off</string>
+    <string name="turn_off_all_drones">Stop All Drones</string>
 
 </resources>
