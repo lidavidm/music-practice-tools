@@ -35,4 +35,7 @@
     <string name="note_Ab">G#/Ab</string>
     <string name="turn_off_all_drones">Stop All Drones</string>
 
+    <!-- Notification -->
+    <string name="notification_stop">Stop</string>
+    
 </resources>

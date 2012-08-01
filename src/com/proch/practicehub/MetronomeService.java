@@ -126,7 +126,7 @@ public class MetronomeService extends Service {
         notificationIntent, 0);
 
     RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.custom_notification);
-    String notificationText = "Metronome playing: " + mMetronome.getTempo() + " bpm";
+    String notificationText = "Metronome playing";
     contentView.setTextViewText(R.id.custom_notification_text, notificationText);
 
     Intent stopMetronomeIntent = new Intent(this, MetronomeService.class);
