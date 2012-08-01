@@ -38,4 +38,8 @@
     <!-- Notification -->
     <string name="notification_stop">Stop</string>
     
+    <!-- Menu -->
+    <string name="menu_volume">Volume</string>
+    <string name="menu_stop_all">Stop All</string>
+    
 </resources>

@@ -138,7 +138,7 @@ public class DroneService extends Service {
     contentView.setOnClickPendingIntent(R.id.custom_notification_stop, stopDronePendingIntent);
 
     Notification notification = new NotificationCompat.Builder(getApplicationContext())
-        .setSmallIcon(R.drawable.drone_icon)
+        .setSmallIcon(R.drawable.ic_stat_drone)
         .setContent(contentView)
         .setOngoing(true)
         .setContentIntent(pendingIntent)

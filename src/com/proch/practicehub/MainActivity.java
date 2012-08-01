@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 
 public class MainActivity extends SherlockFragmentActivity {
 
@@ -78,6 +80,13 @@ public class MainActivity extends SherlockFragmentActivity {
   }
 
   @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getSupportMenuInflater();
+    inflater.inflate(R.menu.main_activity, menu);
+    return true;
+}
+  
+  @Override
   public void onNewIntent(Intent intent) {
     goToTabIfSpecifiedInIntent(intent);
   }
@@ -99,13 +108,6 @@ public class MainActivity extends SherlockFragmentActivity {
         mTabsAdapter.onTabSelected(mDroneTab, null);
       }
     }
-    
-    // if (getIntent().hasExtra("Metronome")) {
-    // mTabsAdapter.onTabSelected(mMetronomeTab, null);
-    // }
-    // else if (getIntent().hasExtra("Drone")) {
-    // mTabsAdapter.onTabSelected(mDroneTab, null);
-    // }
   }
   
   public static class TabsAdapter extends FragmentPagerAdapter implements
