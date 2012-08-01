@@ -3,12 +3,10 @@
 
     <item
         android:id="@+id/menu_volume"
-        android:icon="@drawable/ic_stat_drone"
         android:showAsAction="ifRoom|withText"
         android:title="@string/menu_volume"/>
     <item
         android:id="@+id/menu_stop_all"
-        android:icon="@drawable/ic_stat_metronome"
         android:showAsAction="ifRoom|withText"
         android:title="@string/menu_stop_all"/>
 

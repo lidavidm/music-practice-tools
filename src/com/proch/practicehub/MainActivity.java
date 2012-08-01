@@ -16,6 +16,7 @@ import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
 public class MainActivity extends SherlockFragmentActivity {
 
@@ -66,7 +67,6 @@ public class MainActivity extends SherlockFragmentActivity {
     }
   }
 
-
   @Override
   public void onStop() {
     super.onStop();
@@ -82,9 +82,36 @@ public class MainActivity extends SherlockFragmentActivity {
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getSupportMenuInflater();
-    inflater.inflate(R.menu.main_activity, menu);
+    inflater.inflate(R.menu.main_menu, menu);
     return true;
-}
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+//    case R.id.menu_volume:
+//      
+//      return true;
+    case R.id.menu_stop_all:
+      stopAll();
+      return true;
+    default:
+      return super.onOptionsItemSelected(item);
+    }
+  }
+
+  /**
+   * Stops the metronome and drone is either or both of them are running.
+   */
+  private void stopAll() {
+    if (MetronomeService.hasInstanceRunning()) {
+      MetronomeService.getInstance().stopMetronome();
+    }
+    if (DroneService.hasInstanceRunning()) {
+      DroneService.getInstance().stopPlayingAllNotes();
+    }
+    // TODO: Update fragments UI and state
+  }
   
   @Override
   public void onNewIntent(Intent intent) {
@@ -92,14 +119,15 @@ public class MainActivity extends SherlockFragmentActivity {
   }
 
   /**
-   * Checks the intent to see if there was an extra variable passed indicating to open up the app
-   * to a specific tab, and if so, opens that tab.
+   * Checks the intent to see if there was an extra variable passed indicating to open up the app to
+   * a specific tab, and if so, opens that tab.
+   * 
    * @param intent Intent that possibly carrys the extra string variable
    */
   private void goToTabIfSpecifiedInIntent(Intent intent) {
     Bundle extras = intent.getExtras();
     if (extras != null && extras.containsKey("GOTO")) {
-      
+
       String gotoActivityName = (String) extras.get("GOTO");
       if (gotoActivityName.equals("Metronome")) {
         mTabsAdapter.onTabSelected(mMetronomeTab, null);
@@ -109,7 +137,7 @@ public class MainActivity extends SherlockFragmentActivity {
       }
     }
   }
-  
+
   public static class TabsAdapter extends FragmentPagerAdapter implements
       ActionBar.TabListener, ViewPager.OnPageChangeListener
   {
