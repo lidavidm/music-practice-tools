@@ -28,11 +28,11 @@ public class MetronomeFragment extends SherlockFragment {
   private static final int DEFAULT_TEMPO = 120;
 
   private static final int MIN_BEAT_ON = 1;
-  private static final int MAX_BEAT_ON = 16;
+  private static final int MAX_BEAT_ON = 32;
   private static final int DEFAULT_BEATS_ON = MIN_BEAT_ON;
 
   private static final int MIN_BEAT_OFF = 0;
-  private static final int MAX_BEAT_OFF = 16;
+  private static final int MAX_BEAT_OFF = 32;
   private static final int DEFAULT_BEATS_OFF = MIN_BEAT_OFF;
 
   private int mTempo;
@@ -75,7 +75,7 @@ public class MetronomeFragment extends SherlockFragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    
+
     mView = inflater.inflate(R.layout.metronome, container, false);
     mActivity = getActivity();
 
@@ -128,7 +128,7 @@ public class MetronomeFragment extends SherlockFragment {
       else {
         mActivity.stopService(new Intent(mActivity, MetronomeService.class));
       }
-      
+
       mActivity.getApplicationContext().unbindService(mConnection);
       mBound = false;
     }
@@ -141,15 +141,14 @@ public class MetronomeFragment extends SherlockFragment {
         mRunning = !mRunning;
         if (mRunning) {
           startMetronome();
-          mStartStopButton.setText(getText(R.string.metronome_stop));
         } else {
           stopMetronome();
-          mStartStopButton.setText(getText(R.string.metronome_start));
         }
+        updateStartStopText();
       }
     });
   }
-  
+
   /*
    * Sets up the tempo controls with the given tempo
    */
@@ -167,7 +166,6 @@ public class MetronomeFragment extends SherlockFragment {
         updateTempo(newVal);
       }
     });
-    
 
     mTempoSeekBar = (VerticalSeekBar) mView.findViewById(R.id.tempo_seekbar);
     mTempoSeekBar.setMax(MAX_TEMPO + 1);
@@ -192,7 +190,7 @@ public class MetronomeFragment extends SherlockFragment {
     mBeatsOnPicker.setMaxValue(MAX_BEAT_ON);
     mBeatsOnPicker.setWrapSelectorWheel(false);
     mBeatsOnPicker.setValue(mBeatsOn);
-    
+
     mBeatsOnPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
       public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
         updateBeatsOn(newVal);
@@ -204,7 +202,7 @@ public class MetronomeFragment extends SherlockFragment {
     mBeatsOffPicker.setMaxValue(MAX_BEAT_OFF);
     mBeatsOffPicker.setWrapSelectorWheel(false);
     mBeatsOffPicker.setValue(mBeatsOff);
-    
+
     mBeatsOffPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
       public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
         updateBeatsOff(newVal);
@@ -231,7 +229,7 @@ public class MetronomeFragment extends SherlockFragment {
     mTempoDisplay = (TextView) mView.findViewById(R.id.tempo_display);
     mTempoDisplay.setText(Integer.toString(mTempo));
   }
-  
+
   private void startMetronome() {
     if (mBound) {
       mMetronomeService.startMetronome(mTempo, mBeatsOn, mBeatsOff);
@@ -254,9 +252,18 @@ public class MetronomeFragment extends SherlockFragment {
    * Updates the running state of the metronome service by updating the variable and button.
    */
   private void updateRunningState() {
-     mRunning = MetronomeService.hasInstanceRunning();
-     mStartStopButton.setText(mRunning ? getString(R.string.metronome_stop)
-     : getString(R.string.metronome_start));
+    mRunning = MetronomeService.hasInstanceRunning();
+    updateStartStopText();
+  }
+
+  private void updateStartStopText() {
+    if (mRunning) {
+      mStartStopButton.setText(getText(R.string.metronome_stop));
+      mStartStopButton.setTextColor(getResources().getColor(R.color.stop_red));
+    } else {
+      mStartStopButton.setText(getText(R.string.metronome_start));
+      mStartStopButton.setTextColor(getResources().getColor(R.color.start_green));
+    }
   }
 
   private void updateTempo(int tempo) {
