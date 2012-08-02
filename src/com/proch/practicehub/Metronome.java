@@ -17,6 +17,7 @@ public class Metronome {
   private boolean[] mPattern = { true };
   private int mCurrentBeat;
   private ExecutorService mExecutor;
+  private Clicker mClicker;
 
   public Metronome(Context context) {
     mTickData = Utility.intToShortArray(context.getResources().getIntArray(R.array.tick_pcm));
@@ -43,7 +44,8 @@ public class Metronome {
     update(tempo, beatsOn, beatsOff);
     mRunning = true;
 
-    mExecutor.execute(new Clicker(mTickData, mTockData));
+    mClicker = new Clicker(mTickData, mTockData);
+    mExecutor.execute(mClicker);
   }
 
   /**
@@ -58,6 +60,7 @@ public class Metronome {
    */
   public void stop() {
     mRunning = false;
+    mClicker = null;
   }
 
   /**
@@ -86,7 +89,18 @@ public class Metronome {
   public int getTempo() {
     return mTempo;
   }
-  
+
+  /**
+   * Sets the volume for the metronome's clicker, if it has one.
+   * 
+   * @param newVolume Float value between 0 and 1
+   */
+  public void setVolume(float newVolume) {
+    if (mClicker != null) {
+      mClicker.setVolume(newVolume);
+    }
+  }
+
   /**
    * Generates a pattern of beatsOn number of trues, and beatsOff number of falses.
    * 
@@ -124,6 +138,14 @@ public class Metronome {
     }
 
     /**
+     * Sets the new volume for the metronome. 
+     * @param newVolume Float value between 0 and 1
+     */
+    public void setVolume(float newVolume) {
+      mTrack.setStereoVolume(newVolume, newVolume);
+    }
+
+    /**
      * Writes the next beat in the pattern, a tick, tock, or beat of rest, to the AudioTrack and
      * updates data to keep track of where we are in the pattern. Assumes that mTickData.length ==
      * mTockData.length.
@@ -143,7 +165,7 @@ public class Metronome {
       mCurrentBeat++;
       mCurrentBeat %= mPattern.length;
     }
-    
+
     /**
      * Start the clicking of the metronome by writing the tick or tock data or zeros in between.
      */
@@ -154,14 +176,14 @@ public class Metronome {
 
       while (mRunning) {
         interval_in_frames = 60 * SAMPLE_RATE / mTempo; // Recalculate in case tempo changed
-        
+
         if (frames_since_played >= interval_in_frames) {
           writeNextBeatOfPattern();
           frames_since_played = mTickData.length;
         } else {
           int frames_left_to_wait = interval_in_frames - frames_since_played;
 
-          // Rest for a full write chunk or until the next click needs to play, whichever is less. 
+          // Rest for a full write chunk or until the next click needs to play, whichever is less.
           int rest_length_in_frames = Math.min(frames_left_to_wait, WRITE_CHUNK_IN_FRAMES);
           mTrack.write(new short[rest_length_in_frames], 0, rest_length_in_frames);
 

@@ -106,10 +106,18 @@ public class MetronomeService extends Service {
     }
   }
 
+  /**
+   * Sets the new volume for the metronome. 
+   * @param newVolume Float value between 0 and 1
+   */
+  public void setVolume(float newVolume) {
+    mMetronome.setVolume(newVolume);    
+  }
+  
   public void updateMetronome(int tempo, int beatsOn, int beatsOff) {
     mMetronome.update(tempo, beatsOn, beatsOff);
   }
-
+  
   public class MetronomeBinder extends Binder {
     MetronomeService getService() {
       return MetronomeService.this;

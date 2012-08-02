@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -17,8 +19,9 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.proch.practicehub.VolumeControlDialog.VolumeControlDialogListener;
 
-public class MainActivity extends SherlockFragmentActivity {
+public class MainActivity extends SherlockFragmentActivity implements VolumeControlDialogListener {
 
   ViewPager mViewPager;
   TabsAdapter mTabsAdapter;
@@ -89,9 +92,9 @@ public class MainActivity extends SherlockFragmentActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-//    case R.id.menu_volume:
-//      
-//      return true;
+    case R.id.menu_volume:
+      showVolumeControlDialog();
+      return true;
     case R.id.menu_stop_all:
       stopAll();
       return true;
@@ -112,7 +115,7 @@ public class MainActivity extends SherlockFragmentActivity {
     }
     // TODO: Update fragments UI and state
   }
-  
+
   @Override
   public void onNewIntent(Intent intent) {
     goToTabIfSpecifiedInIntent(intent);
@@ -136,6 +139,17 @@ public class MainActivity extends SherlockFragmentActivity {
         mTabsAdapter.onTabSelected(mDroneTab, null);
       }
     }
+  }
+
+  private void showVolumeControlDialog() {
+    FragmentManager fm = getSupportFragmentManager();
+    VolumeControlDialog volumeControlDialog = new VolumeControlDialog();
+    volumeControlDialog.show(fm, "fragment_edit_name");
+  }
+
+  //@Override
+  public void onFinishEditDialog(String inputText) {
+    Toast.makeText(this, "Hi, " + inputText, Toast.LENGTH_SHORT).show();
   }
 
   public static class TabsAdapter extends FragmentPagerAdapter implements
