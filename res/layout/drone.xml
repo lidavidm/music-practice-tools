@@ -23,16 +23,6 @@
             android:text="@string/note_C" />
 
         <Button
-            android:id="@+id/f_sharp_button"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:padding="3dip"
-            android:text="@string/note_Gb" />
-    </TableRow>
-
-    <TableRow>
-
-        <Button
             android:id="@+id/c_sharp_button"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -40,28 +30,11 @@
             android:text="@string/note_Db" />
 
         <Button
-            android:id="@+id/g_button"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:padding="3dip"
-            android:text="@string/note_G" />
-    </TableRow>
-
-    <TableRow>
-
-        <Button
             android:id="@+id/d_button"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:padding="3dip"
             android:text="@string/note_D" />
-
-        <Button
-            android:id="@+id/a_flat_button"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:padding="3dip"
-            android:text="@string/note_Ab" />
     </TableRow>
 
     <TableRow>
@@ -74,16 +47,6 @@
             android:text="@string/note_Eb" />
 
         <Button
-            android:id="@+id/a_button"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:padding="3dip"
-            android:text="@string/note_A" />
-    </TableRow>
-
-    <TableRow>
-
-        <Button
             android:id="@+id/e_button"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -91,22 +54,52 @@
             android:text="@string/note_E" />
 
         <Button
-            android:id="@+id/b_flat_button"
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_weight="1"
-            android:padding="3dip"
-            android:text="@string/note_Bb" />
-    </TableRow>
-
-    <TableRow>
-
-        <Button
             android:id="@+id/f_button"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:padding="3dip"
             android:text="@string/note_F" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/f_sharp_button"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip"
+            android:text="@string/note_Gb" />
+
+        <Button
+            android:id="@+id/g_button"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip"
+            android:text="@string/note_G" />
+
+        <Button
+            android:id="@+id/a_flat_button"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip"
+            android:text="@string/note_Ab" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/a_button"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip"
+            android:text="@string/note_A" />
+
+        <Button
+            android:id="@+id/b_flat_button"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dip"
+            android:text="@string/note_Bb" />
 
         <Button
             android:id="@+id/b_button"
