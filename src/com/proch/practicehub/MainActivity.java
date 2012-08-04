@@ -19,7 +19,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.proch.practicehub.VolumeControlDialog.VolumeControlDialogListener;
+import com.proch.practicehub.VolumeMixerDialog.VolumeControlDialogListener;
 
 public class MainActivity extends SherlockFragmentActivity implements VolumeControlDialogListener {
 
@@ -143,8 +143,8 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
 
   private void showVolumeControlDialog() {
     FragmentManager fm = getSupportFragmentManager();
-    VolumeControlDialog volumeControlDialog = new VolumeControlDialog();
-    volumeControlDialog.show(fm, "fragment_edit_name");
+    VolumeMixerDialog volumeMixerDialog = new VolumeMixerDialog();
+    volumeMixerDialog.show(fm, "fragment_edit_name");
   }
 
   //@Override
