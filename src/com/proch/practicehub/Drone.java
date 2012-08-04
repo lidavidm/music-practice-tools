@@ -9,14 +9,31 @@ import android.media.AudioTrack;
 
 public class Drone {
 
-  private static final double DEFAULT_VOLUME = 0.5;
+  private static final float MIN_VOLUME = 0f;
+  private static final float MAX_VOLUME = 1f;
+  public static final float DEFAULT_VOLUME = MAX_VOLUME;
   private boolean mRunning = false;
   private boolean mAddFifth = false;
   private Note mLastNotePlayed;
-  private ExecutorService executor;
-  
+  private ExecutorService mExecutor;
+  private PitchGenerator mPitchGenerator;
+  private float mInitialVolume; // Volume to start drone on, will not be updated if changes after
+
+  public Drone(float initialVolume) {
+    mExecutor = Executors.newSingleThreadExecutor();
+    mInitialVolume = initialVolume;
+  }
+
   public Drone() {
-    executor = Executors.newSingleThreadExecutor();
+    // Start with default volume, if not specified
+    this(DEFAULT_VOLUME);
+  }
+
+  /**
+   * Releases resources used by the drone. Should be called when drone is no longer in use.
+   */
+  public void destroy() {
+    mExecutor.shutdown();
   }
 
   public Note getLastNotePlayed() {
@@ -30,29 +47,20 @@ public class Drone {
   public boolean addFifth() {
     return mAddFifth;
   }
-  
+
   public void setAddFifth(boolean newValue) {
     mAddFifth = newValue;
   }
-  
-  /**
-   * Starts playing the given frequency and the given volume indefinitely.
-   * 
-   * @param frequency Frequency in Hz to be played
-   * @param volume Number between 0 and 1, describing the volume of the pitch
-   */
-  public void playPitch(double frequency, double volume) {
-    mRunning = true;
-    executor.execute(new PitchGenerator(frequency, volume));
-  }
 
   /**
-   * Plays the given frequency at the default volume until stopped.
+   * Starts playing the given frequency and our initial volume indefinitely.
    * 
-   * @param frequency Frequency in Hz of the note to be played
+   * @param frequency Frequency in Hz to be played
    */
   public void playPitch(double frequency) {
-    playPitch(frequency, DEFAULT_VOLUME);
+    mRunning = true;
+    mPitchGenerator = new PitchGenerator(frequency, mInitialVolume);
+    mExecutor.execute(mPitchGenerator);
   }
 
   /**
@@ -81,6 +89,25 @@ public class Drone {
     mRunning = false;
   }
 
+  /**
+   * Return the drones volume that it either is playing at, or will play at.
+   * 
+   * @return Float between 0 (silent) and 1 (full volume)
+   */
+  public float getVolume() {
+    if (mPitchGenerator != null) {
+      return mPitchGenerator.getVolume();
+    }
+    return mInitialVolume;
+  }
+
+  public void setVolume(float newVolume) {
+    mInitialVolume = newVolume;
+    if (mPitchGenerator != null) {
+      mPitchGenerator.setVolume(newVolume);
+    }
+  }
+
   private class PitchGenerator implements Runnable {
 
     private static final int SAMPLE_RATE = 8000;
@@ -88,17 +115,34 @@ public class Drone {
     private static final int CHANNEL_CONFIG = AudioFormat.CHANNEL_OUT_MONO;
     private final int BUFFER_SIZE;
     private double mIncrement; // Angular increment for each sample
-    private double mVolume; // Ranging from 0 (silent) to 1 (full volume)
+    private float mVolume; // Ranging from 0 (silent) to 1 (full volume)
     private AudioTrack mTrack;
 
-    public PitchGenerator(double frequency, double volume) {
+    public PitchGenerator(double frequency, float volume) {
       BUFFER_SIZE = AudioTrack.getMinBufferSize(SAMPLE_RATE, CHANNEL_CONFIG, ENCODING);
 
       mIncrement = (2 * Math.PI) * frequency / SAMPLE_RATE;
-      this.mVolume = volume;
       mTrack = new AudioTrack(AudioManager.STREAM_MUSIC, SAMPLE_RATE, CHANNEL_CONFIG, ENCODING,
           BUFFER_SIZE * 2, AudioTrack.MODE_STREAM);
       mTrack.play();
+      setVolume(volume);
+    }
+
+    public float getVolume() {
+      return mVolume;
+    }
+
+    /**
+     * Sets the new volume for this pitch generator.
+     * 
+     * @param newVolume Float value between MIN_VOLUME and MAX_VOLUME
+     */
+    public void setVolume(float newVolume) {
+      if (newVolume < MIN_VOLUME || newVolume > MAX_VOLUME) {
+        throw new IllegalArgumentException("Volume outside of valid range");
+      }
+      mVolume = newVolume;
+      mTrack.setStereoVolume(mVolume, mVolume);
     }
 
     public void run() {
@@ -107,10 +151,12 @@ public class Drone {
 
       while (mRunning) {
         for (int i = 0; i < samples.length; i++) {
-          double sinValue = mAddFifth ?
-              (Math.sin(angle) + Math.sin(1.5 * angle)) / 2 : Math.sin(angle);
+          double sinValue = mAddFifth ? // Divide by 2 just to get into approximate range [-1, -1]
+          (Math.sin(angle) + Math.sin(1.5 * angle)) / 2
+              : Math.sin(angle);
 
-          samples[i] = (short) (sinValue * Short.MAX_VALUE * mVolume);
+          double decreaseVolumeConst = 0.5;
+          samples[i] = (short) (sinValue * Short.MAX_VALUE * decreaseVolumeConst);
           angle += mIncrement;
         }
         mTrack.write(samples, 0, samples.length);

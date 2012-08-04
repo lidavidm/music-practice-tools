@@ -2,11 +2,13 @@ package com.proch.practicehub;
 
 import java.util.Random;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -22,7 +24,9 @@ public class MetronomeService extends Service {
   private Metronome mMetronome;
   private boolean hasNotificationUp;
   private static final int METRONOME_NOTIFICATION_ID = 1;
+  private static final String VOLUME_PREFERENCE = "volume";
   private static MetronomeService instance = null;
+  private SharedPreferences mPreferences;
 
   @Override
   public void onCreate() {
@@ -33,6 +37,10 @@ public class MetronomeService extends Service {
     mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MetronomeLock");
 
     setUpPhoneListener();
+
+    mPreferences = getSharedPreferences("Metronome", Activity.MODE_PRIVATE);
+    float volume = mPreferences.getFloat(VOLUME_PREFERENCE, Metronome.getMaxVolume());
+    mMetronome.setVolume(volume);
   }
 
   /*
@@ -58,6 +66,7 @@ public class MetronomeService extends Service {
   @Override
   public void onDestroy() {
     stopMetronome();
+    saveState();
     mMetronome.destroy();
     instance = null;
   }
@@ -75,6 +84,9 @@ public class MetronomeService extends Service {
     return mBinder;
   }
 
+  /**
+   * Returns the already-created instance
+   */
   public static MetronomeService getInstance() {
     return instance;
   }
@@ -107,17 +119,39 @@ public class MetronomeService extends Service {
   }
 
   /**
-   * Sets the new volume for the metronome. 
-   * @param newVolume Float value between 0 and 1
+   * Set the volume of the metronome, forcing it to be between 0 and 1.
+   * 
+   * @param newVolume Float value normally between 0 and 1, but if not, will be rounded up or down
    */
   public void setVolume(float newVolume) {
-    mMetronome.setVolume(newVolume);    
+    // Force anything outside of the range to be either min or max, so no longer out of range
+    newVolume = Utility.roundToBeInRange(newVolume, Metronome.getMinVolume(),
+        Metronome.getMaxVolume());
+    mMetronome.setVolume(newVolume);
   }
-  
+
+  /**
+   * Returns the metronome's volume.
+   * 
+   * @return Float value between 0 and 1 representing how loud the metronome will play
+   */
+  public float getVolume() {
+    return mMetronome.getVolume();
+  }
+
   public void updateMetronome(int tempo, int beatsOn, int beatsOff) {
     mMetronome.update(tempo, beatsOn, beatsOff);
   }
-  
+
+  /**
+   * Saves the state by saving the volume into the user's preferences
+   */
+  private void saveState() {
+    SharedPreferences.Editor editor = mPreferences.edit();
+    editor.putFloat(VOLUME_PREFERENCE, mMetronome.getVolume());
+    editor.commit();
+  }
+
   public class MetronomeBinder extends Binder {
     MetronomeService getService() {
       return MetronomeService.this;

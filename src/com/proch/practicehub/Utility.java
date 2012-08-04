@@ -19,4 +19,22 @@ public class Utility {
     }
     return result;
   }
+  
+  /**
+   * If the value is within the range [min, max] then just returns it, unchanged, or returns min or
+   * max if the value was below or above the min or max, respectively.
+   * @param value
+   * @param min
+   * @param max
+   * @return
+   */
+  public static float roundToBeInRange(float value, float min, float max) {
+    if (value < min) {
+      return min;
+    }
+    if (value > max) {
+      return max;
+    }
+    return value;
+  }
 }

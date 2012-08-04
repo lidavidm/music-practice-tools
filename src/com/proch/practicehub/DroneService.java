@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -26,7 +28,9 @@ public class DroneService extends Service {
   private final ArrayList<Drone> mDrones;
   private final HashMap<Note, Drone> mNotesToDrones;
   private static final int DRONE_NOTIFICATION_ID = 2;
+  private static final String VOLUME_PREFERENCE = "volume";
   private static DroneService instance = null;
+  private SharedPreferences mPreferences;
 
   public class DroneBinder extends Binder {
     DroneService getService() {
@@ -52,6 +56,10 @@ public class DroneService extends Service {
     mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DroneLock");
 
     setUpPhoneListener();
+    
+    mPreferences = getSharedPreferences("Drone", Activity.MODE_PRIVATE);
+    float volume = mPreferences.getFloat(VOLUME_PREFERENCE, Drone.DEFAULT_VOLUME);
+    setVolume(volume);
   }
 
   /**
@@ -77,6 +85,10 @@ public class DroneService extends Service {
   @Override
   public void onDestroy() {
     stopPlayingAllNotes();
+    saveState();
+    for (Drone drone : mDrones) {
+      drone.destroy();
+    }
     instance = null;
   }
 
@@ -115,6 +127,29 @@ public class DroneService extends Service {
     }
   }
 
+  public float getVolume() {
+    // Return volume of 1st drone, since they all should have the same volume anyways
+    return mDrones.get(0).getVolume();
+  }
+  
+  public void setVolume(float newVolume) {
+    // Force anything outside of the range to be either min or max, so no longer out of range
+    newVolume = Utility.roundToBeInRange(newVolume, Metronome.getMinVolume(),
+        Metronome.getMaxVolume());
+    for (Drone drone : mDrones) {
+      drone.setVolume(newVolume);
+    }
+  }
+  
+  /**
+   * Saves the state by saving the volume into the user's preferences
+   */
+  private void saveState() {
+    SharedPreferences.Editor editor = mPreferences.edit();
+    editor.putFloat(VOLUME_PREFERENCE, getVolume());
+    editor.commit();
+  }
+  
   @Override
   public IBinder onBind(Intent arg0) {
     return mBinder;

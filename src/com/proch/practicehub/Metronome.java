@@ -18,12 +18,25 @@ public class Metronome {
   private int mCurrentBeat;
   private ExecutorService mExecutor;
   private Clicker mClicker;
+  private float mInitialVolume; // Volume to start metronome, may change and not update this back
 
-  public Metronome(Context context) {
+  /**
+   * Creates a Metronome to play the given volume
+   * 
+   * @param context Context object to allow getting integer resources
+   * @param volume Float between 0 and 1, 1 being the loudest
+   */
+  public Metronome(Context context, float volume) {
     mTickData = Utility.intToShortArray(context.getResources().getIntArray(R.array.tick_pcm));
     mTockData = Utility.intToShortArray(context.getResources().getIntArray(R.array.tock_pcm));
 
     mExecutor = Executors.newSingleThreadExecutor();
+    mInitialVolume = volume;
+  }
+
+  public Metronome(Context context) {
+    // Play at default volume, if not specified
+    this(context, Clicker.DEFAULT_VOLUME);
   }
 
   /**
@@ -44,7 +57,7 @@ public class Metronome {
     update(tempo, beatsOn, beatsOff);
     mRunning = true;
 
-    mClicker = new Clicker(mTickData, mTockData);
+    mClicker = new Clicker(mTickData, mTockData, mInitialVolume);
     mExecutor.execute(mClicker);
   }
 
@@ -90,12 +103,33 @@ public class Metronome {
     return mTempo;
   }
 
+  public static float getMinVolume() {
+    return Clicker.MIN_VOLUME;
+  }
+
+  public static float getMaxVolume() {
+    return Clicker.MAX_VOLUME;
+  }
+
+  /**
+   * Returns the volume of the metronome's clicker.
+   * 
+   * @return Float value between 0 and 1, 1 being the loudest.
+   */
+  public float getVolume() {
+    if (mClicker != null) {
+      return mClicker.getVolume();
+    }
+    return mInitialVolume;
+  }
+
   /**
    * Sets the volume for the metronome's clicker, if it has one.
    * 
    * @param newVolume Float value between 0 and 1
    */
   public void setVolume(float newVolume) {
+    mInitialVolume = newVolume; // Start new clickers at this volume
     if (mClicker != null) {
       mClicker.setVolume(newVolume);
     }
@@ -126,23 +160,37 @@ public class Metronome {
     private static final int WRITE_CHUNK_IN_FRAMES = 8820; // 200 ms
     private static final int SAMPLE_RATE = 22050;
     private static final int BUFFER_SIZE = 22050;
+    private static final float MIN_VOLUME = 0.0f;
+    private static final float MAX_VOLUME = 1.0f;
+    private static final float DEFAULT_VOLUME = MAX_VOLUME;
     private final short[] mTickData;
     private final short[] mTockData;
     private final AudioTrack mTrack;
+    private float mVolume = DEFAULT_VOLUME; // Value between 0 and 1, 1 being full volume
 
-    public Clicker(short[] tickData, short[] tockData) {
+    public Clicker(short[] tickData, short[] tockData, float volume) {
       mTickData = tickData;
       mTockData = tockData;
       mTrack = new AudioTrack(AudioManager.STREAM_MUSIC, SAMPLE_RATE, AudioFormat.CHANNEL_OUT_MONO,
           AudioFormat.ENCODING_PCM_16BIT, BUFFER_SIZE, AudioTrack.MODE_STREAM);
+      setVolume(volume);
+    }
+
+    public float getVolume() {
+      return mVolume;
     }
 
     /**
-     * Sets the new volume for the metronome. 
-     * @param newVolume Float value between 0 and 1
+     * Sets the new volume for the metronome.
+     * 
+     * @param newVolume Float value between MIN_VOLUME and MAX_VOLUME
      */
     public void setVolume(float newVolume) {
-      mTrack.setStereoVolume(newVolume, newVolume);
+      if (newVolume < MIN_VOLUME || newVolume > MAX_VOLUME) {
+        throw new IllegalArgumentException("Volume outside of valid range");
+      }
+      mVolume = newVolume;
+      mTrack.setStereoVolume(mVolume, mVolume);
     }
 
     /**
