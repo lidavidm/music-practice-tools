@@ -58,6 +58,7 @@ public class MetronomeFragment extends SherlockFragment {
     public void onServiceConnected(ComponentName className, IBinder service) {
       MetronomeBinder binder = (MetronomeBinder) service;
       mMetronomeService = binder.getService();
+      setUpServiceListener();
       mBound = true;
     }
 
@@ -125,6 +126,8 @@ public class MetronomeFragment extends SherlockFragment {
 
       mActivity.getApplicationContext().unbindService(mConnection);
       mBound = false;
+      
+      removeServiceListener();
     }
   }
 
@@ -291,5 +294,30 @@ public class MetronomeFragment extends SherlockFragment {
     editor.putInt("beatsOff", mBeatsOff);
 
     editor.commit();
+  }
+
+  /**
+   * Sets up a listener for the metronome service to listen for when the metronome and stops and the
+   * updates the UI accordingly.
+   */
+  private void setUpServiceListener() {
+    mMetronomeService
+        .setOnMetronomeChangeListener(new MetronomeService.OnMetronomeChangeListener() {
+
+          public void onStop() {
+            updateRunningState();
+          }
+
+          public void onStart() {
+            updateRunningState();
+          }
+        });
+  }
+  
+  /**
+   * Cancels any listener created by the above method.
+   */
+  private void removeServiceListener() {
+    mMetronomeService.setOnMetronomeChangeListener(null);
   }
 }

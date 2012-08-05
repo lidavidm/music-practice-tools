@@ -19,6 +19,12 @@ import android.widget.RemoteViews;
 
 public class MetronomeService extends Service {
 
+  public interface OnMetronomeChangeListener {
+    public void onStart();
+
+    public void onStop();
+  }
+
   private final IBinder mBinder = new MetronomeBinder();
   private PowerManager.WakeLock mWakeLock;
   private Metronome mMetronome;
@@ -27,6 +33,7 @@ public class MetronomeService extends Service {
   private static final String VOLUME_PREFERENCE = "volume";
   private static MetronomeService instance = null;
   private SharedPreferences mPreferences;
+  private OnMetronomeChangeListener mListener;
 
   @Override
   public void onCreate() {
@@ -109,12 +116,20 @@ public class MetronomeService extends Service {
   public void startMetronome(int tempo, int beatsOn, int beatsOff) {
     mWakeLock.acquire();
     mMetronome.start(tempo, beatsOn, beatsOff);
+    
+    if (mListener != null) {
+      mListener.onStart();
+    }
   }
 
   public void stopMetronome() {
     mMetronome.stop();
     if (mWakeLock.isHeld()) {
       mWakeLock.release();
+    }
+    
+    if (mListener != null) {
+      mListener.onStop();
     }
   }
 
@@ -137,6 +152,10 @@ public class MetronomeService extends Service {
    */
   public float getVolume() {
     return mMetronome.getVolume();
+  }
+
+  public void setOnMetronomeChangeListener(OnMetronomeChangeListener listener) {
+    mListener = listener;
   }
 
   public void updateMetronome(int tempo, int beatsOn, int beatsOff) {

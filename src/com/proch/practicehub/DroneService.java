@@ -21,6 +21,10 @@ import android.widget.RemoteViews;
 
 public class DroneService extends Service {
 
+  public interface OnDroneChangeListener {
+    public void onStopAll();
+  }
+  
   private final IBinder mBinder = new DroneBinder();
   private PowerManager.WakeLock mWakeLock;
   private boolean mHasNotificationUp;
@@ -31,6 +35,7 @@ public class DroneService extends Service {
   private static final String VOLUME_PREFERENCE = "volume";
   private static DroneService instance = null;
   private SharedPreferences mPreferences;
+  private OnDroneChangeListener mListener;
 
   public class DroneBinder extends Binder {
     DroneService getService() {
@@ -115,6 +120,10 @@ public class DroneService extends Service {
     return mHasNotificationUp;
   }
 
+  public void setOnDroneChangeListener(OnDroneChangeListener listener) {
+    mListener = listener;
+  }
+  
   /**
    * Update to the new value of mAddFifth and update all drones.
    * 
@@ -262,6 +271,10 @@ public class DroneService extends Service {
       drone.stop();
     }
     releaseLockIfNecessary();
+    
+    if (mListener != null) {
+      mListener.onStopAll();
+    }
   }
 
   /**

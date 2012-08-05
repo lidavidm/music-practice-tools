@@ -41,10 +41,9 @@ public class DroneFragment extends SherlockFragment {
       setDroneService(binder.getService());
       mBound = true;
 
-      for (Button noteButton : mNoteButtons) {
-        updateButtonColor(noteButton);
-      }
+      updateAllButtonColors();
       mDroneService.setAddFifth(mAddFifth);
+      setUpServiceListener();
     }
 
     public void onServiceDisconnected(ComponentName className) {
@@ -103,9 +102,7 @@ public class DroneFragment extends SherlockFragment {
     super.onResume();
 
     if (mBound) {
-      for (Button noteButton : mNoteButtons) {
-        updateButtonColor(noteButton);
-      }
+      updateAllButtonColors();
     }
   }
 
@@ -128,6 +125,8 @@ public class DroneFragment extends SherlockFragment {
 
       mActivity.getApplicationContext().unbindService(mConnection);
       mBound = false;
+      
+      removeServiceListener();
     }
   }
 
@@ -147,10 +146,10 @@ public class DroneFragment extends SherlockFragment {
 
   private void updateButtonColor(View button) {
     boolean state = mDroneService.isPlayingNote(ID_TO_NOTE.get(button.getId()));
-    int color = state ? getResources().getColor(R.color.button_pressed) : 
-      getResources().getColor(R.color.button_normal);
+    int color = state ? getResources().getColor(R.color.button_pressed) :
+        getResources().getColor(R.color.button_normal);
     button.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
-    
+
     button.setSelected(state);
   }
 
@@ -205,5 +204,36 @@ public class DroneFragment extends SherlockFragment {
     for (Button noteButton : mNoteButtons) {
       updateButtonColor(noteButton);
     }
+  }
+
+  /**
+   * Updates the color of all the note buttons.
+   */
+  private void updateAllButtonColors() {
+    for (Button noteButton : mNoteButtons) {
+      updateButtonColor(noteButton);
+    }
+  }
+
+  /**
+   * Sets up a listener for the drone service to listen for when all drones are stopped and updates
+   * the UI accordingly.
+   */
+  private void setUpServiceListener() {
+    mDroneService
+        .setOnDroneChangeListener(new DroneService.OnDroneChangeListener() {
+
+          public void onStopAll() {
+            updateAllButtonColors();
+          }
+
+        });
+  }
+  
+  /**
+   * Cancels any listener created by the above method.
+   */
+  private void removeServiceListener() {
+    mDroneService.setOnDroneChangeListener(null);
   }
 }

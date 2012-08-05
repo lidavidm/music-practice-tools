@@ -113,7 +113,6 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
     if (DroneService.hasInstanceRunning()) {
       DroneService.getInstance().stopPlayingAllNotes();
     }
-    // TODO: Update fragments UI and state
   }
 
   @Override
