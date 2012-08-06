@@ -43,8 +43,6 @@ public class TunerFragment extends SherlockFragment {
 		// Make volume button always control just the media volume
 		mActivity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		
-		setUpTurnAllOffButton();
-		
 		return mView;
 	}
 
@@ -81,18 +79,5 @@ public class TunerFragment extends SherlockFragment {
 		}
 
 		mTunerCentsView.setCentsMarker(cents);
-	}
-	
-	/*
-	 * Set up 'turn all off' button to stop metronome or drones if running.
-	 */
-	public void setUpTurnAllOffButton() {
-	  // TODO: Implement
-//		final Button allOffButton = (Button) mView.findViewById(R.id.turn_off_everything);
-//		allOffButton.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View v) {
-//				MetronomeService.isRunning();
-//			}
-//		});
 	}
 }

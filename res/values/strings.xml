@@ -19,7 +19,6 @@
     <string name="neg_50_cents">-50 cents</string>
     <string name="pos_50_cents">+50 cents</string>
     <string name="calculating">calculating&#8230;</string>
-    <string name="turn_off_everything">Turn Off Metronome and Tuner</string>
     
     <!-- Drone -->
     <string name="drone">Drone</string>
@@ -43,6 +42,6 @@
     <!-- Menu -->
     <string name="menu_volume">Volume Mixer</string>
     <string name="menu_volume_done">Done</string>
-    <string name="menu_stop_all">Stop All</string>
+    <string name="menu_stop_all">Stop Everything</string>
     
 </resources>
