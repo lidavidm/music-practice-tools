@@ -41,8 +41,6 @@ public class MainActivity extends ActionBarActivity implements VolumeControlDial
         mTabsAdapter = new TabsAdapter(this, mViewPager);
         mTabsAdapter.addTab(MetronomeFragment.class, "Metronome", null);
         mTabsAdapter.addTab(DroneFragment.class, "Drone", null);
-
-        goToTabIfSpecifiedInIntent(getIntent());
     }
 
     @Override
@@ -103,31 +101,6 @@ public class MainActivity extends ActionBarActivity implements VolumeControlDial
         if (DroneService.hasInstanceRunning()) {
             DroneService.getInstance().stopPlayingAllNotes();
         }
-    }
-
-    @Override
-    public void onNewIntent(Intent intent) {
-        goToTabIfSpecifiedInIntent(intent);
-    }
-
-    /**
-     * Checks the intent to see if there was an extra variable passed indicating to open up the app to
-     * a specific tab, and if so, opens that tab.
-     *
-     * @param intent Intent that possibly carrys the extra string variable
-     */
-    private void goToTabIfSpecifiedInIntent(Intent intent) {
-//    Bundle extras = intent.getExtras();
-//    if (extras != null && extras.containsKey("GOTO")) {
-//
-//      String gotoActivityName = (String) extras.get("GOTO");
-//      if (gotoActivityName.equals("Metronome")) {
-//        mTabsAdapter.onTabSelected(mMetronomeTab, null);
-//      }
-//      else if (gotoActivityName.equals("Drone")) {
-//        mTabsAdapter.onTabSelected(mDroneTab, null);
-//      }
-//    }
     }
 
     private void showVolumeControlDialog() {
