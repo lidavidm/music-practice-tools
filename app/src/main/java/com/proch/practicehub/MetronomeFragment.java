@@ -1,7 +1,7 @@
 package com.proch.practicehub;
 
-import net.simonvt.widget.NumberPicker;
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -14,14 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.proch.practicehub.MetronomeService.MetronomeBinder;
 
-public class MetronomeFragment extends SherlockFragment {
+public class MetronomeFragment extends Fragment {
   private static final int MIN_TEMPO = 20;
   private static final int MAX_TEMPO = 400;
   private static final int DEFAULT_TEMPO = 120;

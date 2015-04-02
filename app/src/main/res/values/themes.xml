@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Inherits from Sherlock theme to be able to effectively apply both styles -->
+    <style name="NumberPicker">
+    </style>
+
+    <!-- Alias to have a more descriptive and fitting name for this -->
+    <style name="CompositeTheme" parent="@style/NumberPicker"/>
+        
+</resources>

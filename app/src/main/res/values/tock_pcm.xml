@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- PCM data for a wav file of a tock sound. 16-bit, mono, 22050 Hz. 2872 samples -->

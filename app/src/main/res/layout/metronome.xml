@@ -42,11 +42,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/metronome_tempo" />
 
-            <net.simonvt.widget.NumberPicker
+            <NumberPicker
                 android:id="@+id/tempo_number_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
-            </net.simonvt.widget.NumberPicker>
+            </NumberPicker>
         </LinearLayout>
 
         <LinearLayout
@@ -61,11 +61,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/metronome_beats_on" />
 
-            <net.simonvt.widget.NumberPicker
+            <NumberPicker
                 android:id="@+id/beats_on_number_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
-            </net.simonvt.widget.NumberPicker>
+            </NumberPicker>
         </LinearLayout>
 
         <LinearLayout
@@ -80,11 +80,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/metronome_beats_off" />
 
-            <net.simonvt.widget.NumberPicker
+            <NumberPicker
                 android:id="@+id/beats_off_number_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
-            </net.simonvt.widget.NumberPicker>
+            </NumberPicker>
         </LinearLayout>
     </LinearLayout>
 

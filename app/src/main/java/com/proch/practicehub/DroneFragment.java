@@ -10,6 +10,7 @@ import android.graphics.PorterDuff;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ToggleButton;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.proch.practicehub.DroneService.DroneBinder;
 
-public class DroneFragment extends SherlockFragment {
+public class DroneFragment extends Fragment {
 
   private static final int NUM_NOTES = 12;
   private static final boolean ADD_FIFTH_DEFAULT = true;

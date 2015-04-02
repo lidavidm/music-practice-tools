@@ -6,28 +6,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.Tab;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.proch.practicehub.VolumeMixerDialog.VolumeControlDialogListener;
 
-public class MainActivity extends SherlockFragmentActivity implements VolumeControlDialogListener {
+public class MainActivity extends ActionBarActivity implements VolumeControlDialogListener {
 
   ViewPager mViewPager;
   TabsAdapter mTabsAdapter;
   TextView tabCenter;
   TextView tabText;
-  Tab mMetronomeTab, mTunerTab, mDroneTab;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -38,19 +37,12 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
 
     setContentView(mViewPager);
     ActionBar bar = getSupportActionBar();
-    bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
     bar.setDisplayShowHomeEnabled(false);
     bar.setDisplayShowTitleEnabled(false);
 
     mTabsAdapter = new TabsAdapter(this, mViewPager);
-
-    mMetronomeTab = bar.newTab().setText("Metronome");
-    mTunerTab = bar.newTab().setText("Tuner");
-    mDroneTab = bar.newTab().setText("Drone");
-
-    mTabsAdapter.addTab(mMetronomeTab, MetronomeFragment.class, null);
-    mTabsAdapter.addTab(mTunerTab, TunerFragment.class, null);
-    mTabsAdapter.addTab(mDroneTab, DroneFragment.class, null);
+      mTabsAdapter.addTab(MetronomeFragment.class, "Metronome", null);
+      mTabsAdapter.addTab(DroneFragment.class, "Drone", null);
 
     goToTabIfSpecifiedInIntent(getIntent());
   }
@@ -84,7 +76,7 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getSupportMenuInflater();
+    MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.main_menu, menu);
     return true;
   }
@@ -127,17 +119,17 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
    * @param intent Intent that possibly carrys the extra string variable
    */
   private void goToTabIfSpecifiedInIntent(Intent intent) {
-    Bundle extras = intent.getExtras();
-    if (extras != null && extras.containsKey("GOTO")) {
-
-      String gotoActivityName = (String) extras.get("GOTO");
-      if (gotoActivityName.equals("Metronome")) {
-        mTabsAdapter.onTabSelected(mMetronomeTab, null);
-      }
-      else if (gotoActivityName.equals("Drone")) {
-        mTabsAdapter.onTabSelected(mDroneTab, null);
-      }
-    }
+//    Bundle extras = intent.getExtras();
+//    if (extras != null && extras.containsKey("GOTO")) {
+//
+//      String gotoActivityName = (String) extras.get("GOTO");
+//      if (gotoActivityName.equals("Metronome")) {
+//        mTabsAdapter.onTabSelected(mMetronomeTab, null);
+//      }
+//      else if (gotoActivityName.equals("Drone")) {
+//        mTabsAdapter.onTabSelected(mDroneTab, null);
+//      }
+//    }
   }
 
   private void showVolumeControlDialog() {
@@ -151,27 +143,28 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
     Toast.makeText(this, "Hi, " + inputText, Toast.LENGTH_SHORT).show();
   }
 
-  public static class TabsAdapter extends FragmentPagerAdapter implements
-      ActionBar.TabListener, ViewPager.OnPageChangeListener
+  public static class TabsAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener
   {
-    private final Context mContext;
+      private final Context mContext;
     private final ActionBar mActionBar;
     private final ViewPager mViewPager;
     private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
 
-    static final class TabInfo
+      static final class TabInfo
     {
       private final Class<?> clss;
       private final Bundle args;
+        private final String title;
 
-      TabInfo(Class<?> _class, Bundle _args)
+      TabInfo(Class<?> _class, String _title, Bundle _args)
       {
         clss = _class;
         args = _args;
+          title = _title;
       }
     }
 
-    public TabsAdapter(SherlockFragmentActivity activity, ViewPager pager)
+    public TabsAdapter(ActionBarActivity activity, ViewPager pager)
     {
       super(activity.getSupportFragmentManager());
       mContext = activity;
@@ -181,15 +174,11 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
       mViewPager.setOnPageChangeListener(this);
     }
 
-    public void addTab(ActionBar.Tab tab, Class<?> clss, Bundle args)
-    {
-      TabInfo info = new TabInfo(clss, args);
-      tab.setTag(info);
-      tab.setTabListener(this);
-      mTabs.add(info);
-      mActionBar.addTab(tab);
-      notifyDataSetChanged();
-    }
+      public void addTab(Class<?> klass, String title, Bundle args) {
+          TabInfo info = new TabInfo(klass, title, args);
+          mTabs.add(info);
+          notifyDataSetChanged();
+      }
 
     @Override
     public int getCount()
@@ -205,6 +194,11 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
           info.args);
     }
 
+      @Override
+      public CharSequence getPageTitle(int position) {
+          return mTabs.get(position).title;
+      }
+
     public void onPageScrolled(int position, float positionOffset,
         int positionOffsetPixels)
     {
@@ -212,30 +206,10 @@ public class MainActivity extends SherlockFragmentActivity implements VolumeCont
 
     public void onPageSelected(int position)
     {
-      mActionBar.setSelectedNavigationItem(position);
+
     }
 
     public void onPageScrollStateChanged(int state)
-    {
-    }
-
-    public void onTabSelected(Tab tab, FragmentTransaction ft)
-    {
-      Object tag = tab.getTag();
-      for (int i = 0; i < mTabs.size(); i++)
-      {
-        if (mTabs.get(i) == tag)
-        {
-          mViewPager.setCurrentItem(i);
-        }
-      }
-    }
-
-    public void onTabUnselected(Tab tab, FragmentTransaction ft)
-    {
-    }
-
-    public void onTabReselected(Tab tab, FragmentTransaction ft)
     {
     }
   }
