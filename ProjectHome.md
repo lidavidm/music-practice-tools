@@ -1,0 +1,1 @@
+Includes an advanced metronome, tuner, and pitch drone, which can be all be used simultaneously.
