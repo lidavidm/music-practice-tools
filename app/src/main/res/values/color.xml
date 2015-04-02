@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="button_pressed">#33B5E5</color>
-    <color name="button_normal">#9C9C9C</color>
-    <color name="start_green">#99CC66</color>
-    <color name="stop_red">#CD5050</color>
+    <color name="button_pressed">@color/accent</color>
+    <color name="start_green">#4CAF50</color>
+    <color name="stop_red">#F44336</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
-    <color name="cents_marker">#FF0000</color>
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="accent">#2196F3</color>
 
 </resources>

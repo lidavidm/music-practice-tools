@@ -99,7 +99,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="75sp" />
+            android:textSize="75sp"
+            android:fontFamily="sans-serif-thin" />
 
         <LinearLayout
             android:layout_width="match_parent"

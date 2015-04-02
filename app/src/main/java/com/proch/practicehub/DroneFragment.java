@@ -143,9 +143,13 @@ public class DroneFragment extends Fragment {
 
     private void updateButtonColor(View button) {
         boolean state = mDroneService.isPlayingNote(ID_TO_NOTE.get(button.getId()));
-        int color = state ? getResources().getColor(R.color.button_pressed) :
-                getResources().getColor(R.color.button_normal);
-        button.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        if (state) {
+            button.getBackground().setColorFilter(getResources().getColor(R.color.button_pressed),
+                    PorterDuff.Mode.SRC_IN);
+        }
+        else {
+            button.getBackground().setColorFilter(null);
+        }
 
         button.setSelected(state);
     }

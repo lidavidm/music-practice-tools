@@ -30,13 +30,12 @@ public class MainActivity extends ActionBarActivity implements VolumeControlDial
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mViewPager = new ViewPager(this);
-        mViewPager.setId(R.id.view_pager);
+        setContentView(R.layout.main);
+        mViewPager = (ViewPager) findViewById(R.id.view_pager);
 
-        setContentView(mViewPager);
         ActionBar bar = getSupportActionBar();
         bar.setDisplayShowHomeEnabled(false);
-        bar.setDisplayShowTitleEnabled(false);
+        bar.setTitle("Practice Hub");
 
         mTabsAdapter = new TabsAdapter(this, mViewPager);
         mTabsAdapter.addTab(MetronomeFragment.class, "Metronome", null);
@@ -149,7 +148,7 @@ public class MainActivity extends ActionBarActivity implements VolumeControlDial
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mTabs.get(position).title;
+            return mTabs.get(position).title.toUpperCase();
         }
 
         public void onPageScrolled(int position, float positionOffset,
