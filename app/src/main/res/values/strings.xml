@@ -12,7 +12,7 @@
     <string name="metronome_tap_tempo">Tap Tempo</string>
     <string name="metronome_beats_on">Beats On</string>
     <string name="metronome_beats_off">Beats Off</string>
-    
+
     <!-- Drone -->
     <string name="drone">Drone</string>
     <string name="note_A">A</string>
@@ -31,10 +31,10 @@
 
     <!-- Notification -->
     <string name="notification_stop">Stop</string>
-    
+
     <!-- Menu -->
     <string name="menu_volume">Volume Mixer</string>
     <string name="menu_volume_done">Done</string>
     <string name="menu_stop_all">Stop Everything</string>
-    
+
 </resources>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat">
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat"></style>
 
     <style name="NotificationText">
         <item name="android:textColor">?android:attr/textColorPrimary</item>

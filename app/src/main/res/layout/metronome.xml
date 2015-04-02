@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <com.proch.practicehub.VerticalSeekBar
         android:id="@+id/tempo_seekbar"
@@ -28,14 +28,14 @@
         android:layout_above="@id/tempo_tap"
         android:layout_toRightOf="@id/tempo_seekbar"
         android:baselineAligned="false"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,8 +45,7 @@
             <NumberPicker
                 android:id="@+id/tempo_number_picker"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </NumberPicker>
+                android:layout_height="wrap_content"></NumberPicker>
         </LinearLayout>
 
         <LinearLayout
@@ -54,7 +53,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,8 +63,7 @@
             <NumberPicker
                 android:id="@+id/beats_on_number_picker"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </NumberPicker>
+                android:layout_height="wrap_content"></NumberPicker>
         </LinearLayout>
 
         <LinearLayout
@@ -73,7 +71,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,8 +81,7 @@
             <NumberPicker
                 android:id="@+id/beats_off_number_picker"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </NumberPicker>
+                android:layout_height="wrap_content"></NumberPicker>
         </LinearLayout>
     </LinearLayout>
 
@@ -94,7 +91,7 @@
         android:layout_above="@+id/metronome_number_pickers"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/tempo_seekbar"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tempo_display"
@@ -108,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center" >
+            android:gravity="center">
 
             <ToggleButton
                 android:id="@+id/metronome_start_button"

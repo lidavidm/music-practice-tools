@@ -3,7 +3,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp" >
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/custom_notification_icon"
@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginRight="10sp"
         android:contentDescription="@string/metronome_icon"
-        android:src="@drawable/ic_launcher"/>
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/custom_notification_title"

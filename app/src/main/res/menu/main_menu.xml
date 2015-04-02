@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/menu_volume"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/menu_volume"/>
+        android:title="@string/menu_volume" />
     <item
         android:id="@+id/menu_stop_all"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/menu_stop_all"/>
+        android:title="@string/menu_stop_all" />
 
 </menu>
