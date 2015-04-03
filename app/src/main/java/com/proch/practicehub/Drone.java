@@ -111,7 +111,7 @@ public class Drone {
 
     private class PitchGenerator implements Runnable {
 
-        private static final int SAMPLE_RATE = 8000;
+        private static final int SAMPLE_RATE = 48000;
         private static final int ENCODING = AudioFormat.ENCODING_PCM_16BIT;
         private static final int CHANNEL_CONFIG = AudioFormat.CHANNEL_OUT_MONO;
         private final int BUFFER_SIZE;
@@ -168,6 +168,15 @@ public class Drone {
                 }
                 mTrack.write(samples, 0, samples.length);
             }
+            // Try to avoid popping sound by making sure audio ramps down to a zero point
+            // See: http://nathanbelue.blogspot.com/2013/01/playing-pitch-in-android-app-with.html
+            double lastSample = samples[BUFFER_SIZE - 1];
+            double decrement = lastSample / BUFFER_SIZE;
+            for (int i = 1; i <= samples.length; i++) {
+                samples[i-1] = (short) (lastSample - (decrement * BUFFER_SIZE));
+            }
+            mTrack.write(samples, 0, samples.length);
+            mTrack.stop();
             mTrack.release();
         }
     }
