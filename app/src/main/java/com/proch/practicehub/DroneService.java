@@ -145,7 +145,7 @@ public class DroneService extends Service {
     private void saveState() {
         SharedPreferences.Editor editor = mPreferences.edit();
         editor.putFloat(VOLUME_PREFERENCE, getVolume());
-        editor.commit();
+        editor.apply();
     }
 
     @Override
@@ -175,7 +175,7 @@ public class DroneService extends Service {
                 .setContent(contentView)
                 .setOngoing(true)
                 .setContentIntent(pendingIntent)
-                .getNotification();
+                .build();
 
         startForeground(DRONE_NOTIFICATION_ID, notification);
         mHasNotificationUp = true;

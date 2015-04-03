@@ -3,6 +3,7 @@ package com.proch.practicehub;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
+import android.os.Build;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -142,7 +143,13 @@ public class Drone {
                 throw new IllegalArgumentException("Volume outside of valid range");
             }
             mVolume = newVolume;
-            mTrack.setStereoVolume(mVolume, mVolume);
+
+            if (Build.VERSION.SDK_INT >= 21) {
+                mTrack.setVolume(mVolume);
+            }
+            else {
+                mTrack.setStereoVolume(mVolume, mVolume);
+            }
         }
 
         public void run() {
