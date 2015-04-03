@@ -16,17 +16,17 @@
     <!-- Drone -->
     <string name="drone">Drone</string>
     <string name="note_A">A</string>
-    <string name="note_Bb">A#/Bb</string>
+    <string name="note_Bb">A♯/B♭</string>
     <string name="note_B">B</string>
     <string name="note_C">C</string>
-    <string name="note_Db">C#/Db</string>
+    <string name="note_Db">C♯/D♭</string>
     <string name="note_D">D</string>
-    <string name="note_Eb">D#/Eb</string>
+    <string name="note_Eb">D♯/E♭</string>
     <string name="note_E">E</string>
     <string name="note_F">F</string>
-    <string name="note_Gb">F#/Gb</string>
+    <string name="note_Gb">F♯/G♭</string>
     <string name="note_G">G</string>
-    <string name="note_Ab">G#/Ab</string>
+    <string name="note_Ab">G♯/A♭</string>
     <string name="turn_off_all_drones">Stop All Drones</string>
 
     <!-- Notification -->
