@@ -2,7 +2,7 @@
 <resources>
 
     <!-- PCM data for a wav file of a tock sound. 16-bit, mono, 22050 Hz. 2872 samples -->
-    <integer-array name="tock_pcm">
+    <integer-array name="tick_pcm">
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -30,11 +30,8 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>-1</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
@@ -244,9 +241,6 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -273,20 +267,6 @@
         <item>0</item>
         <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -302,26 +282,13 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -344,7 +311,6 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -370,15 +336,9 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -386,29 +346,10 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -423,6 +364,8 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>1</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -435,10 +378,8 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>-1</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -448,24 +389,13 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -477,36 +407,21 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -514,24 +429,16 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>1</item>
-        <item>0</item>
         <item>0</item>
-        <item>0</item>
         <item>1</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -544,1967 +451,1918 @@
         <item>-1</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
         <item>-1</item>
-        <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>-1</item>
-        <item>-1</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>0</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>-1</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>1</item>
         <item>0</item>
         <item>0</item>
+        <item>-1</item>
         <item>1</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>1</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
         <item>-1</item>
-        <item>-1</item>
-        <item>0</item>
         <item>0</item>
-        <item>0</item>
         <item>-1</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
-        <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>1</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>1</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
         <item>1</item>
-        <item>-1</item>
         <item>0</item>
-        <item>0</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>0</item>
-        <item>1</item>
-        <item>1</item>
         <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>-1</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>1</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
         <item>1</item>
         <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
         <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
         <item>-1</item>
-        <item>-1</item>
         <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>1</item>
         <item>0</item>
         <item>-1</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
         <item>0</item>
         <item>1</item>
-        <item>1</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
-        <item>-1</item>
-        <item>1</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>1</item>
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>1</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
-        <item>1</item>
         <item>1</item>
         <item>-1</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>1</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
-        <item>-2</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
         <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>-1</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>0</item>
         <item>-1</item>
-        <item>1</item>
         <item>-1</item>
-        <item>1</item>
         <item>0</item>
-        <item>0</item>
         <item>1</item>
         <item>0</item>
         <item>0</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
-        <item>1</item>
         <item>0</item>
-        <item>0</item>
         <item>1</item>
-        <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>1</item>
-        <item>1</item>
         <item>0</item>
         <item>-1</item>
         <item>-1</item>
         <item>0</item>
-        <item>-1</item>
         <item>1</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>-1</item>
         <item>0</item>
+        <item>-1</item>
         <item>0</item>
         <item>-1</item>
-        <item>1</item>
         <item>-1</item>
         <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
-        <item>1</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
         <item>0</item>
-        <item>-1</item>
         <item>1</item>
-        <item>-1</item>
         <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>1</item>
-        <item>-1</item>
-        <item>-1</item>
         <item>0</item>
         <item>1</item>
-        <item>0</item>
-        <item>2</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>2</item>
         <item>0</item>
         <item>2</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>-1</item>
         <item>1</item>
         <item>1</item>
         <item>0</item>
         <item>1</item>
-        <item>-2</item>
-        <item>1</item>
-        <item>-2</item>
-        <item>1</item>
-        <item>-2</item>
+        <item>0</item>
         <item>-1</item>
-        <item>-2</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
         <item>1</item>
-        <item>-2</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
         <item>0</item>
         <item>-1</item>
         <item>1</item>
         <item>0</item>
-        <item>-2</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>0</item>
         <item>-1</item>
         <item>1</item>
-        <item>-2</item>
-        <item>4</item>
-        <item>-2</item>
-        <item>4</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
         <item>-1</item>
-        <item>4</item>
-        <item>-4</item>
+        <item>1</item>
+        <item>-2</item>
+        <item>1</item>
+        <item>-2</item>
+        <item>1</item>
+        <item>2</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
         <item>2</item>
         <item>-2</item>
-        <item>1</item>
+        <item>2</item>
         <item>-2</item>
+        <item>2</item>
+        <item>-2</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>3</item>
+        <item>-1</item>
+        <item>3</item>
+        <item>-1</item>
+        <item>3</item>
+        <item>-2</item>
+        <item>1</item>
         <item>-1</item>
         <item>1</item>
-        <item>-4</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
         <item>2</item>
-        <item>-4</item>
-        <item>2</item>
-        <item>-7</item>
-        <item>4</item>
-        <item>-6</item>
-        <item>4</item>
-        <item>-4</item>
-        <item>5</item>
+        <item>0</item>
+        <item>1</item>
         <item>-3</item>
-        <item>4</item>
-        <item>-1</item>
-        <item>2</item>
-        <item>0</item>
-        <item>-3</item>
+        <item>3</item>
+        <item>-2</item>
         <item>2</item>
         <item>-3</item>
-        <item>5</item>
-        <item>-9</item>
-        <item>7</item>
-        <item>-4</item>
+        <item>3</item>
+        <item>-2</item>
+        <item>3</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>3</item>
+        <item>-3</item>
         <item>6</item>
-        <item>-6</item>
-        <item>7</item>
-        <item>-10</item>
-        <item>0</item>
+        <item>-8</item>
+        <item>10</item>
         <item>-9</item>
-        <item>3</item>
-        <item>-4</item>
-        <item>-1</item>
-        <item>3</item>
-        <item>0</item>
-        <item>4</item>
-        <item>-5</item>
-        <item>7</item>
-        <item>-5</item>
         <item>11</item>
-        <item>3</item>
-        <item>14</item>
-        <item>-3</item>
-        <item>15</item>
-        <item>-4</item>
-        <item>4</item>
-        <item>-5</item>
-        <item>8</item>
-        <item>-7</item>
-        <item>-8</item>
-        <item>-8</item>
-        <item>-5</item>
-        <item>-8</item>
-        <item>-8</item>
-        <item>1</item>
-        <item>3</item>
-        <item>-2</item>
-        <item>6</item>
-        <item>-1</item>
-        <item>-22</item>
-        <item>5</item>
-        <item>-3</item>
-        <item>2</item>
-        <item>-12</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-4</item>
-        <item>7</item>
-        <item>17</item>
-        <item>5</item>
-        <item>20</item>
-        <item>-10</item>
-        <item>23</item>
-        <item>-3</item>
-        <item>50</item>
-        <item>15</item>
-        <item>33</item>
-        <item>38</item>
-        <item>-49</item>
-        <item>-38</item>
-        <item>-24</item>
-        <item>31</item>
-        <item>-18</item>
-        <item>7</item>
-        <item>43</item>
-        <item>-28</item>
-        <item>-8</item>
-        <item>22</item>
-        <item>-25</item>
         <item>-13</item>
-        <item>-40</item>
-        <item>-46</item>
-        <item>-61</item>
-        <item>23</item>
-        <item>-9</item>
-        <item>-21</item>
-        <item>4</item>
-        <item>-3</item>
-        <item>15</item>
-        <item>37</item>
-        <item>28</item>
-        <item>60</item>
-        <item>52</item>
-        <item>28</item>
-        <item>68</item>
-        <item>80</item>
-        <item>54</item>
-        <item>17</item>
-        <item>4</item>
-        <item>34</item>
-        <item>-14</item>
-        <item>-66</item>
-        <item>-2</item>
-        <item>-55</item>
-        <item>-17</item>
-        <item>-23</item>
-        <item>-42</item>
-        <item>-82</item>
-        <item>4</item>
-        <item>5</item>
-        <item>-8</item>
-        <item>27</item>
-        <item>-68</item>
-        <item>-112</item>
-        <item>-21</item>
-        <item>-17</item>
-        <item>-47</item>
-        <item>-37</item>
-        <item>-70</item>
-        <item>18</item>
-        <item>-100</item>
-        <item>87</item>
-        <item>39</item>
-        <item>61</item>
-        <item>152</item>
-        <item>64</item>
-        <item>174</item>
-        <item>14</item>
-        <item>107</item>
-        <item>54</item>
-        <item>96</item>
-        <item>181</item>
-        <item>-88</item>
-        <item>-24</item>
-        <item>-60</item>
-        <item>-129</item>
-        <item>-33</item>
-        <item>-27</item>
-        <item>-71</item>
-        <item>-249</item>
-        <item>-35</item>
-        <item>134</item>
-        <item>54</item>
-        <item>-21</item>
-        <item>-21</item>
-        <item>-155</item>
-        <item>-180</item>
-        <item>-57</item>
-        <item>-70</item>
-        <item>-324</item>
-        <item>-22</item>
-        <item>99</item>
-        <item>-66</item>
-        <item>-4</item>
-        <item>-21</item>
-        <item>328</item>
-        <item>129</item>
-        <item>268</item>
-        <item>367</item>
-        <item>114</item>
-        <item>195</item>
-        <item>143</item>
-        <item>-166</item>
-        <item>-20</item>
-        <item>-52</item>
-        <item>102</item>
-        <item>-101</item>
-        <item>-285</item>
-        <item>34</item>
-        <item>-150</item>
-        <item>-315</item>
-        <item>-273</item>
-        <item>49</item>
-        <item>140</item>
-        <item>-47</item>
-        <item>142</item>
-        <item>-127</item>
-        <item>-907</item>
-        <item>-195</item>
-        <item>-16</item>
-        <item>-273</item>
-        <item>-526</item>
-        <item>-485</item>
-        <item>-8</item>
-        <item>-361</item>
-        <item>791</item>
-        <item>469</item>
-        <item>620</item>
-        <item>805</item>
-        <item>446</item>
-        <item>994</item>
-        <item>-21</item>
-        <item>784</item>
-        <item>481</item>
-        <item>668</item>
-        <item>439</item>
-        <item>-976</item>
-        <item>-174</item>
-        <item>-348</item>
-        <item>-253</item>
-        <item>-300</item>
-        <item>-244</item>
-        <item>392</item>
-        <item>-656</item>
-        <item>-531</item>
-        <item>78</item>
-        <item>-115</item>
-        <item>-694</item>
-        <item>38</item>
-        <item>188</item>
-        <item>-164</item>
-        <item>560</item>
-        <item>498</item>
-        <item>283</item>
-        <item>-14</item>
-        <item>84</item>
-        <item>114</item>
-        <item>-370</item>
-        <item>-1048</item>
-        <item>-354</item>
-        <item>-125</item>
-        <item>-1624</item>
-        <item>-48</item>
-        <item>-169</item>
-        <item>-186</item>
-        <item>1225</item>
-        <item>-204</item>
-        <item>47</item>
-        <item>-3290</item>
-        <item>-362</item>
-        <item>66</item>
-        <item>-1311</item>
-        <item>-1040</item>
-        <item>2337</item>
-        <item>1012</item>
-        <item>-7388</item>
-        <item>5083</item>
-        <item>-2342</item>
-        <item>-14516</item>
-        <item>-2626</item>
-        <item>1531</item>
-        <item>8305</item>
-        <item>7768</item>
-        <item>6055</item>
-        <item>11097</item>
-        <item>2524</item>
-        <item>3301</item>
-        <item>4045</item>
-        <item>-1324</item>
-        <item>3619</item>
-        <item>3691</item>
-        <item>1053</item>
-        <item>3640</item>
-        <item>-4136</item>
-        <item>-14590</item>
-        <item>-13674</item>
-        <item>-3075</item>
-        <item>2920</item>
-        <item>-8995</item>
-        <item>-18433</item>
-        <item>-10167</item>
-        <item>-4559</item>
-        <item>-11485</item>
-        <item>-6049</item>
-        <item>-6548</item>
-        <item>-5019</item>
-        <item>7570</item>
-        <item>5329</item>
-        <item>12813</item>
-        <item>12654</item>
-        <item>-2942</item>
-        <item>4710</item>
-        <item>19149</item>
-        <item>23346</item>
-        <item>15693</item>
-        <item>8388</item>
-        <item>9904</item>
-        <item>6396</item>
-        <item>6940</item>
-        <item>10760</item>
-        <item>8308</item>
-        <item>4320</item>
-        <item>-2657</item>
-        <item>-8361</item>
-        <item>-11310</item>
-        <item>-20427</item>
-        <item>-27837</item>
-        <item>-30444</item>
-        <item>-18786</item>
-        <item>-11931</item>
-        <item>-20559</item>
-        <item>-26077</item>
-        <item>-18056</item>
-        <item>4546</item>
-        <item>1477</item>
-        <item>-8563</item>
-        <item>1854</item>
-        <item>7492</item>
-        <item>13402</item>
-        <item>22405</item>
-        <item>21896</item>
-        <item>21375</item>
-        <item>28266</item>
-        <item>29630</item>
-        <item>29832</item>
-        <item>29207</item>
-        <item>20116</item>
-        <item>8151</item>
-        <item>196</item>
-        <item>5929</item>
-        <item>9043</item>
-        <item>-4380</item>
-        <item>-19859</item>
-        <item>-19446</item>
-        <item>-19095</item>
-        <item>-27648</item>
-        <item>-28542</item>
-        <item>-30695</item>
-        <item>-27673</item>
-        <item>-23834</item>
-        <item>-18757</item>
-        <item>-16297</item>
-        <item>-21309</item>
-        <item>-7954</item>
-        <item>-2292</item>
-        <item>4837</item>
-        <item>19837</item>
-        <item>10582</item>
-        <item>6495</item>
-        <item>19227</item>
-        <item>30954</item>
-        <item>28830</item>
-        <item>25178</item>
-        <item>29470</item>
-        <item>31945</item>
-        <item>29025</item>
-        <item>19878</item>
-        <item>15661</item>
-        <item>6919</item>
-        <item>-1281</item>
-        <item>-227</item>
-        <item>-2528</item>
-        <item>-8088</item>
-        <item>-16063</item>
-        <item>-25308</item>
-        <item>-28495</item>
-        <item>-23327</item>
-        <item>-26091</item>
-        <item>-30860</item>
-        <item>-31823</item>
-        <item>-22980</item>
-        <item>-11732</item>
-        <item>-17345</item>
-        <item>-11534</item>
-        <item>-6355</item>
-        <item>-4147</item>
-        <item>6797</item>
-        <item>12501</item>
-        <item>20044</item>
-        <item>17030</item>
-        <item>17980</item>
-        <item>27382</item>
-        <item>30921</item>
-        <item>30136</item>
-        <item>27436</item>
-        <item>28631</item>
-        <item>23514</item>
-        <item>20650</item>
-        <item>9180</item>
-        <item>-6837</item>
-        <item>-5537</item>
-        <item>-3006</item>
-        <item>-5756</item>
-        <item>-13328</item>
-        <item>-19629</item>
-        <item>-24311</item>
-        <item>-27917</item>
-        <item>-26301</item>
-        <item>-19034</item>
-        <item>-18870</item>
-        <item>-23672</item>
-        <item>-21250</item>
-        <item>-20949</item>
-        <item>-8886</item>
-        <item>-1733</item>
-        <item>-6197</item>
-        <item>244</item>
-        <item>10285</item>
-        <item>18716</item>
-        <item>14381</item>
-        <item>15103</item>
-        <item>23671</item>
-        <item>26712</item>
-        <item>29833</item>
-        <item>29014</item>
-        <item>26286</item>
-        <item>17654</item>
-        <item>12082</item>
-        <item>5894</item>
-        <item>-1396</item>
-        <item>-173</item>
-        <item>-7141</item>
-        <item>-14969</item>
-        <item>-13278</item>
-        <item>-11389</item>
-        <item>-16394</item>
-        <item>-23242</item>
-        <item>-21297</item>
-        <item>-15210</item>
-        <item>-18879</item>
-        <item>-21931</item>
-        <item>-16445</item>
-        <item>-16504</item>
-        <item>-11195</item>
-        <item>-3183</item>
-        <item>-1126</item>
-        <item>2936</item>
-        <item>7344</item>
-        <item>13122</item>
-        <item>15910</item>
-        <item>20022</item>
-        <item>21886</item>
-        <item>17944</item>
-        <item>19295</item>
-        <item>22658</item>
-        <item>22898</item>
-        <item>14329</item>
-        <item>6398</item>
-        <item>4608</item>
-        <item>-197</item>
-        <item>-2180</item>
-        <item>-4631</item>
-        <item>-10022</item>
-        <item>-12706</item>
-        <item>-14435</item>
-        <item>-13362</item>
-        <item>-13970</item>
-        <item>-15859</item>
-        <item>-14700</item>
-        <item>-16860</item>
-        <item>-14475</item>
-        <item>-8573</item>
-        <item>-10780</item>
-        <item>-10767</item>
-        <item>-3715</item>
-        <item>2777</item>
-        <item>6121</item>
-        <item>9323</item>
-        <item>11032</item>
-        <item>9978</item>
-        <item>11437</item>
-        <item>13203</item>
-        <item>14858</item>
-        <item>16964</item>
-        <item>15141</item>
-        <item>12403</item>
-        <item>9159</item>
-        <item>5805</item>
-        <item>3708</item>
-        <item>-2196</item>
-        <item>-3306</item>
-        <item>153</item>
-        <item>-4404</item>
-        <item>-9457</item>
-        <item>-10884</item>
-        <item>-9793</item>
-        <item>-9858</item>
-        <item>-12664</item>
-        <item>-11795</item>
-        <item>-11659</item>
-        <item>-10165</item>
-        <item>-8151</item>
-        <item>-8833</item>
-        <item>-5811</item>
-        <item>-1406</item>
-        <item>394</item>
-        <item>1569</item>
-        <item>8953</item>
-        <item>13506</item>
-        <item>8201</item>
-        <item>6261</item>
-        <item>8259</item>
-        <item>10834</item>
-        <item>11852</item>
-        <item>9617</item>
-        <item>9367</item>
-        <item>9262</item>
-        <item>6325</item>
-        <item>2166</item>
-        <item>-2281</item>
-        <item>-2081</item>
-        <item>294</item>
-        <item>-4443</item>
-        <item>-7180</item>
-        <item>-4651</item>
-        <item>-7442</item>
-        <item>-13336</item>
-        <item>-13664</item>
-        <item>-7269</item>
-        <item>-5730</item>
-        <item>-8959</item>
-        <item>-8754</item>
-        <item>-6061</item>
-        <item>-2457</item>
-        <item>-607</item>
-        <item>1728</item>
-        <item>4669</item>
-        <item>9116</item>
-        <item>10332</item>
-        <item>4347</item>
-        <item>4783</item>
-        <item>8900</item>
-        <item>7501</item>
-        <item>4548</item>
-        <item>5812</item>
-        <item>9644</item>
-        <item>6929</item>
-        <item>2123</item>
-        <item>2100</item>
-        <item>2317</item>
-        <item>-244</item>
-        <item>-3489</item>
-        <item>-6134</item>
-        <item>-5866</item>
-        <item>-3956</item>
-        <item>-6829</item>
-        <item>-11079</item>
-        <item>-10243</item>
-        <item>-6347</item>
-        <item>-6106</item>
-        <item>-6532</item>
-        <item>-2107</item>
-        <item>664</item>
-        <item>-1079</item>
-        <item>-1490</item>
-        <item>3015</item>
-        <item>6077</item>
-        <item>6209</item>
-        <item>6898</item>
-        <item>6520</item>
-        <item>6909</item>
-        <item>5948</item>
-        <item>2338</item>
-        <item>1074</item>
-        <item>4961</item>
-        <item>7932</item>
-        <item>3935</item>
-        <item>370</item>
-        <item>227</item>
-        <item>-1974</item>
-        <item>-5422</item>
-        <item>-4824</item>
-        <item>-2322</item>
-        <item>-4049</item>
-        <item>-7571</item>
-        <item>-8168</item>
-        <item>-6014</item>
-        <item>-4152</item>
-        <item>-4058</item>
-        <item>-4623</item>
-        <item>-2629</item>
-        <item>1710</item>
-        <item>2040</item>
-        <item>-823</item>
-        <item>181</item>
-        <item>4395</item>
-        <item>5706</item>
-        <item>5243</item>
-        <item>6686</item>
-        <item>7124</item>
-        <item>4647</item>
-        <item>2809</item>
-        <item>3638</item>
-        <item>4086</item>
-        <item>2820</item>
-        <item>606</item>
-        <item>-141</item>
-        <item>1722</item>
-        <item>960</item>
-        <item>-4253</item>
-        <item>-8100</item>
-        <item>-6609</item>
-        <item>-4074</item>
-        <item>-4469</item>
-        <item>-4962</item>
-        <item>-4153</item>
-        <item>-4177</item>
-        <item>-4682</item>
-        <item>-2744</item>
-        <item>512</item>
-        <item>2012</item>
-        <item>1200</item>
-        <item>488</item>
-        <item>2024</item>
-        <item>3769</item>
-        <item>2900</item>
-        <item>1538</item>
-        <item>4387</item>
-        <item>8052</item>
-        <item>7075</item>
-        <item>3012</item>
-        <item>1298</item>
-        <item>1972</item>
-        <item>1567</item>
-        <item>1328</item>
-        <item>1500</item>
-        <item>523</item>
-        <item>-1838</item>
-        <item>-4273</item>
-        <item>-4850</item>
-        <item>-3994</item>
-        <item>-4516</item>
-        <item>-6790</item>
-        <item>-7406</item>
-        <item>-3852</item>
-        <item>-1047</item>
-        <item>-2858</item>
-        <item>-3472</item>
-        <item>-258</item>
-        <item>2037</item>
-        <item>1584</item>
-        <item>2041</item>
-        <item>3364</item>
-        <item>3335</item>
-        <item>2504</item>
-        <item>2685</item>
-        <item>3997</item>
-        <item>5274</item>
-        <item>5207</item>
-        <item>3159</item>
-        <item>3211</item>
-        <item>4574</item>
-        <item>1710</item>
-        <item>-2255</item>
-        <item>-1671</item>
-        <item>458</item>
-        <item>-332</item>
-        <item>-2408</item>
-        <item>-3370</item>
-        <item>-4384</item>
-        <item>-6040</item>
-        <item>-6308</item>
-        <item>-4821</item>
-        <item>-3777</item>
-        <item>-3601</item>
-        <item>-3210</item>
-        <item>-2798</item>
-        <item>-1414</item>
-        <item>888</item>
-        <item>808</item>
-        <item>900</item>
-        <item>3451</item>
-        <item>4216</item>
-        <item>2542</item>
-        <item>2433</item>
-        <item>4242</item>
-        <item>4470</item>
-        <item>4440</item>
-        <item>5513</item>
-        <item>5397</item>
-        <item>3410</item>
-        <item>2053</item>
-        <item>803</item>
-        <item>-661</item>
-        <item>-943</item>
-        <item>-2405</item>
-        <item>-4167</item>
-        <item>-3772</item>
-        <item>-2600</item>
-        <item>-3763</item>
-        <item>-6075</item>
-        <item>-5603</item>
-        <item>-3801</item>
-        <item>-4311</item>
-        <item>-4655</item>
-        <item>-2727</item>
-        <item>-1196</item>
-        <item>-1093</item>
-        <item>-766</item>
-        <item>986</item>
-        <item>2380</item>
-        <item>3075</item>
-        <item>2988</item>
-        <item>3175</item>
-        <item>4255</item>
-        <item>4445</item>
-        <item>3488</item>
-        <item>3528</item>
-        <item>5673</item>
-        <item>5897</item>
-        <item>3275</item>
-        <item>1247</item>
-        <item>1094</item>
-        <item>144</item>
-        <item>-2546</item>
-        <item>-3830</item>
-        <item>-3312</item>
-        <item>-3635</item>
-        <item>-4914</item>
-        <item>-5023</item>
-        <item>-4442</item>
-        <item>-4172</item>
-        <item>-3968</item>
-        <item>-4199</item>
-        <item>-3283</item>
-        <item>-1421</item>
-        <item>-1562</item>
-        <item>-2269</item>
-        <item>-584</item>
-        <item>1644</item>
-        <item>2346</item>
-        <item>2489</item>
-        <item>3140</item>
-        <item>4163</item>
-        <item>4132</item>
-        <item>3952</item>
-        <item>4693</item>
-        <item>4972</item>
-        <item>4445</item>
-        <item>3579</item>
-        <item>3051</item>
-        <item>2444</item>
-        <item>1116</item>
-        <item>-1102</item>
-        <item>-3080</item>
-        <item>-2557</item>
-        <item>-1952</item>
-        <item>-4039</item>
-        <item>-5647</item>
-        <item>-4361</item>
-        <item>-3261</item>
-        <item>-3841</item>
-        <item>-4086</item>
-        <item>-3153</item>
-        <item>-2835</item>
-        <item>-2807</item>
-        <item>-2084</item>
-        <item>-1178</item>
-        <item>265</item>
-        <item>788</item>
-        <item>1205</item>
-        <item>2821</item>
-        <item>4202</item>
-        <item>4226</item>
-        <item>3140</item>
-        <item>3257</item>
-        <item>4515</item>
-        <item>4425</item>
-        <item>3101</item>
-        <item>2675</item>
-        <item>2632</item>
-        <item>1384</item>
-        <item>323</item>
-        <item>-309</item>
-        <item>-1265</item>
-        <item>-2357</item>
-        <item>-3415</item>
-        <item>-3429</item>
-        <item>-2987</item>
-        <item>-3254</item>
-        <item>-3789</item>
-        <item>-3600</item>
-        <item>-2229</item>
-        <item>-1750</item>
-        <item>-2494</item>
-        <item>-2627</item>
-        <item>-1617</item>
-        <item>-577</item>
-        <item>-302</item>
-        <item>394</item>
-        <item>1301</item>
-        <item>1965</item>
-        <item>2768</item>
-        <item>3518</item>
-        <item>3614</item>
-        <item>3517</item>
-        <item>3272</item>
-        <item>2408</item>
-        <item>2436</item>
-        <item>2953</item>
-        <item>1826</item>
-        <item>65</item>
-        <item>-255</item>
-        <item>-179</item>
-        <item>-934</item>
-        <item>-1911</item>
-        <item>-2398</item>
-        <item>-2174</item>
-        <item>-1980</item>
-        <item>-2325</item>
-        <item>-2758</item>
-        <item>-2372</item>
-        <item>-1908</item>
-        <item>-2064</item>
-        <item>-2064</item>
-        <item>-1298</item>
-        <item>-489</item>
-        <item>-914</item>
-        <item>-659</item>
-        <item>929</item>
-        <item>2058</item>
-        <item>2053</item>
-        <item>2133</item>
-        <item>2626</item>
-        <item>2539</item>
-        <item>2392</item>
-        <item>1814</item>
-        <item>1305</item>
-        <item>1388</item>
-        <item>1147</item>
-        <item>588</item>
-        <item>176</item>
-        <item>-12</item>
-        <item>-533</item>
-        <item>-1218</item>
-        <item>-890</item>
-        <item>-509</item>
-        <item>-1548</item>
-        <item>-2492</item>
-        <item>-2043</item>
-        <item>-1300</item>
-        <item>-1338</item>
-        <item>-1555</item>
-        <item>-1231</item>
-        <item>-861</item>
-        <item>-756</item>
-        <item>-420</item>
-        <item>-216</item>
-        <item>-53</item>
-        <item>696</item>
-        <item>1178</item>
-        <item>1287</item>
-        <item>1891</item>
-        <item>2022</item>
-        <item>1245</item>
-        <item>1042</item>
-        <item>1362</item>
-        <item>1278</item>
-        <item>475</item>
-        <item>-195</item>
-        <item>-10</item>
-        <item>39</item>
-        <item>-245</item>
-        <item>-548</item>
-        <item>-880</item>
-        <item>-928</item>
-        <item>-863</item>
-        <item>-1038</item>
-        <item>-1261</item>
-        <item>-1096</item>
-        <item>-1034</item>
-        <item>-1303</item>
-        <item>-921</item>
-        <item>-233</item>
-        <item>-362</item>
-        <item>-672</item>
-        <item>-110</item>
-        <item>537</item>
-        <item>658</item>
-        <item>648</item>
-        <item>779</item>
-        <item>1228</item>
-        <item>1566</item>
-        <item>1468</item>
-        <item>939</item>
-        <item>580</item>
-        <item>483</item>
-        <item>35</item>
-        <item>-220</item>
-        <item>-145</item>
-        <item>-283</item>
-        <item>-546</item>
-        <item>-417</item>
-        <item>-63</item>
-        <item>-133</item>
-        <item>-758</item>
-        <item>-999</item>
-        <item>-741</item>
-        <item>-712</item>
-        <item>-810</item>
-        <item>-1022</item>
-        <item>-935</item>
-        <item>-426</item>
-        <item>-65</item>
-        <item>83</item>
-        <item>393</item>
-        <item>680</item>
-        <item>652</item>
-        <item>651</item>
-        <item>969</item>
-        <item>1118</item>
-        <item>833</item>
-        <item>566</item>
-        <item>622</item>
-        <item>672</item>
-        <item>317</item>
-        <item>-178</item>
-        <item>-297</item>
-        <item>-173</item>
-        <item>-117</item>
-        <item>-167</item>
-        <item>-476</item>
-        <item>-647</item>
-        <item>-562</item>
-        <item>-551</item>
-        <item>-698</item>
-        <item>-720</item>
-        <item>-778</item>
-        <item>-1012</item>
-        <item>-909</item>
-        <item>-446</item>
-        <item>-210</item>
-        <item>-178</item>
-        <item>-2</item>
-        <item>448</item>
-        <item>797</item>
-        <item>787</item>
-        <item>677</item>
-        <item>574</item>
-        <item>850</item>
-        <item>1006</item>
-        <item>811</item>
-        <item>679</item>
-        <item>645</item>
-        <item>511</item>
-        <item>152</item>
-        <item>45</item>
-        <item>36</item>
-        <item>-400</item>
-        <item>-707</item>
-        <item>-552</item>
-        <item>-415</item>
-        <item>-597</item>
-        <item>-832</item>
-        <item>-874</item>
-        <item>-749</item>
-        <item>-657</item>
-        <item>-814</item>
-        <item>-879</item>
-        <item>-704</item>
-        <item>-501</item>
-        <item>-237</item>
-        <item>36</item>
-        <item>268</item>
-        <item>476</item>
-        <item>523</item>
-        <item>753</item>
-        <item>1078</item>
-        <item>1030</item>
-        <item>713</item>
-        <item>572</item>
-        <item>774</item>
-        <item>796</item>
-        <item>576</item>
-        <item>284</item>
-        <item>171</item>
-        <item>215</item>
-        <item>-19</item>
-        <item>-242</item>
-        <item>-418</item>
-        <item>-520</item>
-        <item>-544</item>
-        <item>-617</item>
-        <item>-670</item>
-        <item>-843</item>
-        <item>-1064</item>
-        <item>-1089</item>
-        <item>-785</item>
-        <item>-562</item>
-        <item>-555</item>
-        <item>-483</item>
-        <item>-269</item>
-        <item>55</item>
-        <item>369</item>
-        <item>568</item>
-        <item>578</item>
-        <item>651</item>
-        <item>819</item>
-        <item>785</item>
-        <item>625</item>
-        <item>600</item>
-        <item>561</item>
-        <item>522</item>
-        <item>613</item>
-        <item>647</item>
-        <item>434</item>
-        <item>106</item>
-        <item>-41</item>
-        <item>-121</item>
-        <item>-135</item>
-        <item>-363</item>
-        <item>-744</item>
-        <item>-833</item>
-        <item>-778</item>
-        <item>-847</item>
-        <item>-903</item>
-        <item>-761</item>
-        <item>-586</item>
-        <item>-478</item>
-        <item>-398</item>
-        <item>-219</item>
-        <item>-115</item>
-        <item>-119</item>
-        <item>39</item>
-        <item>319</item>
-        <item>545</item>
-        <item>548</item>
-        <item>502</item>
-        <item>572</item>
-        <item>681</item>
-        <item>707</item>
-        <item>562</item>
-        <item>489</item>
-        <item>512</item>
-        <item>526</item>
-        <item>377</item>
-        <item>143</item>
-        <item>44</item>
-        <item>-111</item>
-        <item>-308</item>
-        <item>-380</item>
-        <item>-466</item>
-        <item>-625</item>
-        <item>-772</item>
-        <item>-776</item>
-        <item>-605</item>
-        <item>-470</item>
-        <item>-499</item>
-        <item>-527</item>
-        <item>-424</item>
-        <item>-213</item>
-        <item>-59</item>
-        <item>-41</item>
-        <item>65</item>
-        <item>218</item>
-        <item>239</item>
-        <item>334</item>
-        <item>532</item>
-        <item>544</item>
-        <item>451</item>
-        <item>453</item>
-        <item>500</item>
-        <item>528</item>
-        <item>467</item>
-        <item>274</item>
-        <item>197</item>
-        <item>215</item>
-        <item>129</item>
-        <item>-87</item>
-        <item>-313</item>
-        <item>-348</item>
-        <item>-374</item>
-        <item>-518</item>
-        <item>-582</item>
-        <item>-494</item>
-        <item>-463</item>
-        <item>-456</item>
-        <item>-347</item>
-        <item>-240</item>
-        <item>-205</item>
-        <item>-248</item>
-        <item>-212</item>
-        <item>-60</item>
-        <item>24</item>
-        <item>61</item>
-        <item>74</item>
-        <item>203</item>
-        <item>421</item>
-        <item>441</item>
-        <item>379</item>
-        <item>413</item>
-        <item>433</item>
-        <item>347</item>
-        <item>311</item>
-        <item>283</item>
-        <item>201</item>
-        <item>65</item>
-        <item>-18</item>
-        <item>-56</item>
-        <item>-141</item>
-        <item>-226</item>
-        <item>-323</item>
-        <item>-367</item>
-        <item>-358</item>
-        <item>-301</item>
-        <item>-337</item>
-        <item>-367</item>
-        <item>-273</item>
-        <item>-200</item>
-        <item>-173</item>
-        <item>-148</item>
-        <item>-98</item>
-        <item>-60</item>
-        <item>-37</item>
-        <item>52</item>
-        <item>171</item>
-        <item>239</item>
-        <item>250</item>
-        <item>292</item>
-        <item>339</item>
-        <item>339</item>
-        <item>300</item>
-        <item>200</item>
-        <item>182</item>
-        <item>193</item>
-        <item>124</item>
-        <item>24</item>
-        <item>-47</item>
-        <item>-32</item>
-        <item>-79</item>
-        <item>-174</item>
-        <item>-181</item>
-        <item>-224</item>
-        <item>-241</item>
-        <item>-264</item>
-        <item>-231</item>
-        <item>-175</item>
-        <item>-175</item>
-        <item>-155</item>
-        <item>-142</item>
-        <item>-75</item>
-        <item>-24</item>
-        <item>-36</item>
-        <item>-35</item>
-        <item>52</item>
-        <item>108</item>
-        <item>125</item>
-        <item>169</item>
-        <item>237</item>
-        <item>213</item>
-        <item>177</item>
-        <item>179</item>
-        <item>174</item>
-        <item>119</item>
-        <item>58</item>
-        <item>22</item>
-        <item>-15</item>
-        <item>-12</item>
-        <item>-46</item>
-        <item>-91</item>
-        <item>-101</item>
-        <item>-85</item>
-        <item>-111</item>
-        <item>-175</item>
-        <item>-174</item>
-        <item>-134</item>
-        <item>-157</item>
-        <item>-149</item>
-        <item>-110</item>
-        <item>-77</item>
-        <item>-73</item>
-        <item>-48</item>
-        <item>8</item>
-        <item>53</item>
-        <item>58</item>
-        <item>69</item>
-        <item>121</item>
-        <item>166</item>
-        <item>170</item>
-        <item>130</item>
-        <item>99</item>
-        <item>106</item>
-        <item>104</item>
-        <item>54</item>
         <item>12</item>
-        <item>19</item>
-        <item>9</item>
-        <item>-21</item>
-        <item>-31</item>
-        <item>-32</item>
-        <item>0</item>
+        <item>-11</item>
+        <item>10</item>
+        <item>-8</item>
+        <item>5</item>
+        <item>-3</item>
+        <item>-1</item>
+        <item>4</item>
         <item>-4</item>
+        <item>6</item>
+        <item>-7</item>
+        <item>9</item>
+        <item>-8</item>
+        <item>12</item>
+        <item>-8</item>
+        <item>7</item>
         <item>-5</item>
+        <item>6</item>
         <item>-3</item>
         <item>2</item>
-        <item>-1</item>
-        <item>2</item>
-        <item>2</item>
-        <item>4</item>
-        <item>4</item>
-        <item>1</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>0</item>
         <item>0</item>
         <item>-2</item>
+        <item>2</item>
+        <item>1</item>
+        <item>3</item>
+        <item>1</item>
+        <item>1</item>
+        <item>3</item>
+        <item>3</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>3</item>
+        <item>4</item>
         <item>-2</item>
+        <item>1</item>
+        <item>-7</item>
+        <item>5</item>
+        <item>-6</item>
+        <item>18</item>
+        <item>-10</item>
+        <item>20</item>
+        <item>-22</item>
+        <item>33</item>
+        <item>-30</item>
+        <item>39</item>
+        <item>-31</item>
+        <item>46</item>
+        <item>-27</item>
+        <item>41</item>
+        <item>-27</item>
+        <item>23</item>
+        <item>-12</item>
+        <item>13</item>
+        <item>0</item>
+        <item>-19</item>
+        <item>33</item>
+        <item>-42</item>
+        <item>59</item>
+        <item>-71</item>
+        <item>75</item>
+        <item>-84</item>
+        <item>85</item>
+        <item>-80</item>
+        <item>86</item>
+        <item>-72</item>
+        <item>66</item>
+        <item>-59</item>
+        <item>45</item>
+        <item>-45</item>
+        <item>31</item>
+        <item>-15</item>
+        <item>31</item>
+        <item>-5</item>
+        <item>-4</item>
+        <item>0</item>
+        <item>-14</item>
+        <item>18</item>
+        <item>-5</item>
+        <item>30</item>
+        <item>-6</item>
+        <item>42</item>
+        <item>-28</item>
+        <item>32</item>
+        <item>-53</item>
+        <item>42</item>
+        <item>-56</item>
+        <item>74</item>
+        <item>-69</item>
+        <item>67</item>
+        <item>-108</item>
+        <item>70</item>
+        <item>-105</item>
+        <item>99</item>
+        <item>-111</item>
+        <item>97</item>
+        <item>-93</item>
+        <item>98</item>
+        <item>-68</item>
+        <item>73</item>
+        <item>-59</item>
+        <item>53</item>
+        <item>-9</item>
+        <item>24</item>
+        <item>43</item>
+        <item>-38</item>
+        <item>54</item>
+        <item>-68</item>
+        <item>55</item>
+        <item>-140</item>
+        <item>83</item>
+        <item>-97</item>
+        <item>77</item>
+        <item>-111</item>
+        <item>76</item>
+        <item>-102</item>
+        <item>97</item>
+        <item>-67</item>
+        <item>75</item>
+        <item>-57</item>
+        <item>59</item>
+        <item>-28</item>
+        <item>67</item>
+        <item>-53</item>
+        <item>17</item>
+        <item>70</item>
+        <item>62</item>
+        <item>-34</item>
+        <item>131</item>
+        <item>-96</item>
+        <item>12</item>
+        <item>-81</item>
+        <item>156</item>
+        <item>-107</item>
+        <item>-3</item>
+        <item>32</item>
+        <item>-34</item>
+        <item>-125</item>
+        <item>53</item>
+        <item>87</item>
+        <item>-171</item>
+        <item>5</item>
+        <item>38</item>
+        <item>262</item>
+        <item>-166</item>
+        <item>208</item>
+        <item>-235</item>
+        <item>214</item>
+        <item>-57</item>
+        <item>244</item>
+        <item>-97</item>
+        <item>67</item>
+        <item>-230</item>
+        <item>134</item>
+        <item>-90</item>
+        <item>204</item>
+        <item>109</item>
+        <item>106</item>
+        <item>32</item>
+        <item>47</item>
+        <item>96</item>
+        <item>18</item>
+        <item>103</item>
+        <item>46</item>
+        <item>49</item>
+        <item>-133</item>
+        <item>91</item>
+        <item>-113</item>
+        <item>17</item>
+        <item>-13</item>
+        <item>96</item>
+        <item>-372</item>
+        <item>57</item>
+        <item>-190</item>
+        <item>57</item>
+        <item>-312</item>
+        <item>43</item>
+        <item>-161</item>
+        <item>159</item>
+        <item>-71</item>
+        <item>207</item>
+        <item>-189</item>
+        <item>-10</item>
+        <item>-346</item>
+        <item>-99</item>
+        <item>119</item>
+        <item>64</item>
+        <item>68</item>
+        <item>-138</item>
+        <item>282</item>
+        <item>-116</item>
+        <item>319</item>
+        <item>-185</item>
+        <item>276</item>
+        <item>-330</item>
+        <item>187</item>
+        <item>-137</item>
+        <item>70</item>
+        <item>-257</item>
+        <item>-3</item>
+        <item>-50</item>
+        <item>-110</item>
+        <item>200</item>
+        <item>-27</item>
+        <item>213</item>
+        <item>-194</item>
+        <item>280</item>
+        <item>-168</item>
+        <item>338</item>
+        <item>-48</item>
+        <item>364</item>
+        <item>-27</item>
+        <item>116</item>
+        <item>-128</item>
+        <item>-91</item>
+        <item>58</item>
+        <item>-102</item>
+        <item>209</item>
+        <item>49</item>
+        <item>281</item>
+        <item>-161</item>
+        <item>286</item>
+        <item>-162</item>
+        <item>99</item>
+        <item>-252</item>
+        <item>111</item>
+        <item>-2</item>
+        <item>38</item>
+        <item>-89</item>
+        <item>144</item>
+        <item>-12</item>
+        <item>49</item>
+        <item>2</item>
+        <item>111</item>
+        <item>-265</item>
+        <item>-74</item>
+        <item>-271</item>
+        <item>-64</item>
+        <item>-209</item>
+        <item>113</item>
+        <item>197</item>
+        <item>149</item>
+        <item>-21</item>
+        <item>126</item>
+        <item>286</item>
+        <item>-158</item>
+        <item>162</item>
+        <item>-302</item>
+        <item>252</item>
+        <item>-352</item>
+        <item>402</item>
+        <item>-360</item>
+        <item>204</item>
+        <item>-262</item>
+        <item>406</item>
+        <item>-315</item>
+        <item>375</item>
+        <item>-252</item>
+        <item>227</item>
+        <item>61</item>
+        <item>152</item>
+        <item>40</item>
+        <item>124</item>
+        <item>212</item>
+        <item>-32</item>
+        <item>13</item>
+        <item>-368</item>
+        <item>-67</item>
+        <item>-6</item>
+        <item>169</item>
+        <item>0</item>
+        <item>289</item>
+        <item>-12</item>
+        <item>19</item>
+        <item>-33</item>
+        <item>122</item>
+        <item>-215</item>
+        <item>151</item>
+        <item>-71</item>
+        <item>157</item>
+        <item>-405</item>
+        <item>353</item>
+        <item>-517</item>
+        <item>436</item>
+        <item>-150</item>
+        <item>572</item>
+        <item>-662</item>
+        <item>268</item>
+        <item>-547</item>
+        <item>436</item>
+        <item>-301</item>
+        <item>253</item>
+        <item>-231</item>
+        <item>166</item>
+        <item>194</item>
+        <item>-49</item>
+        <item>140</item>
+        <item>-304</item>
+        <item>297</item>
+        <item>-602</item>
+        <item>369</item>
+        <item>-307</item>
+        <item>537</item>
+        <item>-76</item>
+        <item>531</item>
+        <item>-321</item>
+        <item>187</item>
+        <item>-259</item>
+        <item>336</item>
+        <item>-184</item>
+        <item>-94</item>
+        <item>175</item>
+        <item>165</item>
+        <item>-161</item>
+        <item>144</item>
+        <item>-60</item>
+        <item>-193</item>
+        <item>-431</item>
+        <item>219</item>
+        <item>-474</item>
+        <item>-110</item>
+        <item>-321</item>
+        <item>418</item>
+        <item>-877</item>
+        <item>487</item>
+        <item>-290</item>
+        <item>450</item>
+        <item>-586</item>
+        <item>339</item>
+        <item>-314</item>
+        <item>329</item>
+        <item>-274</item>
+        <item>367</item>
+        <item>141</item>
+        <item>33</item>
+        <item>442</item>
+        <item>-254</item>
+        <item>592</item>
+        <item>-519</item>
+        <item>774</item>
+        <item>-834</item>
+        <item>834</item>
+        <item>-612</item>
+        <item>975</item>
+        <item>-803</item>
+        <item>471</item>
+        <item>-158</item>
+        <item>211</item>
+        <item>-184</item>
+        <item>1258</item>
+        <item>-128</item>
+        <item>942</item>
+        <item>-1329</item>
+        <item>-349</item>
+        <item>-683</item>
+        <item>2324</item>
+        <item>420</item>
+        <item>-1363</item>
+        <item>-2611</item>
+        <item>11312</item>
+        <item>1462</item>
+        <item>-15740</item>
+        <item>-2782</item>
+        <item>31630</item>
+        <item>22086</item>
+        <item>-1972</item>
+        <item>30105</item>
+        <item>31404</item>
+        <item>27538</item>
+        <item>23675</item>
+        <item>1309</item>
+        <item>-31024</item>
+        <item>-30991</item>
+        <item>-31030</item>
+        <item>-30751</item>
+        <item>-30075</item>
+        <item>-16121</item>
+        <item>13148</item>
+        <item>17519</item>
+        <item>1197</item>
+        <item>-251</item>
+        <item>15218</item>
+        <item>30829</item>
+        <item>18444</item>
+        <item>-7646</item>
+        <item>-25797</item>
+        <item>-31636</item>
+        <item>-13071</item>
+        <item>23976</item>
+        <item>24411</item>
+        <item>23008</item>
+        <item>31816</item>
+        <item>19518</item>
+        <item>-3508</item>
+        <item>-31889</item>
+        <item>-31340</item>
+        <item>-30229</item>
+        <item>-12104</item>
+        <item>-28122</item>
+        <item>-12034</item>
+        <item>16535</item>
+        <item>-5951</item>
+        <item>-9576</item>
+        <item>-9846</item>
+        <item>-4443</item>
+        <item>6011</item>
+        <item>-15866</item>
+        <item>-17766</item>
+        <item>-10093</item>
+        <item>-9657</item>
+        <item>6961</item>
+        <item>6721</item>
+        <item>7931</item>
+        <item>26368</item>
+        <item>24767</item>
+        <item>10764</item>
+        <item>-5896</item>
+        <item>-13171</item>
+        <item>-11714</item>
+        <item>-3796</item>
+        <item>10280</item>
+        <item>-1422</item>
+        <item>4002</item>
+        <item>17726</item>
+        <item>11075</item>
+        <item>7846</item>
+        <item>18289</item>
+        <item>10519</item>
+        <item>1687</item>
+        <item>8493</item>
+        <item>-1552</item>
+        <item>-12506</item>
+        <item>-7133</item>
+        <item>10697</item>
+        <item>25849</item>
+        <item>26504</item>
+        <item>17112</item>
+        <item>11005</item>
+        <item>10489</item>
+        <item>5008</item>
+        <item>1454</item>
+        <item>-3123</item>
+        <item>-3412</item>
+        <item>-598</item>
+        <item>-6403</item>
+        <item>-16118</item>
+        <item>-10520</item>
+        <item>5031</item>
+        <item>7484</item>
+        <item>-2578</item>
+        <item>2072</item>
+        <item>9016</item>
+        <item>9860</item>
+        <item>6203</item>
+        <item>773</item>
+        <item>4241</item>
+        <item>8228</item>
+        <item>4870</item>
+        <item>6344</item>
+        <item>6271</item>
+        <item>13839</item>
+        <item>18292</item>
+        <item>14477</item>
+        <item>14242</item>
+        <item>3460</item>
+        <item>-3738</item>
+        <item>-7315</item>
+        <item>-4887</item>
+        <item>-1914</item>
+        <item>-4346</item>
+        <item>-3802</item>
+        <item>5741</item>
+        <item>-2622</item>
+        <item>-9703</item>
+        <item>-16357</item>
+        <item>-12364</item>
+        <item>172</item>
+        <item>-534</item>
+        <item>-6405</item>
+        <item>-6356</item>
+        <item>-8811</item>
+        <item>-7573</item>
+        <item>-2119</item>
+        <item>486</item>
+        <item>-1621</item>
+        <item>-5699</item>
+        <item>-10416</item>
+        <item>-14865</item>
+        <item>-11606</item>
+        <item>-10369</item>
+        <item>-9299</item>
+        <item>-6073</item>
+        <item>2514</item>
+        <item>-3620</item>
+        <item>-12061</item>
+        <item>-13310</item>
+        <item>-6765</item>
+        <item>-5921</item>
+        <item>-2819</item>
+        <item>-5747</item>
+        <item>-5293</item>
+        <item>581</item>
+        <item>1222</item>
+        <item>-384</item>
+        <item>2336</item>
+        <item>5691</item>
+        <item>2577</item>
+        <item>1189</item>
+        <item>2343</item>
+        <item>3127</item>
+        <item>1516</item>
+        <item>31</item>
+        <item>-5708</item>
+        <item>-6829</item>
+        <item>-2601</item>
+        <item>2073</item>
+        <item>-369</item>
+        <item>-721</item>
+        <item>-3245</item>
+        <item>-1985</item>
+        <item>-2032</item>
+        <item>2752</item>
+        <item>6329</item>
+        <item>6179</item>
+        <item>5896</item>
+        <item>3576</item>
+        <item>973</item>
+        <item>724</item>
+        <item>1977</item>
+        <item>1101</item>
+        <item>217</item>
+        <item>-625</item>
+        <item>3017</item>
+        <item>3176</item>
+        <item>3635</item>
+        <item>877</item>
+        <item>-1238</item>
+        <item>-2811</item>
+        <item>-2671</item>
+        <item>-1988</item>
+        <item>-3034</item>
+        <item>-1568</item>
+        <item>4014</item>
+        <item>3679</item>
+        <item>3302</item>
+        <item>258</item>
+        <item>1362</item>
+        <item>6501</item>
+        <item>3863</item>
+        <item>2848</item>
+        <item>2799</item>
+        <item>2058</item>
+        <item>5324</item>
+        <item>7349</item>
+        <item>3795</item>
+        <item>568</item>
+        <item>-2597</item>
+        <item>-4693</item>
+        <item>-8961</item>
+        <item>-4028</item>
+        <item>2078</item>
+        <item>4275</item>
+        <item>6244</item>
+        <item>3806</item>
+        <item>137</item>
+        <item>1691</item>
+        <item>1283</item>
+        <item>-1433</item>
+        <item>-341</item>
+        <item>1949</item>
+        <item>1222</item>
+        <item>-49</item>
+        <item>3186</item>
+        <item>6188</item>
+        <item>5358</item>
+        <item>1340</item>
+        <item>-4194</item>
+        <item>-5604</item>
+        <item>-2119</item>
+        <item>-1329</item>
+        <item>-5615</item>
+        <item>-8000</item>
+        <item>-3286</item>
+        <item>-2425</item>
+        <item>-2694</item>
+        <item>2408</item>
+        <item>5330</item>
+        <item>-292</item>
+        <item>-2435</item>
+        <item>-2117</item>
+        <item>-2880</item>
+        <item>1509</item>
+        <item>5298</item>
+        <item>6053</item>
+        <item>6116</item>
+        <item>4602</item>
+        <item>-2148</item>
+        <item>-7881</item>
+        <item>-5104</item>
+        <item>-3206</item>
+        <item>-5096</item>
+        <item>-4275</item>
+        <item>-2019</item>
+        <item>-2340</item>
+        <item>-3370</item>
+        <item>-3274</item>
+        <item>-2317</item>
+        <item>-738</item>
+        <item>-1771</item>
+        <item>-2539</item>
+        <item>84</item>
+        <item>1124</item>
+        <item>-1112</item>
+        <item>497</item>
+        <item>4218</item>
+        <item>4869</item>
+        <item>2688</item>
+        <item>1150</item>
+        <item>413</item>
+        <item>-1976</item>
+        <item>-4597</item>
+        <item>-8135</item>
+        <item>-8086</item>
+        <item>-2647</item>
+        <item>-728</item>
+        <item>-2613</item>
+        <item>-1647</item>
+        <item>121</item>
+        <item>-2223</item>
+        <item>-3815</item>
+        <item>-2365</item>
+        <item>-719</item>
+        <item>1642</item>
+        <item>4442</item>
+        <item>4847</item>
+        <item>4522</item>
+        <item>5954</item>
+        <item>5900</item>
+        <item>3594</item>
+        <item>2801</item>
+        <item>2083</item>
+        <item>23</item>
+        <item>268</item>
+        <item>2589</item>
+        <item>2453</item>
+        <item>759</item>
+        <item>1070</item>
+        <item>940</item>
+        <item>-606</item>
+        <item>-1111</item>
+        <item>-1308</item>
+        <item>-1432</item>
+        <item>1401</item>
+        <item>4560</item>
+        <item>4752</item>
+        <item>4315</item>
+        <item>5215</item>
+        <item>5678</item>
+        <item>4826</item>
+        <item>3138</item>
+        <item>799</item>
+        <item>-100</item>
+        <item>1758</item>
+        <item>3053</item>
+        <item>2578</item>
+        <item>2631</item>
+        <item>3686</item>
+        <item>3741</item>
+        <item>1732</item>
+        <item>-1233</item>
+        <item>-2653</item>
+        <item>-1150</item>
+        <item>954</item>
+        <item>1954</item>
+        <item>2713</item>
+        <item>3475</item>
+        <item>4124</item>
+        <item>4828</item>
+        <item>3886</item>
+        <item>1292</item>
+        <item>30</item>
+        <item>1018</item>
+        <item>1402</item>
+        <item>171</item>
+        <item>87</item>
+        <item>1065</item>
+        <item>1508</item>
+        <item>719</item>
+        <item>-2016</item>
+        <item>-4716</item>
+        <item>-4560</item>
+        <item>-3211</item>
+        <item>-3587</item>
+        <item>-3393</item>
+        <item>-879</item>
+        <item>758</item>
+        <item>-188</item>
+        <item>-1319</item>
+        <item>-1727</item>
+        <item>-2286</item>
+        <item>-2802</item>
+        <item>-2815</item>
+        <item>-2285</item>
+        <item>-743</item>
+        <item>627</item>
+        <item>405</item>
+        <item>-27</item>
+        <item>306</item>
+        <item>-781</item>
+        <item>-3804</item>
+        <item>-5363</item>
+        <item>-4356</item>
+        <item>-3144</item>
+        <item>-2930</item>
+        <item>-2693</item>
+        <item>-1567</item>
+        <item>315</item>
+        <item>1134</item>
+        <item>-205</item>
+        <item>-2006</item>
+        <item>-2329</item>
+        <item>-1931</item>
+        <item>-2325</item>
+        <item>-2488</item>
+        <item>-1343</item>
+        <item>565</item>
+        <item>2077</item>
+        <item>1929</item>
+        <item>409</item>
+        <item>-948</item>
+        <item>-1628</item>
+        <item>-2041</item>
+        <item>-2512</item>
+        <item>-2737</item>
+        <item>-2130</item>
+        <item>-639</item>
+        <item>673</item>
+        <item>646</item>
+        <item>79</item>
+        <item>-168</item>
+        <item>-431</item>
+        <item>-974</item>
+        <item>-1613</item>
+        <item>-1652</item>
+        <item>-387</item>
+        <item>1531</item>
+        <item>2642</item>
+        <item>2186</item>
+        <item>1713</item>
+        <item>1939</item>
+        <item>1269</item>
+        <item>-82</item>
+        <item>-658</item>
+        <item>-167</item>
+        <item>540</item>
+        <item>1236</item>
+        <item>1798</item>
+        <item>2051</item>
+        <item>2457</item>
+        <item>2530</item>
+        <item>1124</item>
+        <item>-548</item>
+        <item>-1016</item>
+        <item>-672</item>
+        <item>-237</item>
+        <item>907</item>
+        <item>2286</item>
+        <item>2627</item>
+        <item>2205</item>
+        <item>1704</item>
+        <item>1516</item>
+        <item>1160</item>
+        <item>625</item>
+        <item>-47</item>
+        <item>-283</item>
+        <item>431</item>
+        <item>1411</item>
+        <item>1624</item>
+        <item>1498</item>
+        <item>1620</item>
+        <item>1526</item>
+        <item>532</item>
+        <item>-498</item>
+        <item>-741</item>
+        <item>-538</item>
+        <item>-237</item>
+        <item>-167</item>
+        <item>274</item>
+        <item>829</item>
+        <item>970</item>
+        <item>806</item>
+        <item>408</item>
+        <item>27</item>
+        <item>-192</item>
+        <item>-557</item>
+        <item>-508</item>
+        <item>8</item>
+        <item>562</item>
+        <item>784</item>
+        <item>612</item>
+        <item>367</item>
+        <item>-87</item>
+        <item>-486</item>
+        <item>-648</item>
+        <item>-677</item>
+        <item>-632</item>
+        <item>-641</item>
+        <item>-556</item>
+        <item>-272</item>
+        <item>-181</item>
+        <item>-239</item>
+        <item>-320</item>
+        <item>-446</item>
+        <item>-357</item>
+        <item>-232</item>
+        <item>-259</item>
+        <item>-108</item>
+        <item>151</item>
+        <item>342</item>
+        <item>267</item>
+        <item>120</item>
+        <item>93</item>
+        <item>-35</item>
+        <item>-174</item>
+        <item>-254</item>
+        <item>-396</item>
+        <item>-358</item>
+        <item>-199</item>
+        <item>-176</item>
+        <item>-62</item>
+        <item>103</item>
+        <item>207</item>
+        <item>168</item>
+        <item>-18</item>
+        <item>95</item>
+        <item>193</item>
+        <item>219</item>
+        <item>227</item>
+        <item>7</item>
+        <item>83</item>
+        <item>363</item>
+        <item>260</item>
+        <item>59</item>
+        <item>401</item>
+        <item>538</item>
+        <item>222</item>
+        <item>-71</item>
+        <item>-81</item>
+        <item>-14</item>
+        <item>-42</item>
+        <item>-272</item>
+        <item>-461</item>
+        <item>-292</item>
+        <item>-251</item>
+        <item>-245</item>
+        <item>82</item>
+        <item>229</item>
+        <item>-64</item>
+        <item>-353</item>
+        <item>-368</item>
+        <item>-244</item>
+        <item>-280</item>
+        <item>-314</item>
+        <item>-210</item>
+        <item>-100</item>
+        <item>-371</item>
+        <item>-452</item>
+        <item>-194</item>
+        <item>74</item>
+        <item>-137</item>
+        <item>-295</item>
+        <item>181</item>
+        <item>301</item>
+        <item>42</item>
+        <item>245</item>
+        <item>574</item>
+        <item>650</item>
+        <item>531</item>
+        <item>85</item>
+        <item>112</item>
+        <item>35</item>
+        <item>19</item>
+        <item>332</item>
+        <item>-49</item>
+        <item>-330</item>
+        <item>-32</item>
+        <item>-174</item>
+        <item>-270</item>
+        <item>-228</item>
+        <item>-753</item>
+        <item>-665</item>
+        <item>-82</item>
+        <item>38</item>
+        <item>173</item>
+        <item>32</item>
+        <item>-89</item>
+        <item>348</item>
+        <item>456</item>
+        <item>363</item>
+        <item>309</item>
+        <item>134</item>
+        <item>-30</item>
+        <item>-256</item>
+        <item>-438</item>
+        <item>-498</item>
+        <item>-467</item>
+        <item>-1056</item>
+        <item>-888</item>
+        <item>-17</item>
+        <item>-310</item>
+        <item>-398</item>
+        <item>-56</item>
+        <item>-2</item>
+        <item>-522</item>
+        <item>-353</item>
+        <item>0</item>
+        <item>127</item>
+        <item>368</item>
+        <item>159</item>
+        <item>477</item>
+        <item>744</item>
+        <item>852</item>
+        <item>448</item>
+        <item>524</item>
+        <item>704</item>
+        <item>567</item>
+        <item>693</item>
+        <item>145</item>
+        <item>213</item>
+        <item>634</item>
+        <item>598</item>
+        <item>339</item>
+        <item>820</item>
+        <item>702</item>
+        <item>-321</item>
+        <item>-282</item>
+        <item>-342</item>
+        <item>-566</item>
+        <item>-551</item>
+        <item>-434</item>
+        <item>-495</item>
+        <item>-515</item>
+        <item>-235</item>
+        <item>70</item>
+        <item>532</item>
+        <item>371</item>
+        <item>-42</item>
+        <item>70</item>
+        <item>433</item>
+        <item>720</item>
+        <item>424</item>
+        <item>-421</item>
+        <item>-528</item>
+        <item>-185</item>
+        <item>-162</item>
+        <item>237</item>
+        <item>-98</item>
+        <item>-728</item>
+        <item>-165</item>
+        <item>91</item>
+        <item>-381</item>
+        <item>-399</item>
+        <item>-786</item>
+        <item>-855</item>
+        <item>-100</item>
+        <item>275</item>
+        <item>435</item>
+        <item>101</item>
+        <item>67</item>
+        <item>739</item>
+        <item>689</item>
+        <item>446</item>
+        <item>774</item>
+        <item>777</item>
+        <item>608</item>
+        <item>67</item>
+        <item>-109</item>
+        <item>-73</item>
+        <item>-282</item>
+        <item>-343</item>
+        <item>-63</item>
+        <item>-51</item>
+        <item>-206</item>
+        <item>-143</item>
+        <item>-11</item>
+        <item>576</item>
+        <item>289</item>
+        <item>-83</item>
+        <item>-256</item>
+        <item>-846</item>
+        <item>-1378</item>
+        <item>-1033</item>
+        <item>-639</item>
+        <item>-360</item>
+        <item>-447</item>
+        <item>-717</item>
+        <item>-373</item>
+        <item>90</item>
+        <item>75</item>
+        <item>-480</item>
+        <item>-380</item>
+        <item>-220</item>
+        <item>-543</item>
+        <item>-161</item>
+        <item>22</item>
+        <item>-486</item>
+        <item>-38</item>
+        <item>-100</item>
+        <item>122</item>
+        <item>686</item>
+        <item>791</item>
+        <item>516</item>
+        <item>813</item>
+        <item>1198</item>
+        <item>1108</item>
+        <item>1088</item>
+        <item>386</item>
+        <item>459</item>
+        <item>207</item>
+        <item>390</item>
+        <item>169</item>
+        <item>-142</item>
+        <item>178</item>
+        <item>42</item>
+        <item>616</item>
+        <item>499</item>
+        <item>433</item>
+        <item>286</item>
+        <item>436</item>
+        <item>696</item>
+        <item>-145</item>
+        <item>-69</item>
+        <item>321</item>
+        <item>603</item>
+        <item>535</item>
+        <item>40</item>
+        <item>113</item>
+        <item>29</item>
+        <item>20</item>
+        <item>-160</item>
+        <item>-495</item>
+        <item>-375</item>
+        <item>-304</item>
+        <item>-310</item>
+        <item>-382</item>
+        <item>-125</item>
+        <item>30</item>
+        <item>-495</item>
+        <item>-542</item>
+        <item>-328</item>
+        <item>-309</item>
+        <item>-459</item>
+        <item>-477</item>
+        <item>-178</item>
+        <item>-190</item>
+        <item>-318</item>
+        <item>-122</item>
+        <item>39</item>
+        <item>-86</item>
+        <item>338</item>
+        <item>448</item>
+        <item>-52</item>
+        <item>-22</item>
+        <item>91</item>
+        <item>-18</item>
+        <item>-66</item>
+        <item>-226</item>
+        <item>-57</item>
+        <item>258</item>
+        <item>250</item>
+        <item>-158</item>
+        <item>-193</item>
+        <item>-52</item>
+        <item>17</item>
+        <item>-90</item>
+        <item>-99</item>
+        <item>204</item>
+        <item>0</item>
+        <item>-128</item>
+        <item>-373</item>
+        <item>-106</item>
+        <item>49</item>
+        <item>-55</item>
+        <item>-92</item>
+        <item>-222</item>
+        <item>-322</item>
+        <item>-217</item>
+        <item>8</item>
+        <item>-195</item>
+        <item>-126</item>
+        <item>30</item>
+        <item>-191</item>
+        <item>-178</item>
+        <item>214</item>
+        <item>201</item>
+        <item>-225</item>
+        <item>-100</item>
+        <item>127</item>
+        <item>45</item>
+        <item>145</item>
+        <item>264</item>
+        <item>324</item>
+        <item>232</item>
+        <item>310</item>
+        <item>384</item>
+        <item>262</item>
+        <item>131</item>
+        <item>-25</item>
+        <item>28</item>
+        <item>166</item>
+        <item>4</item>
+        <item>-22</item>
+        <item>-28</item>
+        <item>182</item>
+        <item>249</item>
+        <item>25</item>
+        <item>98</item>
+        <item>96</item>
+        <item>-88</item>
+        <item>-127</item>
+        <item>133</item>
+        <item>277</item>
+        <item>204</item>
+        <item>238</item>
+        <item>371</item>
+        <item>188</item>
+        <item>-61</item>
+        <item>-115</item>
+        <item>117</item>
+        <item>58</item>
+        <item>-165</item>
+        <item>-95</item>
+        <item>-151</item>
+        <item>-111</item>
+        <item>-284</item>
+        <item>-271</item>
+        <item>-70</item>
+        <item>-110</item>
+        <item>-24</item>
+        <item>-106</item>
+        <item>-46</item>
+        <item>-207</item>
+        <item>-138</item>
+        <item>-36</item>
+        <item>-109</item>
+        <item>25</item>
+        <item>33</item>
+        <item>-105</item>
+        <item>-70</item>
+        <item>-95</item>
+        <item>-167</item>
+        <item>80</item>
+        <item>-19</item>
+        <item>94</item>
+        <item>121</item>
+        <item>1</item>
+        <item>-69</item>
+        <item>-132</item>
+        <item>-125</item>
+        <item>2</item>
+        <item>-161</item>
+        <item>-123</item>
+        <item>-79</item>
+        <item>-151</item>
+        <item>-178</item>
+        <item>-78</item>
+        <item>106</item>
+        <item>-12</item>
+        <item>9</item>
+        <item>-110</item>
+        <item>-9</item>
+        <item>-58</item>
+        <item>-3</item>
+        <item>-98</item>
+        <item>23</item>
+        <item>55</item>
+        <item>-111</item>
+        <item>18</item>
+        <item>59</item>
+        <item>85</item>
+        <item>19</item>
+        <item>77</item>
+        <item>31</item>
+        <item>-24</item>
+        <item>-120</item>
+        <item>-46</item>
+        <item>55</item>
+        <item>-16</item>
+        <item>7</item>
+        <item>-108</item>
+        <item>-50</item>
+        <item>38</item>
+        <item>48</item>
+        <item>72</item>
+        <item>-36</item>
+        <item>-13</item>
+        <item>-23</item>
+        <item>-45</item>
+        <item>56</item>
+        <item>122</item>
+        <item>78</item>
+        <item>59</item>
+        <item>-83</item>
+        <item>-20</item>
+        <item>20</item>
+        <item>-63</item>
+        <item>-8</item>
+        <item>6</item>
+        <item>-35</item>
+        <item>17</item>
+        <item>-3</item>
+        <item>-89</item>
+        <item>-7</item>
+        <item>41</item>
+        <item>33</item>
+        <item>-1</item>
+        <item>-5</item>
+        <item>-13</item>
+        <item>-10</item>
+        <item>5</item>
+        <item>0</item>
+        <item>-6</item>
+        <item>0</item>
+        <item>-3</item>
+        <item>7</item>
+        <item>0</item>
+        <item>15</item>
+        <item>1</item>
+        <item>-3</item>
+        <item>-10</item>
+        <item>-10</item>
+        <item>-8</item>
+        <item>2</item>
+        <item>4</item>
+        <item>-9</item>
+        <item>-2</item>
+        <item>-2</item>
+        <item>5</item>
+        <item>6</item>
+        <item>6</item>
+        <item>-19</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>-2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>1</item>
+        <item>7</item>
+        <item>10</item>
+        <item>-10</item>
+        <item>8</item>
+        <item>6</item>
+        <item>-5</item>
+        <item>5</item>
+        <item>9</item>
+        <item>-7</item>
+        <item>-4</item>
+        <item>10</item>
+        <item>9</item>
+        <item>10</item>
+        <item>7</item>
+        <item>-5</item>
+        <item>5</item>
+        <item>-7</item>
+        <item>-2</item>
+        <item>2</item>
+        <item>10</item>
+        <item>7</item>
+        <item>3</item>
+        <item>18</item>
+        <item>-3</item>
+        <item>12</item>
+        <item>5</item>
+        <item>-13</item>
+        <item>2</item>
+        <item>4</item>
+        <item>0</item>
+        <item>4</item>
+        <item>-5</item>
+        <item>5</item>
+        <item>15</item>
+        <item>-7</item>
+        <item>10</item>
+        <item>4</item>
+        <item>-8</item>
+        <item>4</item>
+        <item>-9</item>
+        <item>-4</item>
+        <item>-7</item>
+        <item>5</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>7</item>
+        <item>-4</item>
+        <item>-1</item>
+        <item>-8</item>
+        <item>-5</item>
+        <item>3</item>
+        <item>3</item>
         <item>-6</item>
         <item>1</item>
         <item>1</item>
-        <item>5</item>
-        <item>3</item>
+        <item>-6</item>
         <item>-2</item>
-        <item>7</item>
+        <item>4</item>
+        <item>-5</item>
         <item>-2</item>
-        <item>-4</item>
-        <item>2</item>
         <item>-2</item>
+        <item>-2</item>
+        <item>-6</item>
+        <item>0</item>
+        <item>-7</item>
+        <item>0</item>
+        <item>6</item>
         <item>-1</item>
         <item>-3</item>
-        <item>-1</item>
-        <item>1</item>
-        <item>5</item>
-        <item>-2</item>
-        <item>1</item>
-        <item>-3</item>
-        <item>2</item>
-        <item>-3</item>
-        <item>0</item>
-        <item>1</item>
-        <item>0</item>
-        <item>2</item>
-        <item>3</item>
-        <item>-3</item>
-        <item>-9</item>
-        <item>1</item>
-        <item>0</item>
-        <item>-2</item>
-        <item>1</item>
         <item>-4</item>
+        <item>-2</item>
+        <item>-1</item>
+        <item>4</item>
+        <item>-3</item>
         <item>0</item>
+        <item>-1</item>
+        <item>2</item>
+        <item>2</item>
         <item>8</item>
         <item>2</item>
-        <item>1</item>
-        <item>-1</item>
-        <item>1</item>
         <item>-2</item>
+        <item>0</item>
+        <item>-2</item>
+        <item>0</item>
+        <item>-4</item>
+        <item>0</item>
+        <item>-5</item>
+        <item>-4</item>
         <item>3</item>
+        <item>-3</item>
+        <item>0</item>
+        <item>-3</item>
+        <item>0</item>
+        <item>1</item>
         <item>-1</item>
-        <item>1</item>
-        <item>1</item>
-        <item>2</item>
+        <item>4</item>
+        <item>3</item>
         <item>2</item>
         <item>-4</item>
-        <item>-2</item>
-        <item>0</item>
-        <item>2</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>7</item>
-        <item>0</item>
+        <item>1</item>
         <item>0</item>
         <item>3</item>
-        <item>-2</item>
-        <item>0</item>
-        <item>-3</item>
-        <item>0</item>
-        <item>2</item>
-        <item>1</item>
-        <item>1</item>
-        <item>1</item>
-        <item>2</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>-2</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>-3</item>
-        <item>1</item>
-        <item>2</item>
-        <item>4</item>
-        <item>0</item>
-        <item>0</item>
         <item>3</item>
-        <item>1</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>1</item>
-        <item>1</item>
-        <item>2</item>
         <item>0</item>
-        <item>-1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>-4</item>
+        <item>-5</item>
+        <item>-3</item>
+        <item>1</item>
+        <item>0</item>
         <item>0</item>
         <item>1</item>
         <item>-3</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>2</item>
+        <item>1</item>
         <item>-2</item>
-        <item>-2</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>1</item>
-        <item>0</item>
-        <item>-2</item>
-        <item>1</item>
-        <item>1</item>
-        <item>1</item>
         <item>0</item>
         <item>1</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>-1</item>
         <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>1</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -2514,19 +2372,24 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>-1</item>
+        <item>0</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>-1</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -2534,148 +2397,6 @@
         <item>0</item>
         <item>1</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -2718,97 +2439,11 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>-1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
@@ -2826,6 +2461,188 @@
         <item>0</item>
         <item>1</item>
         <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
@@ -2846,8 +2663,101 @@
         <item>0</item>
         <item>0</item>
         <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -2869,6 +2779,96 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
