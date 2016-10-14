@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Practice Hub</string>
+
+    <!-- Metronome -->
+    <string name="metronome">Metrônomo</string>
+    <string name="metronome_icon">Metrônomo Ícone</string>
+    <string name="metronome_start">&#x25B6;</string>
+    <string name="metronome_stop">&#x25FC;</string>
+    <string name="metronome_tempo">Tempo</string>
+    <string name="metronome_tap_tempo">Toque Tempo</string>
+    <string name="metronome_beats_on">Batida Ligada</string>
+    <string name="metronome_beats_off">Batida Desligada</string>
+
+    <!-- Tuner -->
+    <string name="tuner_on">Afinador Ligado</string>
+    <string name="tuner_off">Afinador Desligado</string>
+    <string name="neg_50_cents">-50 centésimos</string>
+    <string name="pos_50_cents">+50 centésimos</string>
+    <string name="calculating">calculando&#8230;</string>
+    
+    <!-- Drone -->
+    <string name="drone">Drone</string>
+    <string name="note_A">A</string>
+    <string name="note_Bb">A#/Bb</string>
+    <string name="note_B">B</string>
+    <string name="note_C">C</string>
+    <string name="note_Db">C#/Db</string>
+    <string name="note_D">D</string>
+    <string name="note_Eb">D#/Eb</string>
+    <string name="note_E">E</string>
+    <string name="note_F">F</string>
+    <string name="note_Gb">F#/Gb</string>
+    <string name="note_G">G</string>
+    <string name="note_Ab">G#/Ab</string>
+    <string name="turn_off_all_drones">Parar todos Drones</string>
+
+    <!-- Notification -->
+    <string name="notification_stop">Parar</string>
+    
+    <!-- Menu -->
+    <string name="menu_volume">Mixador de Volume</string>
+    <string name="menu_volume_done">Concluído</string>
+    <string name="menu_stop_all">Parar Tudo</string>
+    
+</resources>
